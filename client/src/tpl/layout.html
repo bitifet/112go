@@ -1,7 +1,9 @@
 
 <!-- Panels -->
 
-<script id="menu_panel_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="menu_panel_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 <div data-role="panel" id="menu">
 	<ul data-role="listview">
 		<li><a href="#home">{{menu.home}}</a></li>
@@ -12,7 +14,9 @@
 
 <!-- Headings -->
 
-<script id="default_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="default_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 {{{_panels.menu}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
@@ -23,7 +27,9 @@
 </div>
 </script><!--}}}-->
 
-<script id="activitys_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="activitys_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 {{{_panels.menu}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
@@ -34,7 +40,9 @@
 </div>
 </script><!--}}}-->
 
-<script id="activity_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="activity_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 {{{_panels.menu}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
@@ -50,7 +58,9 @@
 </div>
 </script><!--}}}-->
 
-<script id="actSection_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="actSection_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 {{{_panels.menu}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
@@ -64,7 +74,9 @@
 
 <!-- Pages -->
 
-<script id="home_page_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="home_page_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 <div data-role="page" id="home">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
@@ -76,7 +88,10 @@
 </script><!--}}}-->
 
 
-<script id="activitys_page_tpl" data-header="activitys" type="text/x-handlebars-template"><!--{{{-->
+<script id="activitys_page_tpl"<!--{{{-->
+	data-header="activitys"
+	type="text/x-handlebars-template"
+>
 <div data-role="page" id="activitys">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
@@ -94,7 +109,10 @@
 </script><!--}}}-->
 
 
-<script id="actGeneral_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<script id="actGeneral_page_tpl"<!--{{{-->
+	data-header="activity"
+	type="text/x-handlebars-template"
+>
 <div data-role="page" id="actGeneral">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
@@ -117,7 +135,10 @@
 </div> 
 </script><!--}}}-->
 
-<script id="actMembers_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<script id="actMembers_page_tpl"<!--{{{-->
+	data-header="activity"
+	type="text/x-handlebars-template"
+>
 <div data-role="page" id="actMembers">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
@@ -136,7 +157,10 @@
 </div> 
 </script><!--}}}-->
 
-<script id="actOther_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<script id="actOther_page_tpl"<!--{{{-->
+	data-header="activity"
+	type="text/x-handlebars-template"
+>
 <div data-role="page" id="actOther">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
@@ -208,7 +232,9 @@
 
 <!-- Popups -->
 
-<script id="actCheckpoint_popup_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="actCheckpoint_popup_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 <div data-role="popup" id="actCheckpoint">
   <div data-role="main" class="ui-content">
   <p>Ruta (punt)</p>
@@ -221,7 +247,9 @@
 </div> 
 </script><!--}}}-->
 
-<script id="actVehicle_popup_tpl" type="text/x-handlebars-template"><!--{{{-->
+<script id="actVehicle_popup_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
 <div data-role="popup" id="actVehicle">
 	<div data-role="main" class="ui-content">
 	<ul>
@@ -232,37 +260,5 @@
 	</div>
 </div> 
 </script><!--}}}-->
-
-
-
-
-
-
-
-
-
-
-<!-- ------------------------------------ -->
-
-
-<script id="manolo_page_tpl" type="text/x-handlebars-template"><!--{{{-->
-<div class="page" data-role="page" id="manolo">
-	{{{_header}}}
-  <div data-role="main" class="ui-content">
-
-<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Show Popup</a>
-
-<div data-role="popup" id="myPopup">
-  <p>This is a simple popup.</p>
-</div>
-
-  </div>
-
-  <div data-role="footer" data-position="inline">
-    <h1>Insert Footer Text Here</h1>
-  </div>
-</div>
-</script><!--}}}-->
-
 
 
