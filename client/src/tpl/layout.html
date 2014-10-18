@@ -1,0 +1,268 @@
+
+<!-- Panels -->
+
+<script id="menu_panel_tpl" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="panel" id="menu">
+	<ul data-role="listview">
+		<li><a href="#home">{{menu.home}}</a></li>
+	</ul>
+</div> 
+</script><!--}}}-->
+
+
+<!-- Headings -->
+
+<script id="default_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+{{{_panels.menu}}}
+<div data-role="navbar" class="ui-persist">
+  <div data-role="header" data-position="fixed">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
+  </div>
+</div>
+</script><!--}}}-->
+
+<script id="activitys_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+{{{_panels.menu}}}
+<div data-role="navbar" class="ui-persist">
+  <div data-role="header" data-position="fixed">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#actGeneral">{{_nav.newActivity}}</a>
+  </div>
+</div>
+</script><!--}}}-->
+
+<script id="activity_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+{{{_panels.menu}}}
+<div data-role="navbar" class="ui-persist">
+  <div data-role="header" data-position="fixed">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
+	<ul>
+		<li><a href="#actGeneral">{{_nav.general}}</a></li>
+		<li><a href="#actMembers">{{_nav.members}}</a></li>
+		<li><a href="#actOther">{{_nav.other}}</a></li>
+	</ul>
+  </div>
+</div>
+</script><!--}}}-->
+
+<script id="actSection_header_tpl" type="text/x-handlebars-template"><!--{{{-->
+{{{_panels.menu}}}
+<div data-role="navbar" class="ui-persist">
+  <div data-role="header" data-position="fixed">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext" href="#{{_back}}">{{_global.back}}</a>
+  </div>
+</div>
+</script><!--}}}-->
+
+
+<!-- Pages -->
+
+<script id="home_page_tpl" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="page" id="home">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+		<h1>{{welcome}}</h1>
+		<p>{{intro}}</p>
+		<a href="#activitys">{{start}}</a>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+<script id="activitys_page_tpl" data-header="activitys" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="page" id="activitys">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>
+			<a href="#actGeneral">__description__</a>
+			<a data-action="remove"
+				href="#"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{remove}}</a>
+		</li>
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+<script id="actGeneral_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="page" id="actGeneral">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>Tipus d'activitat:
+		<select>
+			<option>{{type.hiking}}</option>
+			<option>{{type.climbing}}</option>
+			<option>{{type.torrents}}</option>
+			<option>{{type.speleology}}</option>
+			<option>{{type.mountainBike}}</option>
+			<option>{{type.riding}}</option>
+			<option>{{type.other}}</option>
+		</select></li>
+		<input type="hidden" placeholder={{otherTypeSpecify}}></input>
+		<li>Data Activitat</li>
+		<li><a href="#actRoute">{{route}}</a></li>
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+<script id="actMembers_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="page" id="actMembers">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>Participants. noms, edats i telèfons.</li>
+		<li>Guia. Nom i telèfon.</li>
+		<li>Grau de coneixement i experiència.</li>
+		<select class="ui-btn ui-btn-inline ui-corner-all">
+			<option>Baix.</option>
+			<option>Mitjà.</option>
+			<option>Alt.</option>
+		</select>
+		<li>Persones de contacte fora de l'excursió (noms i telèfons).</li>
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+<script id="actOther_page_tpl" data-header="activity" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="page" id="actOther">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li><a href="#actVehicles">Vehicles</a></li>
+		<li><textarea name="comments" rows=5 placeholder="{{comments}}"></textarea></li>
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+<script id="actRoute_page_tpl"<!--{{{-->
+	data-header="actSection"
+	data-back="actGeneral"
+	data-popups="actCheckpoint"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actRoute">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{start}}:</span>__Descripció__</a>
+		</li>
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{milestone}}:</span>__Descripció__</a>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{remove}}</a>
+		</li>
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{end}}:</span>__Descripció__</a>
+		</li>
+	</ul>
+	{{{_popups.actCheckpoint}}}
+	</div>
+</div> 
+</script><!--}}}-->
+
+<script id="actVehicles_page_tpl"<!--{{{-->
+	data-header="actSection"
+	data-back="actOther"
+	data-popups="actVehicle"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actVehicles">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>
+			<a href="#actVehicle" data-rel="popup">__Descripció__</a>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{remove}}</a>
+		</li>
+		<li>
+			<a href="#actVehicle" data-rel="popup" data-action="add"
+				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</li>
+
+	</ul>
+	{{{_popups.actVehicle}}}
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+<!-- Popups -->
+
+<script id="actCheckpoint_popup_tpl" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="popup" id="actCheckpoint">
+  <div data-role="main" class="ui-content">
+  <p>Ruta (punt)</p>
+  <ul>
+		<li>Descripció.</li>
+		<li>Coordenades</li>
+		<li>Hora</li>
+	</ul>
+  </div>
+</div> 
+</script><!--}}}-->
+
+<script id="actVehicle_popup_tpl" type="text/x-handlebars-template"><!--{{{-->
+<div data-role="popup" id="actVehicle">
+	<div data-role="main" class="ui-content">
+	<ul>
+		<li>Marca i model.</li>
+		<li>Matrícula.</li>
+		<li>Color.</li>
+	<ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+
+
+
+
+
+
+
+
+<!-- ------------------------------------ -->
+
+
+<script id="manolo_page_tpl" type="text/x-handlebars-template"><!--{{{-->
+<div class="page" data-role="page" id="manolo">
+	{{{_header}}}
+  <div data-role="main" class="ui-content">
+
+<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Show Popup</a>
+
+<div data-role="popup" id="myPopup">
+  <p>This is a simple popup.</p>
+</div>
+
+  </div>
+
+  <div data-role="footer" data-position="inline">
+    <h1>Insert Footer Text Here</h1>
+  </div>
+</div>
+</script><!--}}}-->
+
+
+
