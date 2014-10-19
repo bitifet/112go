@@ -47,24 +47,51 @@ define ([
 ) {
 
 	// Failback model.
-	var def_model = ca_model; // FIXME: Should end up being en.
+	var defLang = 'ca'; // FIXME: Should end up being en.
+
+	// Base models:
+	var baseModels = {
+		ca: ca_model,
+		es: es_model,
+		en: en_model,
+		de: de_model,
+	};
 
 	// Fully "autocompleted" models:
 	var models = {
-		ca: $.extend(ca_model, def_model),
-		es: $.extend(es_model, def_model),
-		en: $.extend(en_model, def_model),
-		de: $.extend(de_model, def_model),
 	};
 
-	var api = {
-		model: def_model, // FIXME: Auto-select from browser / device defaults.
-		set: function setLanguage(newLang) {
-			if (models[newLang] === undefined) throw "Unsupported language: " + newLang;
+	var api = {};
+	// api.model = (AutoMagically set to default).
+	api.set = (function buildLanguageSetter(defLang){//{{{
+
+		// Setter implementation:
+		function setLanguage(newLang) {
+
+			// Auto-extend by demand:
+			if (models[newLang] === undefined) {
+				if (newLang == defLang) {
+					// Default is suposed to be fully complete:
+					models[newLang] = baseModels[newLang];
+				} else {
+					// Extend others with default as a uncompletion failback:
+					if (baseModels[newLang] === undefined) throw "Unsupported language: " + newLang;
+					models[newLang] = $.extend(
+						baseModels[newLang], models[defLang] // Allocated at first time.
+					);
+				};
+				delete(baseModels[newLang]);
+			};
+
+			// Set:
 			api.model = models[newLang];
-			// FIXME: Implement template re-rendering.
-		},
-	};
+		};
+
+		// Initially set default lang:
+		setLanguage(defLang); // And ensure it's available on extensions.
+
+		return setLanguage;
+	})(defLang);//}}}
 
 	return api;
 

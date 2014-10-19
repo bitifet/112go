@@ -41,9 +41,6 @@ define ([
 	handlebars,
 	layout
 ) {
-	handlebars.registerHelper('raw', function(options) {
-		  return options.fn(this);
-	});
 
 	function loadTemplates(src) {//{{{
 		var target = $("<div></div>").html(
