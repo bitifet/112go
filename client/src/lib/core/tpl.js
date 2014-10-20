@@ -69,6 +69,9 @@ define ([
 					headerId: target.data("header"),
 					back: target.data("back"),
 					popups: target.data("popups"),
+					leftPanel: target.data("leftpanel"),
+					///rightPanel: target.data("rightPanel"),
+					///...
 				};
 				// Defaults:
 				if (! t.tplModel.headerId) t.tplModel.headerId = 'default';

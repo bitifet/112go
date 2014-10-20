@@ -1,9 +1,11 @@
 define({
-	menu: {
-		home: "Inici",
-		personalData: "Dades Personals",
-		gpsConfig: "Configuració GPS",
-		positionTrack: "Enviament de coordenades",
+	panels: {
+		menu: {
+			home: "Inici",
+			personalData: "Dades Personals",
+			gpsConfig: "Configuració GPS",
+			positionTrack: "Enviament de coordenades",
+		},
 	},
 	global: {
 		menu: "Menú",

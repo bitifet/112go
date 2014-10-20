@@ -60,7 +60,8 @@ define([
 	// PRE-RENDERD (using global language model) panels.
 	var panels = {};
 	for (var i in tpl.layout.panel) {
-		panels[i] = tpl.layout.panel[i](lang.model);
+		///panels[i] = tpl.layout.panel[i](lang.model);
+		panels[i] = tpl.layout.panel[i];
 	};
 
 
@@ -78,9 +79,23 @@ define([
 			var mainHeaderTpl = headers[tplModel.headerId];
 
 			var model = $.extend({}, lang.model.pages[pageId]);
+			model["_pageId"] = pageId;
 			model["_global"] = lang.model.global;
 			model["_back"] = tplModel.back;
-			model["_panels"] = panels;
+
+			if (tplModel["leftPanel"]) {
+				var panId = tplModel["leftPanel"];
+				var panModel = $.extend (
+					{
+						"_pageId" : pageId,
+						"_global": lang.model.global,
+					},
+					lang.model.panels[panId]
+				);
+				model["_leftPanel"] = panels[tplModel["leftPanel"]](panModel);
+			};
+			/// Other panels...
+
 			model["_nav"] = $.extend({}, lang.model.navs[tplModel.headerId]);
 			model["_header"] = mainHeaderTpl(model);
 			var pagePopups = {};

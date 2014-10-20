@@ -4,12 +4,12 @@
 <script id="menu_panel_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-<div data-role="panel" id="menu">
+<div data-role="panel" id="{{_pageId}}_menu">
 	<ul data-role="listview">
-		<li><a href="#home">{{menu.home}}</a></li>
-		<li><a href="#">{{menu.personalData}}</a></li>
-		<li><a href="#">{{menu.gpsConfig}}</a></li>
-		<li><a href="#">{{menu.positionTrack}}</a></li>
+		<li><a href="#home">{{home}}</a></li>
+		<li><a href="#">{{personalData}}</a></li>
+		<li><a href="#">{{gpsConfig}}</a></li>
+		<li><a href="#">{{positionTrack}}</a></li>
 	</ul>
 </div> 
 </script><!--}}}-->
@@ -20,10 +20,10 @@
 <script id="default_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-{{{_panels.menu}}}
+{{{_leftPanel}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
   </div>
@@ -33,10 +33,10 @@
 <script id="activitys_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-{{{_panels.menu}}}
+{{{_leftPanel}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#actGeneral">{{_nav.newActivity}}</a>
   </div>
@@ -46,10 +46,10 @@
 <script id="activity_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-{{{_panels.menu}}}
+{{{_leftPanel}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
 	<ul>
@@ -64,10 +64,10 @@
 <script id="actSection_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-{{{_panels.menu}}}
+{{{_leftPanel}}}
 <div data-role="navbar" class="ui-persist">
   <div data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#menu">{{_global.menu}}</a>
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext" href="#{{_back}}">{{_global.back}}</a>
   </div>
@@ -78,6 +78,7 @@
 <!-- Pages -->
 
 <script id="home_page_tpl"<!--{{{-->
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="home">
@@ -93,6 +94,7 @@
 
 <script id="activitys_page_tpl"<!--{{{-->
 	data-header="activitys"
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="activitys">
@@ -114,6 +116,7 @@
 
 <script id="actGeneral_page_tpl"<!--{{{-->
 	data-header="activity"
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="actGeneral">
@@ -140,6 +143,7 @@
 
 <script id="actMembers_page_tpl"<!--{{{-->
 	data-header="activity"
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="actMembers">
@@ -162,6 +166,7 @@
 
 <script id="actOther_page_tpl"<!--{{{-->
 	data-header="activity"
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="actOther">
@@ -178,6 +183,7 @@
 
 <script id="actRoute_page_tpl"<!--{{{-->
 	data-header="actSection"
+	data-leftPanel="menu"
 	data-back="actGeneral"
 	data-popups="actCheckpoint"
 	type="text/x-handlebars-template"
@@ -206,6 +212,7 @@
 
 <script id="actVehicles_page_tpl"<!--{{{-->
 	data-header="actSection"
+	data-leftPanel="menu"
 	data-back="actOther"
 	data-popups="actVehicle"
 	type="text/x-handlebars-template"
