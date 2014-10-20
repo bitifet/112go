@@ -57,10 +57,9 @@ define([
 		popups[i] = tpl.popup[i];
 	};
 
-	// PRE-RENDERD (using global language model) panels.
+	// Panels to be rendered within page model:
 	var panels = {};
 	for (var i in tpl.panel) {
-		///panels[i] = tpl.panel[i](lang.model);
 		panels[i] = tpl.panel[i];
 	};
 

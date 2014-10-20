@@ -26,8 +26,17 @@ define({
 		home: {
 			title: "112go",
 			welcome: "Benvinguts",
-			intro: "Benvinguts, configuració inicial i bla, bla,bla...",
-			start: "Començar"
+			selectLanguage: "Sel·leccioni l'idioma",
+			userProfile: "Dades personals",
+			about: "Què és i com fer servir 112go",
+			start: "Començar",
+		},
+		userProfile: {
+			phoneNo: "Telèfon",
+			name: "Nom",
+			surname: "Llinatges",
+			birthDate: "Data de naixement",
+			comments: "Comentaris",
 		},
 		activitys: {
 			title: "Activitats",
@@ -35,6 +44,7 @@ define({
 		},
 		actGeneral: {
 			title: "Activitat",
+			description: "Descripció",
 			type: {
 				hiking: "Senderisme",
 				climbing: "Escalada",
@@ -49,6 +59,21 @@ define({
 		},
 		actMembers: {
 			title: "Participants",
+			phone: "Telèfon",
+			name: "Nom",
+			surname: "Llinatges",
+			role: "Rol",
+			roles: {
+				pguide: "Guia professional",
+				aguide: "Guia amateur",
+				master: "Expert",
+				average: "Participant",
+				novice: "Principiant",
+				contact: "Persona de contacte (no participa)",
+			},
+			birthDate: "Data de naixement",
+			comments: "Comentaris",
+			add: "Afegir",
 		},
 		actOther: {
 			title: "Altres",
@@ -67,6 +92,11 @@ define({
 		},
 		actVehicles: {
 			title: "Vehicles",
+			trademark: "Marca",
+			model: "Model",
+			plate: "Matrícula",
+			colour: "Color",
+			comments: "Observacions",
 		},
 		actVehicle: {
 			title: "Vehicle",

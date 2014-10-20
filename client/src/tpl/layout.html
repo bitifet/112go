@@ -7,7 +7,7 @@
 <div data-role="panel" id="{{_pageId}}_menu">
 	<ul data-role="listview">
 		<li><a href="#home">{{home}}</a></li>
-		<li><a href="#">{{personalData}}</a></li>
+		<li><a href="#userProfile">{{personalData}}</a></li>
 		<li><a href="#">{{gpsConfig}}</a></li>
 		<li><a href="#">{{positionTrack}}</a></li>
 	</ul>
@@ -81,12 +81,32 @@
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
-<div data-role="page" id="home">
-	{{{_header}}}
+<div data-role="page" id="home" style="background:#ffffff">
 	<div data-role="main" class="ui-content">
-		<h1>{{welcome}}</h1>
-		<p>{{intro}}</p>
-		<a href="#activitys">{{start}}</a>
+		<p>
+		<img src="img/112go.jpg" alt="{{title}}" stye="vertical-align:bottom;float:left" />
+		<span style="font-size:x-large;text-align:right;">{{welcome}}</span>
+		</p>
+		<ul data-role="listview">
+		<li>
+		<label>{{selectLanguage}}</label>
+		<select>
+			<option>Català</option>
+			<option>Castellano</option>
+			<option>English</option>
+			<option>German</option>
+		</select>
+		</li>
+		<li><label>{{about}}</label>
+			<div style="height:8em;border:#ff8888 solid 1px;overfow:auto">
+			<p>I aquí l'explicació...</p>
+			
+			<p>FIXME!!: Dynamically fill from per-language specific file!!!</p>
+			</div>
+		</li>
+		<li><a href="#userProfile">{{userProfile}}</a></li>
+		<li><a href="#activitys">{{start}}</a></li>
+		</ul>
 	</div>
 </div> 
 </script><!--}}}-->
@@ -123,6 +143,7 @@
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
 	<ul data-role="listview">
+		<li><label>{{description}}</label><input type="text"></input></li>
 		<li>Tipus d'activitat:
 		<select>
 			<option>{{type.hiking}}</option>
@@ -134,7 +155,7 @@
 			<option>{{type.other}}</option>
 		</select></li>
 		<input type="hidden" placeholder={{otherTypeSpecify}}></input>
-		<li>Data Activitat</li>
+		<li><label>Data Activitat</label><input type="date"></input></li>
 		<li><a href="#actRoute">{{route}}</a></li>
 	</ul>
 	</div>
@@ -144,22 +165,41 @@
 <script id="actMembers_page_tpl"<!--{{{-->
 	data-header="activity"
 	data-leftPanel="menu"
+	data-popups="actMember"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="actMembers">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li>Participants. noms, edats i telèfons.</li>
-		<li>Guia. Nom i telèfon.</li>
-		<li>Grau de coneixement i experiència.</li>
-		<select class="ui-btn ui-btn-inline ui-corner-all">
-			<option>Baix.</option>
-			<option>Mitjà.</option>
-			<option>Alt.</option>
-		</select>
-		<li>Persones de contacte fora de l'excursió (noms i telèfons).</li>
-	</ul>
+
+	<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">
+	<thead>
+	<tr>
+		<th>{{phone}}</th>
+		<th data-priority=2>{{name}}</th>
+		<th data-priority=3>{{surname}}</th>
+		<th data-priority=1>{{role}}</th>
+		<th>
+			<a href="#actMember" data-rel="popup" data-action="add"
+				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+		<td>555444333</td>
+		<td>Manolo</td>
+		<td>Pérez</td>
+		<td>Guia</td>
+		<td>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</td>
+	</tbody>
+	</table>
+
+	{{{_popups.actMember}}}
 	</div>
 </div> 
 </script><!--}}}-->
@@ -240,6 +280,91 @@
 </script><!--}}}-->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<ul data-role="listview">
+		<li>Participants. noms, edats i telèfons.</li>
+		<li>Guia. Nom i telèfon.</li>
+		<li>Grau de coneixement i experiència.</li>
+		<select class="ui-btn ui-btn-inline ui-corner-all">
+			<option>Baix.</option>
+			<option>Mitjà.</option>
+			<option>Alt.</option>
+		</select>
+		<li>Persones de contacte fora de l'excursió (noms i telèfons).</li>
+	</ul>
+
+
+
+
+<script id="actMember_popup_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div data-role="popup" id="actMember">
+	<ul data-role="listview">
+		<li><label>{{phone}}</label>
+		<input type="text"></input></li>
+		<li><label>{{role}}</label>
+		<select>
+				<option>{{roles.pguide}}</option>
+				<option>{{roles.aguide}}</option>
+				<option>{{roles.master}}</option>
+				<option>{{roles.average}}</option>
+				<option>{{roles.novice}}</option>
+				<option>{{roles.contact}}</option>
+		</select></li>
+		<li><label>{{name}}</label>
+		<input type="text"></input></li>
+		<li><label>{{surname}}</label>
+		<input type="text"></input></li>
+		<li><label>{{birthDate}}</label>
+		<input type="text"></input></li>
+		<li><label>{{comments}}</label>
+		<input type="text"></input></li>
+	</ul>
+</div> 
+</script><!--}}}-->
+
+
+
+
+
+<script id="userProfile_page_tpl"<!--{{{-->
+	data-leftPanel="menu"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="userProfile">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li><label>{{phoneNo}}</label>
+		<input type="text"></input></li>
+		<li><label>{{name}}</label>
+		<input type="text"></input></li>
+		<li><label>{{surname}}</label>
+		<input type="text"></input></li>
+		<li><label>{{birthDate}}</label>
+		<input type="text"></input></li>
+		<li><label>{{comments}}</label>
+		<input type="text"></input></li>
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+
 <!-- Popups -->
 
 <script id="actCheckpoint_popup_tpl"<!--{{{-->
@@ -248,7 +373,7 @@
 <div data-role="popup" id="actCheckpoint">
   <div data-role="main" class="ui-content">
   <p>Ruta (punt)</p>
-  <ul>
+	<ul data-role="listview">
 		<li>Descripció.</li>
 		<li>Coordenades</li>
 		<li>Hora</li>
@@ -262,10 +387,17 @@
 >
 <div data-role="popup" id="actVehicle">
 	<div data-role="main" class="ui-content">
-	<ul>
-		<li>Marca i model.</li>
-		<li>Matrícula.</li>
-		<li>Color.</li>
+	<ul data-role="listview">
+		<li><label>{{trademark}}</label>
+		<input type="text"></input></li>
+		<li><label>{{model}}</label>
+		<input type="text"></input></li>
+		<li><label>{{plate}}</label>
+		<input type="text"></input></li>
+		<li><label>{{colour}}.</label>
+		<input type="text"></input></li>
+		<li><label>{{comments}}</label>
+		<input type="text"></input></li>
 	<ul>
 	</div>
 </div> 
