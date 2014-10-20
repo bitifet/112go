@@ -47,21 +47,21 @@ define([
 
 	// Header templates to be rendered within page model.
 	var headers = {};
-	for (var i in tpl.layout.header) {
-		headers[i] = tpl.layout.header[i];
+	for (var i in tpl.header) {
+		headers[i] = tpl.header[i];
 	};
 
 	// Popup templates to be rendered within page model.
 	var popups = {};
-	for (var i in tpl.layout.popup) {
-		popups[i] = tpl.layout.popup[i];
+	for (var i in tpl.popup) {
+		popups[i] = tpl.popup[i];
 	};
 
 	// PRE-RENDERD (using global language model) panels.
 	var panels = {};
-	for (var i in tpl.layout.panel) {
-		///panels[i] = tpl.layout.panel[i](lang.model);
-		panels[i] = tpl.layout.panel[i];
+	for (var i in tpl.panel) {
+		///panels[i] = tpl.panel[i](lang.model);
+		panels[i] = tpl.panel[i];
 	};
 
 
@@ -72,8 +72,8 @@ define([
 
 		var pageContainer = $(":mobile-pagecontainer");
 
-		for (var pageId in tpl.layout.page) {
-			var mainTemplate = tpl.layout.page[pageId];
+		for (var pageId in tpl.page) {
+			var mainTemplate = tpl.page[pageId];
 			var tplModel = mainTemplate.tplModel;
 
 			var mainHeaderTpl = headers[tplModel.headerId];

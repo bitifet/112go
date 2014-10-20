@@ -42,12 +42,11 @@ define ([
 	layout
 ) {
 
-	function loadTemplates(src) {//{{{
+	function loadTemplates(tpl, src) {//{{{
 		var target = $("<div></div>").html(
 			src.replace(/<!--[^<]*?-->/g, '') // Can't live without vim's folding marks ;-)
 			// ...and any other matching comments are also unuseful.
 		);
-		var tpl = {};
 		target.find("script[type='text/x-handlebars-template']").each(function(foo) {
 			var target = $(this);
 
@@ -82,12 +81,10 @@ define ([
 
 		});
 		target.remove(); // Free placeholder.
-		return tpl;
 	};//}}}
 
-	var tpl = {
-		layout: loadTemplates(layout),
-	};
+	var tpl = {};
+	loadTemplates(tpl, layout);
 
 	return tpl;
 
