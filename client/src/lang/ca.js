@@ -32,6 +32,7 @@ define({
 			start: "Començar",
 		},
 		userProfile: {
+			title: "Dades personals",
 			phoneNo: "Telèfon",
 			name: "Nom",
 			surname: "Llinatges",

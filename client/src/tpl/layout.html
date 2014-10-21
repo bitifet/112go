@@ -172,7 +172,7 @@
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
 
-	<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">
+	<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
 	<thead>
 	<tr>
 		<th>{{phone}}</th>
@@ -293,23 +293,6 @@
 
 
 
-
-
-	<ul data-role="listview">
-		<li>Participants. noms, edats i telèfons.</li>
-		<li>Guia. Nom i telèfon.</li>
-		<li>Grau de coneixement i experiència.</li>
-		<select class="ui-btn ui-btn-inline ui-corner-all">
-			<option>Baix.</option>
-			<option>Mitjà.</option>
-			<option>Alt.</option>
-		</select>
-		<li>Persones de contacte fora de l'excursió (noms i telèfons).</li>
-	</ul>
-
-
-
-
 <script id="actMember_popup_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
@@ -347,7 +330,14 @@
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="userProfile">
-	{{{_header}}}
+{{{_leftPanel}}}
+<div data-role="navbar" class="ui-persist">
+  <div data-role="header" data-position="fullscreen">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="back-btn ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext" href="#">{{_global.back}}</a>
+  </div>
+</div>
 	<div data-role="main" class="ui-content">
 	<ul data-role="listview">
 		<li><label>{{phoneNo}}</label>

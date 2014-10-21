@@ -130,6 +130,25 @@ define([
 
 		};
 
+		// Implement .back-btn class bassed (self-explainatory) functionality for anchors.//{{{
+		$(".back-btn").each(function(){
+			var btn = $(this); // me (.back-btn)
+			var pageId = btn.closest("div[data-role='page']").attr("id"); // My page id.
+
+			$('a[href="#' + pageId + '"]').each(function(){ // Anchors linking my page.
+				var srcLink = $(this);
+				var srcPageId = srcLink.closest("div[data-role='page']").attr("id"); // Their page id.
+
+				// Awesome magic!! ;-)
+				srcLink.on("click", function(){
+					btn.attr("href", '#' + srcPageId);
+				});
+
+			});
+
+		});//}}}
+
+
 		// Startup page:
 		if (config.validated) {
 			// Normal usage:
@@ -138,6 +157,7 @@ define([
 			// First usage:
 			pageContainer.pagecontainer( "change", "#home");
 		};
+
 
 	});
 
