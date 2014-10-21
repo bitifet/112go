@@ -177,8 +177,9 @@ Especificació:
 
 ###Pantalles principals###
 
-
 ####Benvinguda####
+
+<img style="float:right;margin:1px" src="img/Benvinguda.jpg">
 
   * Serà la pantalla d'entrada el primer cop que s'obre l'aplicació.
 
@@ -196,6 +197,8 @@ Especificació:
 
 
 ####Menú lateral####
+
+<img style="float:right;margin:1px" src="img/Menu.jpg">
 
   * Proporcionarà accés a la pàgina de benvinguda un cop l'usuari ja hagi cumplimentat les seves dades.
 
@@ -220,6 +223,8 @@ No és una pantalla pròpiament. Però totes les pantalles següents, excepte el
 
 ####Activitats####
 
+<img style="float:right;margin:1px" src="img/Activitats.jpg">
+
   * Llista de les activitats definides.
 
   * Permetrà accedir-hi (clicant en elles), eliminar-les, o crear-ne de noves.
@@ -228,6 +233,8 @@ No és una pantalla pròpiament. Però totes les pantalles següents, excepte el
 
 
 ####Activitat - General####
+
+<img style="float:right;margin:1px" src="img/Activitat_General.jpg">
 
   * Primera pestanya de la fitxa de l'activitat.
 
@@ -250,6 +257,8 @@ No és una pantalla pròpiament. Però totes les pantalles següents, excepte el
 
 ####Activitat - Altres####
 
+<img style="float:right;margin:1px" src="img/Activitat_Altres.jpg">
+
   * Donarà accés a la pantalla de vehicles.
 
   * Permetrà introduïr observacions.
@@ -257,7 +266,10 @@ No és una pantalla pròpiament. Però totes les pantalles següents, excepte el
 
 ###Pantales auxiliars###
 
+
 ####Ruta####
+
+<img style="float:right;margin:1px" src="img/Ruta.jpg">
 
   * S'hi especificaran el punt de partida i fi de l'activitat amb:
     - Coordenades (es podrà posicionar sobre un mapa) mitjançant popup.
