@@ -69,7 +69,8 @@
   <div data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext" href="#{{_back}}">{{_global.back}}</a>
+	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+		data-rel="back" href="#">{{_global.back}}</a>
   </div>
 </div>
 </script><!--}}}-->
@@ -226,7 +227,6 @@
 <script id="actRoute_page_tpl"<!--{{{-->
 	data-header="actSection"
 	data-leftPanel="menu"
-	data-back="actGeneral"
 	data-popups="actCheckpoint"
 	type="text/x-handlebars-template"
 >
@@ -255,7 +255,6 @@
 <script id="actVehicles_page_tpl"<!--{{{-->
 	data-header="actSection"
 	data-leftPanel="menu"
-	data-back="actOther"
 	data-popups="actVehicle"
 	type="text/x-handlebars-template"
 >
@@ -335,7 +334,8 @@
   <div data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
-	<a class="back-btn ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext" href="#">{{_global.back}}</a>
+	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+		data-rel="back" href="#">{{_global.back}}</a>
   </div>
 </div>
 	<div data-role="main" class="ui-content">

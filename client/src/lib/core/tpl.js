@@ -66,7 +66,6 @@ define ([
 			if (ctg == "page") { // Read header selection.
 				t.tplModel = {
 					headerId: target.data("header"),
-					back: target.data("back"),
 					popups: target.data("popups"),
 					leftPanel: target.data("leftpanel"),
 					///rightPanel: target.data("rightPanel"),
