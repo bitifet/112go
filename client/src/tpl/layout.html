@@ -21,7 +21,7 @@
 	type="text/x-handlebars-template"
 >
 {{{_leftPanel}}}
-<div data-role="header" data-position="fullscreen">
+<div class="ui-header" data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
@@ -32,7 +32,7 @@
 	type="text/x-handlebars-template"
 >
 {{{_leftPanel}}}
-<div data-role="header" data-position="fullscreen">
+<div class="ui-header" data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#actGeneral">{{_nav.newActivity}}</a>
@@ -43,7 +43,7 @@
 	type="text/x-handlebars-template"
 >
 {{{_leftPanel}}}
-<div data-role="header" data-position="fullscreen">
+<div class="ui-header" data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
@@ -61,7 +61,7 @@
 	type="text/x-handlebars-template"
 >
 {{{_leftPanel}}}
-<div data-role="header" data-position="fullscreen">
+<div class="ui-header" data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
@@ -77,7 +77,7 @@
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="home" style="background:#ffffff">
-	<div class="white" data-role="header" data-position="fixed">
+	<div class="ui-header" data-role="header" data-position="fixed">
 		<p>
 		<img src="img/112go.jpg" alt="{{title}}" stye="vertical-align:bottom;float:left" />
 		<span style="font-size:x-large;text-align:right;">{{welcome}}</span>
@@ -85,7 +85,7 @@
 		<p><{{about}}</p>
 	</div>
 	<div data-role="main" class="ui-content">
-
+<!--{{{-->
 		I aquí l.explicació...<br />
 		I aquí l.explicació...<br />
 		I aquí l.explicació...<br />
@@ -186,14 +186,15 @@
 		I aquí l.explicació...<br />
 		I aquí l.explicació...<br />
 		I aquí l.explicació...<br />
-		
+		<!--}}}-->
 	</div>
 
-	<div class="mergedFooter ui-content" data-role="footer" data-position="fixed">
+	<div data-role="footer" class="ui-footer" data-position="fixed">
+		<div class="ui-controlgroup">
 		<ul data-role="listview">
 		<li>
-		<label>{{selectLanguage}}</label>
-		<select>
+		<select class="ui-icon ui-btn-icon-right ui-icon-carat-r">
+			<option value="" selected disabled>{{selectLanguage}}</option>
 			<option>Català</option>
 			<option>Castellano</option>
 			<option>English</option>
@@ -203,6 +204,7 @@
 		<li><a href="#userProfile">{{userProfile}}</a></li>
 		<li><a href="#activitys">{{start}}</a></li>
 		</ul>
+		</div>
 	</div>
 
 
@@ -428,7 +430,7 @@
 >
 <div data-role="page" id="userProfile">
 {{{_leftPanel}}}
-<div data-role="header" data-position="fullscreen">
+<div class="ui-header" data-role="header" data-position="fullscreen">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"

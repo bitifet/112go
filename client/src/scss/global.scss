@@ -6,10 +6,29 @@
 }
 
 
-div.mergedFooter, div.mergedFooter * {
-	border-top: 0px !important;
-	background: #ffffff !important;
-}
-div.white {
-	background: #ffffff !important;
+div#home {
+
+	div.ui-header, div.ui-contents, div.ui-footer {
+		background: #ffffff !important;
+		border: #ffffff 0px;
+	}
+	div.ui-header {
+		padding-left: 1em;
+	}
+
+
+	div.ui-btn {
+		margin: 0px !important;
+		width:100%;
+		text-align: left;
+
+		option {
+			text-align: left;
+		}
+	}
+
+	div.ui-select, li.first-child, .ui-body-inherit{
+		margin: 0px !important;
+		padding: 0px !important;
+	}
 }
