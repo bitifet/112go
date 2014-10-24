@@ -1,5 +1,5 @@
 
-<!-- Panels -->
+<!-- Menú Panel -->
 
 <script id="menu_panel_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
@@ -15,7 +15,7 @@
 </script><!--}}}-->
 
 
-<!-- Headings -->
+<!-- Default Heading -->
 
 <script id="default_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
@@ -28,49 +28,8 @@
 </div>
 </script><!--}}}-->
 
-<script id="activitys_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fullscreen">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#actGeneral">{{_nav.newActivity}}</a>
-</div>
-</script><!--}}}-->
 
-<script id="activity_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fullscreen">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
-  <div data-role="navbar" class="ui-persist">
-	<ul>
-		<li><a href="#actGeneral">{{_nav.general}}</a></li>
-		<li><a href="#actMembers">{{_nav.members}}</a></li>
-		<li><a href="#actOther">{{_nav.other}}</a></li>
-	</ul>
-  </div>
-</div>
-</script><!--}}}-->
-
-<script id="actSection_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fullscreen">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
-		data-rel="back" href="#">{{_global.back}}</a>
-</div>
-</script><!--}}}-->
-
-
-<!-- Pages -->
+<!-- Home Page -->
 
 <script id="home_page_tpl"<!--{{{-->
 	data-leftPanel="menu"
@@ -213,172 +172,7 @@
 </script><!--}}}-->
 
 
-<script id="activitys_page_tpl"<!--{{{-->
-	data-header="activitys"
-	data-leftPanel="menu"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="activitys">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li>
-			<a href="#actGeneral">__description__</a>
-			<a data-action="remove"
-				href="#"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{remove}}</a>
-		</li>
-	</ul>
-	</div>
-</div> 
-</script><!--}}}-->
 
-
-<script id="actGeneral_page_tpl"<!--{{{-->
-	data-header="activity"
-	data-leftPanel="menu"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actGeneral">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li><label>{{description}}</label><input type="text"></input></li>
-		<li>Tipus d'activitat:
-		<select>
-			<option>{{type.hiking}}</option>
-			<option>{{type.climbing}}</option>
-			<option>{{type.torrents}}</option>
-			<option>{{type.speleology}}</option>
-			<option>{{type.mountainBike}}</option>
-			<option>{{type.riding}}</option>
-			<option>{{type.other}}</option>
-		</select></li>
-		<input type="hidden" placeholder={{otherTypeSpecify}}></input>
-		<li><label>Data Activitat</label><input type="date"></input></li>
-		<li><a href="#actRoute">{{route}}</a></li>
-	</ul>
-	</div>
-</div> 
-</script><!--}}}-->
-
-<script id="actMembers_page_tpl"<!--{{{-->
-	data-header="activity"
-	data-leftPanel="menu"
-	data-popups="actMember"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actMembers">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-
-	<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
-	<thead>
-	<tr>
-		<th>{{phone}}</th>
-		<th data-priority=2>{{name}}</th>
-		<th data-priority=3>{{surname}}</th>
-		<th data-priority=1>{{role}}</th>
-		<th>
-			<a href="#actMember" data-rel="popup" data-action="add"
-				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
-			>{{add}}</a>
-		</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>555444333</td>
-		<td>Manolo</td>
-		<td>Pérez</td>
-		<td>Guia</td>
-		<td>
-			<a href="#" data-action="remove"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{add}}</a>
-		</td>
-	</tr>
-	</tbody>
-	</table>
-
-	{{{_popups.actMember}}}
-	</div>
-</div> 
-</script><!--}}}-->
-
-<script id="actOther_page_tpl"<!--{{{-->
-	data-header="activity"
-	data-leftPanel="menu"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actOther">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li><a href="#actVehicles">Vehicles</a></li>
-		<li><textarea name="comments" rows=5 placeholder="{{comments}}"></textarea></li>
-	</ul>
-	</div>
-</div> 
-</script><!--}}}-->
-
-
-<script id="actRoute_page_tpl"<!--{{{-->
-	data-header="actSection"
-	data-leftPanel="menu"
-	data-popups="actCheckpoint"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actRoute">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{start}}:</span>__Descripció__</a>
-		</li>
-		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{milestone}}:</span>__Descripció__</a>
-			<a href="#" data-action="remove"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{remove}}</a>
-		</li>
-		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{end}}:</span>__Descripció__</a>
-		</li>
-	</ul>
-	{{{_popups.actCheckpoint}}}
-	</div>
-</div> 
-</script><!--}}}-->
-
-<script id="actVehicles_page_tpl"<!--{{{-->
-	data-header="actSection"
-	data-leftPanel="menu"
-	data-popups="actVehicle"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actVehicles">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li>
-			<a href="#actVehicle" data-rel="popup">__Descripció__</a>
-			<a href="#" data-action="remove"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{remove}}</a>
-		</li>
-		<li>
-			<a href="#actVehicle" data-rel="popup" data-action="add"
-				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
-			>{{add}}</a>
-		</li>
-
-	</ul>
-	{{{_popups.actVehicle}}}
-	</div>
-</div> 
-</script><!--}}}-->
 
 
 

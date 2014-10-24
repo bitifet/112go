@@ -1,0 +1,29 @@
+
+<script id="actRoute_page_tpl"<!--{{{-->
+	data-header="actSection"
+	data-leftPanel="menu"
+	data-popups="actCheckpoint"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actRoute">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{start}}:</span>__Descripció__</a>
+		</li>
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{milestone}}:</span>__Descripció__</a>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{remove}}</a>
+		</li>
+		<li>
+			<a href="#actCheckpoint" data-rel="popup"><span>{{end}}:</span>__Descripció__</a>
+		</li>
+	</ul>
+	{{{_popups.actCheckpoint}}}
+	</div>
+</div> 
+</script><!--}}}-->
+

@@ -37,9 +37,11 @@
 define ([
 	'handlebars',
 	'text!../../tpl/layout.html',
+	'text!../../tpl/activitys.html',
+	'text!../../tpl/route.html',
+	'text!../../tpl/other.html',
 ], function(
-	handlebars,
-	layout
+	handlebars
 ) {
 
 	function loadTemplates(tpl, src) {//{{{
@@ -83,7 +85,11 @@ define ([
 	};//}}}
 
 	var tpl = {};
-	loadTemplates(tpl, layout);
+	for (
+		var i = 1; // Number of non template depnedencys (at begining)
+		i < arguments.length;
+		i++
+	) loadTemplates(tpl, arguments[i]);
 
 	return tpl;
 

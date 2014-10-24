@@ -1,0 +1,30 @@
+
+<!-- Other resources pages and dialogs -->
+
+<script id="actVehicles_page_tpl"<!--{{{-->
+	data-header="actSection"
+	data-leftPanel="menu"
+	data-popups="actVehicle"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actVehicles">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li>
+			<a href="#actVehicle" data-rel="popup">__Descripció__</a>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{remove}}</a>
+		</li>
+		<li>
+			<a href="#actVehicle" data-rel="popup" data-action="add"
+				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</li>
+
+	</ul>
+	{{{_popups.actVehicle}}}
+	</div>
+</div> 
+</script><!--}}}-->
