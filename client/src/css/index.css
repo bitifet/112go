@@ -16,3 +16,6 @@ div#home div.ui-btn {
 div#home div.ui-select, div#home li.first-child, div#home .ui-body-inherit {
   margin: 0px !important;
   padding: 0px !important; }
+
+div.ui-footer ul.ui-grid-b li a.ui-btn {
+  width: 100%; }

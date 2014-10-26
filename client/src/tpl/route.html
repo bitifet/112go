@@ -1,8 +1,49 @@
 
+<!-- Footers -->
+
+<script id="actRoute_footer_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+  <ul class="ui-grid-b">
+	<li class="ui-block-a"></li>
+	<li class="ui-block-b"></li>
+	<li class="ui-block-c"><a href="#actCheckpoint" class="ui-btn ui-icon-plus ui-btn-icon-top">{{add}}</a></li>
+  </ul>
+</div>
+</script><!--}}}-->
+
+
+<script id="actCheckpoint_footer_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+  <ul class="ui-grid-b">
+	<li class="ui-block-a">
+		<a class="ui-btn ui-icon-minus ui-btn-icon-top"
+			data-rel="back" href="#">
+		{{remove}}</a>
+	</li>
+	<li class="ui-block-b">
+		<a href="#" class="ui-btn ui-icon-location ui-btn-icon-top">{{here}}</a>
+	</li>
+	<li class="ui-block-c">
+		<a class="ui-btn ui-icon-check ui-btn-icon-top"
+			data-rel="back" href="#">
+		{{checkin}}</a>
+	</li>
+  </ul>
+  </ul>
+</div>
+</script><!--}}}-->
+
+
+<!-- Pages -->
+
 <script id="actRoute_page_tpl"<!--{{{-->
 	data-header="actSection"
+	data-footer="actRoute"
 	data-leftPanel="menu"
-	data-popups="actCheckpoint"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="actRoute">
@@ -10,20 +51,71 @@
 	<div data-role="main" class="ui-content">
 	<ul data-role="listview">
 		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{start}}:</span>__Descripció__</a>
+			<h3>{{start}}:</h3>
+			<p><a href="#actCheckpoint">
+				__Descripció__
+			</a></p>
 		</li>
 		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{milestone}}:</span>__Descripció__</a>
-			<a href="#" data-action="remove"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{remove}}</a>
+			<h3>{{milestone}}:</h3>
+			<p><a href="#actCheckpoint">
+				__Descripció__
+			</a></p>
 		</li>
 		<li>
-			<a href="#actCheckpoint" data-rel="popup"><span>{{end}}:</span>__Descripció__</a>
+			<h3>{{end}}:</h3>
+			<p><a href="#actCheckpoint">
+				__Descripció__
+			</a></p>
 		</li>
 	</ul>
-	{{{_popups.actCheckpoint}}}
 	</div>
+	{{{_footer}}}
 </div> 
 </script><!--}}}-->
 
+
+<script id="actCheckpoint_page_tpl"<!--{{{-->
+	data-header="actSection"
+	data-footer="actCheckpoint"
+	data-leftPanel="menu"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actCheckpoint">
+	{{{_header}}}
+  <div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li><select>
+			<option value="" selected disabled>{{select}}</option>
+			<option>...</option>
+		</select></li>
+		<li>
+			<input type="text" placeholder="{{description}}"></input>
+		</li>
+		<li class="ui-grid-a">
+			<span class="ui-block-a">
+				<input placeholder="dayNumber"
+					type="number"
+					value=1
+					min=1
+					max=100
+					step=1
+				></input>
+			</span>
+			<span class="ui-block-b" style="text-aign=right;">
+				<input placeholder="{{hour}}" type="time"></input>
+			</span>
+		</li>
+		<li class="ui-grid-a">
+			<span class="ui-block-a">
+				<input placeholder="{{latitude}}" type="text"></input>
+			</span>
+			<span class="ui-block-b">
+				<input placeholder="{{longitude}}" type="text"></input>
+			</span>
+		</li>
+	</ul>
+  </div>
+	{{{_footer}}}
+</div> 
+</script><!--}}}-->

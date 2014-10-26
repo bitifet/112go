@@ -1,0 +1,137 @@
+
+<script id="actMembers_page_tpl"<!--{{{-->
+	data-header="activity"
+	data-leftPanel="menu"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="actMembers">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+
+
+	<ul data-role="listview">
+		<li>
+			<a data-action="" href="#memberPublicProfile">Tomeu</a>
+		</li>
+	</ul>
+
+
+	{{{_footer}}}
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+
+
+<script id="actMember_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+{{{_leftPanel}}}
+<div class="ui-header" data-role="header" data-position="fullscreen">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+		data-rel="back" href="#">{{_global.back}}</a>
+  <div data-role="navbar" class="ui-persist">
+	<ul>
+		<li><a href="#memberPublicProfile">{{_nav.publicProfile}}</a></li>
+		<li><a href="#memberPrivateProfile">{{_nav.privateProfile}}</a></li>
+	</ul>
+  </div>
+</div>
+</script><!--}}}-->
+
+
+<script id="memberPublicProfile_page_tpl"<!--{{{-->
+	data-header="actMember"
+	data-content="actMember"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="memberPublicProfile">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<ul data-role="listview">
+		<li><select>
+				<option value="" disabled selected>{{role}}</option>
+				<option>{{roles.pguide}}</option>
+				<option>{{roles.aguide}}</option>
+				<option>{{roles.master}}</option>
+				<option>{{roles.average}}</option>
+				<option>{{roles.novice}}</option>
+				<option>{{roles.contact}}</option>
+		</select></li>
+	{{{_content}}}
+	{{{_footer}}}
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+<script id="memberPrivateProfile_page_tpl"<!--{{{-->
+	data-header="actMember"
+	data-content="actMember"
+	type="text/x-handlebars-template"
+>
+<div data-role="page" id="memberPrivateProfile">
+	{{{_header}}}
+	<div data-role="main" class="ui-content">
+	<div>
+		{{{info}}}
+	</div>
+	<ul data-role="listview">
+	{{{_content}}}
+	{{{_footer}}}
+	</ul>
+	</div>
+</div> 
+</script><!--}}}-->
+
+
+
+
+
+
+<script id="actMember_content_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+		<li><input placeholder="{{_nav.phone}}" type="text"></input></li>
+		<li><input placeholder="{{_nav.name}}" type="text"></input></li>
+		<li><input placeholder="{{_nav.surname}}" type="text"></input></li>
+		<li><input placeholder="{{_nav.birthDate}}" type="text"></input></li>
+		<li><input placeholder="{{_nav.comments}}" type="text"></input></li>
+</script><!--}}}-->
+
+
+
+
+
+
+	<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
+	<thead>
+	<tr>
+		<th>{{phone}}</th>
+		<th data-priority=2>{{name}}</th>
+		<th data-priority=3>{{surname}}</th>
+		<th data-priority=1>{{role}}</th>
+		<th>
+			<a href="#actMember" data-rel="popup" data-action="add"
+				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>555444333</td>
+		<td>Manolo</td>
+		<td>Pérez</td>
+		<td>Guia</td>
+		<td>
+			<a href="#" data-action="remove"
+				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
+			>{{add}}</a>
+		</td>
+	</tr>
+	</tbody>
+	</table>

@@ -38,6 +38,7 @@ define ([
 	'handlebars',
 	'text!../../tpl/layout.html',
 	'text!../../tpl/activitys.html',
+	'text!../../tpl/members.html',
 	'text!../../tpl/route.html',
 	'text!../../tpl/other.html',
 ], function(
@@ -68,6 +69,8 @@ define ([
 			if (ctg == "page") { // Read header selection.
 				t.tplModel = {
 					headerId: target.data("header"),
+					contentId: target.data("content"),
+					footerId: target.data("footer"),
 					popups: target.data("popups"),
 					leftPanel: target.data("leftpanel"),
 					///rightPanel: target.data("rightPanel"),
@@ -75,6 +78,8 @@ define ([
 				};
 				// Defaults:
 				if (! t.tplModel.headerId) t.tplModel.headerId = 'default';
+				if (! t.tplModel.contentId) t.tplModel.contentId = 'default';
+				if (! t.tplModel.footerId) t.tplModel.footerId = 'default';
 				if (typeof t.tplModel.popups == 'string') t.tplModel.popups = [t.tplModel.popups];
 			};
 

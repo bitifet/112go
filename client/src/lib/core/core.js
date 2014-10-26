@@ -51,6 +51,18 @@ define([
 		headers[i] = tpl.header[i];
 	};
 
+	// Content templates to be rendered within page model.
+	var contents = {};
+	for (var i in tpl.content) {
+		contents[i] = tpl.content[i];
+	};
+
+	// Footer templates to be rendered within page model.
+	var footers = {};
+	for (var i in tpl.footer) {
+		footers[i] = tpl.footer[i];
+	};
+
 	// Popup templates to be rendered within page model.
 	var popups = {};
 	for (var i in tpl.popup) {
@@ -75,12 +87,36 @@ define([
 			var mainTemplate = tpl.page[pageId];
 			var tplModel = mainTemplate.tplModel;
 
+			// Foreign subtemplates ids:
+			// =========================
 			var mainHeaderTpl = headers[tplModel.headerId];
+			var mainContentTpl = contents[tplModel.contentId];
+			var mainFooterTpl = footers[tplModel.footerId];
 
-			var model = $.extend({}, lang.model.pages[pageId]);
-			model["_pageId"] = pageId;
-			model["_global"] = lang.model.global;
+			// Build specific model:
+			// =====================
+			var model = $.extend(
+				{}, // Start with empty object to avoid overidding.
+				lang.model.pages[pageId], // Add page's model.
+				{ // And some parameters..
+					"_pageId": pageId,
+					"_global": lang.model.global,
+					"_nav": $.extend(
+						{},
+						lang.model.navs[tplModel.headerId]
+					),
+				}
+			);
 
+			// Add properly rendered foreign subtemplates:
+			// ===========================================
+			if (typeof mainHeaderTpl == 'function') model["_header"] = mainHeaderTpl(model);
+			if (typeof mainContentTpl == 'function') model["_content"] = mainContentTpl(model);
+			if (typeof mainFooterTpl == 'function') model["_footer"] = mainFooterTpl(model);
+
+
+			// Add properly rendered panels:
+			// =============================
 			if (tplModel["leftPanel"]) {
 				var panId = tplModel["leftPanel"];
 				var panModel = $.extend (
@@ -94,8 +130,9 @@ define([
 			};
 			/// Other panels...
 
-			model["_nav"] = $.extend({}, lang.model.navs[tplModel.headerId]);
-			model["_header"] = mainHeaderTpl(model);
+
+			// Add properly rendered popups:
+			// =============================
 			var pagePopups = {};
 			for (var i in tplModel.popups) {
 				var popId = tplModel.popups[i];
@@ -104,28 +141,20 @@ define([
 			model["_popups"] = pagePopups;
 
 
-			/*/
+			// Render page:
+			// ============
+			var html = mainTemplate(model);
+			pageContainer.append(html);
+
+			/*/ Debugging stuff...
 			console.log ("===========================");
 			console.log("pageId", pageId);
 			console.log("model", model);
 			console.log ("---------------------------");
-			console.log ("headerId", tplModel.headerId);
-			console.log ("_header", model["_header"]);
-			console.log ("_nav", model["_nav"]);
-			console.log ("headers", headers);
-			console.log ("mainHeaderTpl", mainHeaderTpl);
-			console.log ("===========================");
-			//*/
-
-			var html = mainTemplate(model);
-			/*/
-			console.log ("===========================");
-			console.log("pageId:", pageId, "with model: ", model);
-			console.log ("---------------------------");
 			console.log (html);
 			console.log ("===========================");
 			//*/
-			pageContainer.append(html);
+
 
 		};
 

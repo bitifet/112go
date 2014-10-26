@@ -1,0 +1,10 @@
+
+
+  * Add placeholders to all inputs.
+  * Change app icon.
+  * Implement "fix-it" module to scan and fix all elements marked by a "fix-it" class"
+    - Date input fields with placeholders.
+    - Etc...
+  * Implement similar "nl2br" preprocessor for long texts.
+  * Make route (checkpoint list) sortable.
+  * Review http://davidwalsh.name/more-html5-apis
