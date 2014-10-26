@@ -1,3 +1,4 @@
+<!-- List view -->
 
 <script id="actMembers_page_tpl"<!--{{{-->
 	data-header="activity"
@@ -22,7 +23,7 @@
 </script><!--}}}-->
 
 
-
+<!-- Edit view -->
 
 <script id="actMember_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
@@ -71,25 +72,24 @@
 <script id="memberPrivateProfile_page_tpl"<!--{{{-->
 	data-header="actMember"
 	data-content="actMember"
+	data-popups="mppInfo"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="memberPrivateProfile">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
-	<div>
-		{{{info}}}
-	</div>
 	<ul data-role="listview">
+	<li><a href="#mppInfo"
+		data-rel="popup"
+		class="ui-btn ui-icon-info ui-btn-icon-left"
+	>{{whatsThis}}</a></li>
 	{{{_content}}}
 	{{{_footer}}}
 	</ul>
 	</div>
+	{{{_popups.mppInfo}}}
 </div> 
 </script><!--}}}-->
-
-
-
-
 
 
 <script id="actMember_content_tpl"<!--{{{-->
@@ -106,32 +106,13 @@
 
 
 
+<script id="mppInfo_popup_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div data-role="popup" id="mppInfo">
+	<div data-role="main" class="ui-content">
+		{{{info}}}
+	</div>
+</div> 
+</script><!--}}}-->
 
-	<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
-	<thead>
-	<tr>
-		<th>{{phone}}</th>
-		<th data-priority=2>{{name}}</th>
-		<th data-priority=3>{{surname}}</th>
-		<th data-priority=1>{{role}}</th>
-		<th>
-			<a href="#actMember" data-rel="popup" data-action="add"
-				class="action ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext"
-			>{{add}}</a>
-		</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>555444333</td>
-		<td>Manolo</td>
-		<td>Pérez</td>
-		<td>Guia</td>
-		<td>
-			<a href="#" data-action="remove"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{add}}</a>
-		</td>
-	</tr>
-	</tbody>
-	</table>
