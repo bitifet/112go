@@ -1,27 +1,27 @@
 define({
-	panels: {
-		menu: {
-			home: "Inici",
-			personalData: "Dades Personals",
-			gpsConfig: "Configuració GPS",
-			positionTrack: "Enviament de coordenades",
-		},
-	},
 	global: {
 		menu: "Menú",
 		homePage: "Llista",
 		back: "Tornar",
 	},
+	panels: {
+		menu: {//{{{
+			home: "Inici",
+			personalData: "Dades Personals",
+			gpsConfig: "Configuració GPS",
+			positionTrack: "Enviament de coordenades",
+		},//}}}
+	},
 	navs: {
-		activitys: {
+		activitys: {//{{{
 			newActivity: "Nova",
-		},
-		activity: {
+		},//}}}
+		activity: {//{{{
 			general: "General",
 			members: "Participants",
-			other: "Altres",
-		},
-		actMember: {
+			tracking: "Seguiment",
+		},//}}}
+		actMember: {//{{{
 			publicProfile: "Públic",
 			privateProfile: "Privat",
 			phone: "Telèfon",
@@ -29,31 +29,32 @@ define({
 			surname: "Llinatges",
 			birthDate: "Data de naixement",
 			comments: "Comentaris",
-			add: "Afegir",
-		},
+			save: "Actualitzar",
+			remove: "Eliminar",
+		},//}}}
 	},
 	pages: {
-		home: {
+		home: {//{{{
 			title: "112go",
 			welcome: "Benvinguts",
 			selectLanguage: "Sel·leccioni l'idioma",
 			userProfile: "Dades personals",
 			about: "Què és i com fer servir 112go",
 			start: "Començar",
-		},
-		userProfile: {
+		},//}}}
+		userProfile: {//{{{
 			title: "Dades personals",
 			phoneNo: "Telèfon",
 			name: "Nom",
 			surname: "Llinatges",
 			birthDate: "Data de naixement",
 			comments: "Comentaris",
-		},
-		activitys: {
+		},//}}}
+		activitys: {//{{{
 			title: "Activitats",
 			remove: "Eliminar",
-		},
-		actGeneral: {
+		},//}}}
+		actGeneral: {//{{{
 			title: "Activitat",
 			description: "Descripció de l'Activitat",
 			activityType: "Tipus d'Activitat",
@@ -70,11 +71,18 @@ define({
 			otherTypeSpecify: "Especifiqui",
 			route: "Ruta",
 			comments: "Observacions",
-		},
-		actMembers: {
+		},//}}}
+		actMembers: {//{{{
 			title: "Participants",
-		},
-		memberPublicProfile: {
+			addMember: "Afegir",
+			guides: "Guies",
+			guidesInfo: "Participants que exerciran el rol de guia.",
+			members: "Participants",
+			membersInfo: "Altres persones que participen a l'activitat.",
+			contacts: "Contactes",
+			contactsInfo: "Persones a contactar en cas d'accident (no participen a l'activitat).",
+		},//}}}
+		memberPublicProfile: {//{{{
 			title: "Perfil Públic",
 			role: "Rol",
 			roles: {
@@ -86,24 +94,24 @@ define({
 				contact: "Persona de contacte (no participa)",
 			},
 			// Shared labels defined in _nav.actMember
-		},
-		memberPrivateProfile: {
+		},//}}}
+		memberPrivateProfile: {//{{{
 			title: "Perfil Privat",
 			whatsThis: "Que és el perfil privat?",
 			info: "<p>El perfil permet aportar dades dels usuaris que aquests no vulguin compartir amb la resta de participants, garantint així la seva privacitat.</p><p>Les dades d'aquesta pantalla no seràn compartides amb els altres membres de l'activitat, però sí amb l'112 en cas necessari.</p><p>Per simplifiar, les dades de perfil públic es copiaran automàticament al privat sempre que el mateix camp estigui buïd o el contingut anterior fos el mateix.</p><p>Les modificacions realitzades al perfil privat mai es sincronitzaran al públic.</p>"
 			// Shared labels defined in _nav.actMember
-		},
-		actOther: {
+		},//}}}
+		actOther: {//{{{
 			title: "Altres",
-		},
-		actRoute: {
+		},//}}}
+		actRoute: {//{{{
 			title: "Ruta",
 			start: "Inici",
 			milestone: "Fita",
 			end: "Fi",
 			add: "Afegir",
-		},
-		actCheckpoint: {
+		},//}}}
+		actCheckpoint: {//{{{
 			title: "Punt",
 			select: "Sel·leccioni",
 			description: "Descripció del lloc",
@@ -114,19 +122,19 @@ define({
 			remove: "Eliminar",
 			here: "Aquí",
 			checkin: "Som aquí"
-		},
-		actVehicles: {
+		},//}}}
+		actVehicles: {//{{{
 			title: "Vehicles",
 			trademark: "Marca",
 			model: "Model",
 			plate: "Matrícula",
 			colour: "Color",
 			comments: "Observacions",
-		},
-		actVehicle: {
+		},//}}}
+		actVehicle: {//{{{
 			title: "Vehicle",
 			add: "Afegir",
 			remove: "Eliminar",
-		},
+		},//}}}
 	},
 });

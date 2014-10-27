@@ -2,6 +2,7 @@
 
 <script id="actMembers_page_tpl"<!--{{{-->
 	data-header="activity"
+	data-footer="actMembers"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
@@ -9,12 +10,33 @@
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
 
+	<div data-role="collapsibleset"
+		data-collapsed-icon="carat-r"
+		data-expanded-icon="carat-d"
+	>
+		<div data-role="collapsible" data-collapsed="false">
+			<h3>{{guides}}</h3>
+			<p>{{guidesInfo}}</p>
+			<ul data-role="listview">
+				<li>
+					<a data-action="" href="#memberPublicProfile">Tomeu</a>
+				</li>
+			</ul>
+		</div>
+		<div data-role="collapsible">
+			<h3>{{members}}</h3>
+			<p>{{membersInfo}}</p>
+			<ul data-role="listview">
+			</ul>
+		</div>
+		<div data-role="collapsible">
+			<h3>{{contacts}}</h3>
+			<p>{{contactsInfo}}</p>
+			<ul data-role="listview">
+			</ul>
+		</div>
+	</div>
 
-	<ul data-role="listview">
-		<li>
-			<a data-action="" href="#memberPublicProfile">Tomeu</a>
-		</li>
-	</ul>
 
 
 	{{{_footer}}}
@@ -22,31 +44,33 @@
 </div> 
 </script><!--}}}-->
 
+<script id="actMembers_footer_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+  <ul class="ui-grid-b">
+	<li class="ui-block-a">
+	</li>
+	<li class="ui-block-b">
+	</li>
+	<li class="ui-block-c">
+		<a class="ui-btn ui-icon-plus ui-btn-icon-top"
+			href="#memberPublicProfile">
+		{{addMember}}</a>
+	</li>
+  </ul>
+  </ul>
+</div>
+</script><!--}}}-->
 
 <!-- Edit view -->
 
-<script id="actMember_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fullscreen">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
-		data-rel="back" href="#">{{_global.back}}</a>
-  <div data-role="navbar" class="ui-persist">
-	<ul>
-		<li><a href="#memberPublicProfile">{{_nav.publicProfile}}</a></li>
-		<li><a href="#memberPrivateProfile">{{_nav.privateProfile}}</a></li>
-	</ul>
-  </div>
-</div>
-</script><!--}}}-->
 
 
 <script id="memberPublicProfile_page_tpl"<!--{{{-->
 	data-header="actMember"
 	data-content="actMember"
+	data-footer="actMember"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="memberPublicProfile">
@@ -72,6 +96,7 @@
 <script id="memberPrivateProfile_page_tpl"<!--{{{-->
 	data-header="actMember"
 	data-content="actMember"
+	data-footer="actMember"
 	data-popups="mppInfo"
 	type="text/x-handlebars-template"
 >
@@ -92,6 +117,24 @@
 </script><!--}}}-->
 
 
+<script id="actMember_header_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+{{{_leftPanel}}}
+<div class="ui-header" data-role="header" data-position="fullscreen">
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+	<h1>{{title}}</h1>
+	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+		data-rel="back" href="#">{{_global.back}}</a>
+  <div data-role="navbar" class="ui-persist">
+	<ul>
+		<li><a href="#memberPublicProfile">{{_nav.publicProfile}}</a></li>
+		<li><a href="#memberPrivateProfile">{{_nav.privateProfile}}</a></li>
+	</ul>
+  </div>
+</div>
+</script><!--}}}-->
+
 <script id="actMember_content_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
@@ -102,8 +145,26 @@
 		<li><input placeholder="{{_nav.comments}}" type="text"></input></li>
 </script><!--}}}-->
 
-
-
+<script id="actMember_footer_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+  <ul class="ui-grid-b">
+	<li class="ui-block-a">
+		<a class="ui-btn ui-icon-delete ui-btn-icon-top"
+			href="#actMembers">
+		{{_nav.remove}}</a>
+	</li>
+	<li class="ui-block-b">
+	</li>
+	<li class="ui-block-c">
+		<a class="ui-btn ui-icon-check ui-btn-icon-top"
+			href="#actMembers">
+		{{_nav.save}}</a>
+	</li>
+  </ul>
+</div>
+</script><!--}}}-->
 
 
 <script id="mppInfo_popup_tpl"<!--{{{-->
