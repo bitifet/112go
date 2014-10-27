@@ -108,13 +108,6 @@ define([
 				}
 			);
 
-			// Add properly rendered foreign subtemplates:
-			// ===========================================
-			if (typeof mainHeaderTpl == 'function') model["_header"] = mainHeaderTpl(model);
-			if (typeof mainContentTpl == 'function') model["_content"] = mainContentTpl(model);
-			if (typeof mainFooterTpl == 'function') model["_footer"] = mainFooterTpl(model);
-
-
 			// Add properly rendered panels:
 			// =============================
 			if (tplModel["leftPanel"]) {
@@ -130,6 +123,11 @@ define([
 			};
 			/// Other panels...
 
+			// Add properly rendered foreign subtemplates:
+			// ===========================================
+			if (typeof mainHeaderTpl == 'function') model["_header"] = mainHeaderTpl(model);
+			if (typeof mainContentTpl == 'function') model["_content"] = mainContentTpl(model);
+			if (typeof mainFooterTpl == 'function') model["_footer"] = mainFooterTpl(model);
 
 			// Add properly rendered popups:
 			// =============================
