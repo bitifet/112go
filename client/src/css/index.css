@@ -19,3 +19,20 @@ div#home div.ui-select, div#home li.first-child, div#home .ui-body-inherit {
 
 div.ui-footer ul.ui-grid-b li a.ui-btn {
   width: 100%; }
+
+.ui-li-desc {
+  white-space: normal; }
+
+.ui-grid-a.ui-grid-3070 .ui-block-a {
+  width: 30%; }
+.ui-grid-a.ui-grid-3070 .ui-block-b {
+  width: 70%; }
+
+.ui-grid-a.ui-grid-7030 .ui-block-a {
+  width: 70%; }
+.ui-grid-a.ui-grid-7030 .ui-block-b {
+  width: 30%; }
+
+.buttonSet {
+  float: right;
+  margin-top: -20px; }

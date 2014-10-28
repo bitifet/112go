@@ -47,6 +47,7 @@
 
 <script id="activitys_page_tpl"<!--{{{-->
 	data-header="activitys"
+	data-footer="activity"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
@@ -63,6 +64,7 @@
 		</li>
 	</ul>
 	</div>
+	{{{_footer}}}
 </div> 
 </script><!--}}}-->
 
@@ -71,6 +73,7 @@
 
 <script id="actGeneral_page_tpl"<!--{{{-->
 	data-header="activity"
+	data-footer="activity"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
@@ -102,22 +105,63 @@
 		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
 	</ul>
 	</div>
+	{{{_footer}}}
 </div> 
 </script><!--}}}-->
 
-<script id="actTracking_page_tpl"<!--{{{-->
-	data-header="activity"
-	data-leftPanel="menu"
+
+<!-- Emergency call dialog -->
+
+<script id="emergency_page_tpl"<!--{{{-->
+	data-header=""
+	data-footer=""
 	type="text/x-handlebars-template"
 >
-<div data-role="page" id="actTracking">
-	{{{_header}}}
+<div data-role="page" data-dialog="true" id="emergency">
+	<div class="ui-header" data-role="header" data-position="fixed">
+		<h1>{{title}}</h1>
+		<a class="ui-btn ui-icon-delete ui-btn-icon-right ui-btn-icon-notext"
+			data-rel="back" href="#">{{_global.close}}</a>
+	</div>
 	<div data-role="main" class="ui-content">
 	<ul data-role="listview">
+		<li data-role="list-divider" role="heading">{{emergencyCall}}</li>
+		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+		<li data-role="list-divider" role="heading">{{callForHelp}}</li>
+		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+		<li data-role="list-divider" role="heading">{{warnPartners}}</li>
+		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+		<li data-role="list-divider" role="heading">{{cancel}}</li>
 	</ul>
 	</div>
+	{{{_footer}}}
 </div> 
 </script><!--}}}-->
 
 
+<!-- Footers -->
 
+<script id="activity_footer_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+  <ul class="ui-grid-b">
+	<li class="ui-block-a">
+		<a class="ui-btn ui-icon-alert ui-btn-icon-top"
+			href="#emergency">
+		{{_global.emergencyBtn}}</a>
+	</li>
+	<li class="ui-block-b">
+		<a class="ui-btn ui-icon-location ui-btn-icon-top"
+			href="#">
+		{{_global.sendPosition}}</a>
+	</li>
+	<li class="ui-block-c">
+		<a class="ui-btn ui-icon-check ui-btn-icon-top"
+			href="#">
+		{{_global.checkin}}</a>
+	</li>
+  </ul>
+  </ul>
+</div>
+</script><!--}}}-->
