@@ -37,9 +37,11 @@
 define([
 	'core/tpl',
 	'core/lang',
+	'core/ctrl',
 ], function (
 	tpl,
-	lang
+	lang,
+	ctrl
 ) {
 
 	var config = { // FIXME: Link to local storage config data.
@@ -77,7 +79,7 @@ define([
 
 
 	// Startup:
-	// ========
+	// ########
 
 	$(function(){
 
@@ -153,8 +155,11 @@ define([
 			console.log ("===========================");
 			//*/
 
-
 		};
+
+		// Run controllers:
+		// ================
+		ctrl.run(pageContainer);
 
 		// Startup page:
 		if (config.validated) {
@@ -168,6 +173,6 @@ define([
 
 	});
 
-	// ========
+	// ########
 
 });
