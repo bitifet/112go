@@ -40,13 +40,27 @@ define([
 
 	return function applyShims (target) {
 
-		$("input[type=date]", target).each(function fixDatePlaceholder(){//{{{
+		// Fix placeholders on date inputs://{{{
+		$("input[type=date]", target).each(function fixDatePlaceholder(){
 			var input = $(this);
 			input.attr("type", "text");
 			input.on("focus", function(){
 				input.attr("type", "date");
 			});
 		});//}}}
+
+		// Avoid back behaviour between tabs (need to mark related pages with common data-pagegroup id)://{{{
+		$("[data-rel=back]", target).on("click", function(e){
+			var group = $("#"+history.state.pageUrl, target).data("pagegroup");
+			if (group) {
+				e.preventDefault();
+				var newGroup = group;
+				while (newGroup == group) {
+					history.back();
+					newGroup = $("#"+history.state.pageUrl, target).data("pagegroup");
+				};
+			};
+		}); //}}}
 
 	};
 
