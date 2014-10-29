@@ -37,10 +37,12 @@
 define([
 	'core/tpl',
 	'core/lang',
+	'core/shim',
 	'core/ctrl',
 ], function (
 	tpl,
 	lang,
+	shim,
 	ctrl
 ) {
 
@@ -156,6 +158,10 @@ define([
 			//*/
 
 		};
+
+		// Run shims:
+		// ==========
+		shim(pageContainer);
 
 		// Run controllers:
 		// ================
