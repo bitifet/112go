@@ -9,7 +9,7 @@
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
-  <div data-role="navbar" class="ui-persist">
+  <div data-role="navbar" class="tabbar ui-persist">
 	<ul>
 		<li><a href="#actGeneral">{{_nav.general}}</a></li>
 		<li><a href="#actMembers">{{_nav.members}}</a></li>
@@ -26,7 +26,7 @@
 <div class="ui-header" data-role="header" data-position="fixed">
 	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#actGeneral">{{_nav.newActivity}}</a>
+	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#activity">{{_nav.newActivity}}</a>
 </div>
 </script><!--}}}-->
 
@@ -56,7 +56,7 @@
 	<div data-role="main" class="ui-content">
 	<ul data-role="listview">
 		<li>
-			<a href="#actGeneral">__description__</a>
+			<a href="#activity">__description__</a>
 			<a data-action="remove"
 				href="#"
 				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
@@ -71,42 +71,134 @@
 
 <!-- Activity Edit Views -->
 
-<script id="actGeneral_page_tpl"<!--{{{-->
+
+<script id="activity_page_tpl"<!--{{{-->
 	data-header="activity"
 	data-footer="activity"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
-<div data-role="page" id="actGeneral">
+<div data-role="page" id="activity">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li><select>
-			<option value="" selected disabled>{{activityType}}</option>
-			<option>{{type.hiking}}</option>
-			<option>{{type.climbing}}</option>
-			<option>{{type.torrents}}</option>
-			<option>{{type.speleology}}</option>
-			<option>{{type.mountainBike}}</option>
-			<option>{{type.riding}}</option>
-			<option>{{type.other}}</option>
-		</select>
-		<input type="hidden" placeholder={{otherTypeSpecify}}></input>
-		</li>
-		<li><input placeholder="{{description}}" type="text"></input></li>
-		<li><input
-			class="fixit"
-			type="date"
-			placeholder="{{activityDate}}"
-			></input></li>
-		<li><a href="#actRoute">{{route}}</a></li>
-		<li><a href="#actVehicles">Vehicles</a></li>
-		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-	</ul>
+		<div class="tab" id="actGeneral">
+			<ul data-role="listview">
+				<li><select>
+					<option value="" selected disabled>{{gral.activityType}}</option>
+					<option>{{gral.type.hiking}}</option>
+					<option>{{gral.type.climbing}}</option>
+					<option>{{gral.type.torrents}}</option>
+					<option>{{gral.type.speleology}}</option>
+					<option>{{gral.type.mountainBike}}</option>
+					<option>{{gral.type.riding}}</option>
+					<option>{{gral.type.other}}</option>
+				</select>
+				<input type="hidden" placeholder={{gral.otherTypeSpecify}}></input>
+				</li>
+				<li><input placeholder="{{gral.description}}" type="text"></input></li>
+				<li><input
+					class="fixit"
+					type="date"
+					placeholder="{{gral.activityDate}}"
+					></input></li>
+				<li><a href="#actRoute">{{gral.route}}</a></li>
+				<li><a href="#actVehicles">Vehicles</a></li>
+				<li><textarea name="comments" rows="5" placeholder="{{gral.comments}}"></textarea></li>
+			</ul>
+		</div>
+		<div class="tab" id="actMembers">
+			<div data-role="collapsibleset"
+				data-collapsed-icon="carat-r"
+				data-expanded-icon="carat-d"
+			>
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>{{members.guides}}</h3>
+					<ul data-role="listview">
+						<li>
+							<a data-action="" href="#actMember">Tomeu</a>
+						</li>
+					</ul>
+					<div class="ui-grid-a ui-grid-7030">
+						<div class="ui-block-a">
+						<p>{{members.guidesInfo}}</p>
+						</div>
+						<div class="ui-block-b">
+							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
+								href="#actMember">
+							{{members.addMember}}</a>
+						</div>
+					</div>
+				</div>
+				<div data-role="collapsible">
+					<h3>{{members.members}}</h3>
+					<ul data-role="listview">
+					</ul>
+					<div class="ui-grid-a ui-grid-7030">
+						<div class="ui-block-a">
+						<p>{{members.membersInfo}}</p>
+						</div>
+						<div class="ui-block-b">
+							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
+								href="#actMember">
+							{{members.addMember}}</a>
+						</div>
+					</div>
+				</div>
+				<div data-role="collapsible">
+					<h3>{{members.contacts}}</h3>
+					<ul data-role="listview">
+					</ul>
+					<div class="ui-grid-a ui-grid-7030">
+						<div class="ui-block-a">
+						<p>{{cmembers.ontactsInfo}}</p>
+						</div>
+						<div class="ui-block-b">
+							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
+								href="#actMember">
+							{{members.addMember}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab" id="actTracking">
+			<ul data-role="listview">
+			<li class="ui-grid-a ui-grid-3070">
+				<label class="ui-block-a">
+					{{track.status}}
+				</label>
+				<span class="ui-block-b">
+					<select>
+						<option value="draft">{{track.stat.draft}}</option>
+						<option value="planned">{{track.stat.planned}}</option>
+						<option value="active">{{track.stat.active}}</option>
+						<option value="finished">{{track.stat.finished}}</option>
+					</select>
+				</span>
+			</li>
+			<li class="ui-grid-a ui-grid-7030">
+				<span class="ui-block-a">
+					<p><strong>{{track.nextMilestone}}:</strong></p>
+					<p>__propera fita__</p>
+				</span>
+				<span class="ui-block-b">
+					<a class="ui-btn ui-icon-check ui-btn-icon-top"
+						href="#">
+					{{track.checkin}}</a>
+				</span>
+			</li>
+			<li data-role="list-divider" role="heading">
+			</li>
+			</ul>
+		</div>
 	</div>
 	{{{_footer}}}
 </div> 
 </script><!--}}}-->
+
+
+
+
 
 
 <!-- Emergency call dialog -->

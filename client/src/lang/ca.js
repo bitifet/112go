@@ -49,35 +49,47 @@ define({
 			title: "Activitats",
 			remove: "Eliminar",
 		},//}}}
-		actGeneral: {//{{{
+		activity: {
 			title: "Activitat",
-			description: "Descripció de l'Activitat",
-			activityType: "Tipus d'Activitat",
-			type: {
-				hiking: "Senderisme",
-				climbing: "Escalada",
-				torrents: "Torrents",
-				speleology: "Espeleologia",
-				mountainBike: "Mountain Bike",
-				riding: "Equitacio",
-				other: "Altres",
-			},
-			activityDate: "Data Activitat",
-			otherTypeSpecify: "Especifiqui",
-			route: "Ruta",
-			comments: "Observacions",
-		},//}}}
-		actMembers: {//{{{
-			title: "Participants",
-			addMember: "Afegir",
-			guides: "Guies",
-			guidesInfo: "Participants que exerciran el rol de guia.",
-			members: "Participants",
-			membersInfo: "Altres persones que participen a l'activitat.",
-			contacts: "Contactes",
-			contactsInfo: "Persones a contactar en cas d'accident (no participen a l'activitat).",
-		},//}}}
-		actMember: {
+			gral: {//{{{
+				description: "Descripció de l'Activitat",
+				activityType: "Tipus d'Activitat",
+				type: {
+					hiking: "Senderisme",
+					climbing: "Escalada",
+					torrents: "Torrents",
+					speleology: "Espeleologia",
+					mountainBike: "Mountain Bike",
+					riding: "Equitacio",
+					other: "Altres",
+				},
+				activityDate: "Data Activitat",
+				otherTypeSpecify: "Especifiqui",
+				route: "Ruta",
+				comments: "Observacions",
+			},//}}}
+			members: {//{{{
+				addMember: "Afegir",
+				guides: "Guies",
+				guidesInfo: "Participants que exerciran el rol de guia.",
+				members: "Participants",
+				membersInfo: "Altres persones que participen a l'activitat.",
+				contacts: "Contactes",
+				contactsInfo: "Persones a contactar en cas d'accident (no participen a l'activitat).",
+			},//}}}
+			track: {//{{{
+				status: "Estat",
+				stat: {
+					draft: "Esborrany",
+					planned: "Planificada",
+					active: "En curs",
+					finished: "Finalitzada",
+				},
+				nextMilestone: "Propera fita",
+				checkin: "Som aquí",
+			},//}}}
+		},
+		actMember: {//{{{
 			pub: {
 				title: "Perfil Públic",
 				label: "Públic",
@@ -104,18 +116,6 @@ define({
 			comments: "Comentaris",
 			save: "Actualitzar",
 			remove: "Eliminar",
-		},
-		actTracking: {//{{{
-			title: "Seguiment",
-			status: "Estat",
-			stat: {
-				draft: "Esborrany",
-				planned: "Planificada",
-				active: "En curs",
-				finished: "Finalitzada",
-			},
-			nextMilestone: "Propera fita",
-			checkin: "Som aquí",
 		},//}}}
 		actRoute: {//{{{
 			title: "Ruta",

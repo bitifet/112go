@@ -68,7 +68,7 @@ define([
 				var link = $(this);
 				var me = $("div"+link.attr("href"), container);
 				var myTitle = me.data("title");
-				if (!myTitle.length) myTitle = initialTitleText;
+				if (myTitle === undefined) myTitle = initialTitleText;
 				if (i == 0) { // First tab:
 					me.css({display: "block"});
 					pageTitle.text(myTitle);

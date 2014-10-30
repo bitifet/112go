@@ -39,7 +39,6 @@ define ([
 	'text!../../tpl/layout.html',
 	'text!../../tpl/activitys.html',
 	'text!../../tpl/members.html',
-	'text!../../tpl/tracking.html',
 	'text!../../tpl/route.html',
 	'text!../../tpl/other.html',
 ], function(
