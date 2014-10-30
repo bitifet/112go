@@ -51,33 +51,44 @@ define([
 
 		// Implement "in-page" tab navigation://{{{
 		$("div.tabbar", target).each(function() {
-			var links = $("a", this);
-			var container = $("div" + links.first().attr("href")).closest("div.ui-content");
-			var allTabs = $("div.tab", container);
-			allTabs.css({
+			var allTabs = $("a", this);
+			var container = $("div" + allTabs.first().attr("href")).closest("div.ui-content");
+			var allPanes = $("div.tab", container);
+			var myPage = allPanes.closest("div[data-role=page]");
+			var myPageUrl = "#"+myPage.attr("id");
+			var myPageH1 = myPage.find("h1").first();
+			var defPageTitle = myPageH1.text();
+			allPanes.css({ // Styling://{{{
 				display: "none",
 				height: "100%",
 				width: "100%",
 				margin: "0px",
 				border: "0px",
 				padding: "0px",
-			});
-			var pageTitle = allTabs.closest("div[data-role=page]").find("h1").first();
-			var initialTitleText = pageTitle.text();
-			links.each(function(i){
-				var link = $(this);
-				var me = $("div"+link.attr("href"), container);
-				var myTitle = me.data("title");
-				if (myTitle === undefined) myTitle = initialTitleText;
-				if (i == 0) { // First tab:
-					me.css({display: "block"});
-					pageTitle.text(myTitle);
-				};
-				link.on("click", function() {
-					allTabs.hide();
-					me.show();
-				});
-			});
+			});//}}}
+			// Enhace tabs://{{{
+			allTabs.each(function(i){
+				var tab = $(this);
+				var tabUrl = tab.attr("href");
+				var pane = $("div"+tabUrl, container);
+				var myPageTitle = pane.data("title");
+				if (myPageTitle === undefined) myPageTitle = defPageTitle;
+				function select() {//{{{
+					allPanes.hide();
+					pane.show();
+					myPageH1.text(myPageTitle);
+				};//}}}
+				// Navigation handling://{{{
+				if (i == 0) select(); // Select first pane by default.
+				tab.on("vclick", select); // Tab navigation.
+				$("a[href="+tabUrl+"]", target) // External navigation.
+					.not(allTabs).on("vclick", function(){
+						select();
+						target.pagecontainer("change", myPageUrl);
+					})
+				;
+				//}}}
+			});//}}}
 		});//}}}
 
 	};
