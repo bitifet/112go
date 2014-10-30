@@ -18,7 +18,7 @@
 			<h3>{{guides}}</h3>
 			<ul data-role="listview">
 				<li>
-					<a data-action="" href="#memberPublicProfile">Tomeu</a>
+					<a data-action="" href="#actMember">Tomeu</a>
 				</li>
 			</ul>
 			<div class="ui-grid-a ui-grid-7030">
@@ -27,7 +27,7 @@
 				</div>
 				<div class="ui-block-b">
 					<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-						href="#memberPublicProfile">
+						href="#actMember">
 					{{addMember}}</a>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 				</div>
 				<div class="ui-block-b">
 					<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-						href="#memberPublicProfile">
+						href="#actMember">
 					{{addMember}}</a>
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 				</div>
 				<div class="ui-block-b">
 					<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-						href="#memberPublicProfile">
+						href="#actMember">
 					{{addMember}}</a>
 				</div>
 			</div>
@@ -71,34 +71,8 @@
 
 <!-- Edit view -->
 
-<script id="memberPublicProfile_page_tpl"<!--{{{-->
-	data-header="actMember"
-	data-content="actMember"
-	data-footer="activity"
-	data-leftPanel="menu"
-	type="text/x-handlebars-template"
->
-<div data-role="page" data-pagegroup="memberprofile" id="memberPublicProfile">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li><select>
-				<option value="" disabled selected>{{role}}</option>
-				<option>{{roles.pguide}}</option>
-				<option>{{roles.aguide}}</option>
-				<option>{{roles.master}}</option>
-				<option>{{roles.average}}</option>
-				<option>{{roles.novice}}</option>
-				<option>{{roles.contact}}</option>
-		</select></li>
-	{{{_content}}}
-	</ul>
-	</div>
-	{{{_footer}}}
-</div> 
-</script><!--}}}-->
 
-<script id="memberPrivateProfile_page_tpl"<!--{{{-->
+<script id="actMember_page_tpl"
 	data-header="actMember"
 	data-content="actMember"
 	data-footer="activity"
@@ -106,21 +80,50 @@
 	data-popups="mppInfo"
 	type="text/x-handlebars-template"
 >
-<div data-role="page" data-pagegroup="memberprofile" id="memberPrivateProfile">
+
+<div data-role="page" id="actMember">
 	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-	<li><a href="#mppInfo"
-		data-rel="popup"
-		class="ui-btn ui-icon-info ui-btn-icon-left"
-	>{{whatsThis}}</a></li>
-	{{{_content}}}
-	</ul>
+
+<div data-role="main" class="ui-content">
+
+	<div class="tab" data-title="{{pub.title}}" id="memberPublicProfile">
+		<ul data-role="listview">
+			<li><select>
+					<option value="" disabled selected>{{pub.role}}</option>
+					<option>{{pub.roles.pguide}}</option>
+					<option>{{pub.roles.aguide}}</option>
+					<option>{{pub.roles.master}}</option>
+					<option>{{pub.roles.average}}</option>
+					<option>{{pub.roles.novice}}</option>
+					<option>{{pub.roles.contact}}</option>
+			</select></li>
+			<li><input placeholder="{{phone}}" type="text"></input></li>
+			<li><input placeholder="{{name}}" type="text"></input></li>
+			<li><input placeholder="{{surname}}" type="text"></input></li>
+			<li><input placeholder="{{birthDate}}" type="text"></input></li>
+			<li><input placeholder="{{comments}}" type="text"></input></li>
+		</ul>
 	</div>
+	<div class="tab" data-title="{{priv.title}}" id="memberPrivateProfile">
+		<ul data-role="listview">
+			<li><a href="#mppInfo"
+				data-rel="popup"
+				class="ui-btn ui-icon-info ui-btn-icon-left"
+			>{{priv.whatsThis}}</a></li>
+			<li><input placeholder="{{phone}}" type="text"></input></li>
+			<li><input placeholder="{{name}}" type="text"></input></li>
+			<li><input placeholder="{{surname}}" type="text"></input></li>
+			<li><input placeholder="{{birthDate}}" type="text"></input></li>
+			<li><input placeholder="{{comments}}" type="text"></input></li>
+		</ul>
+	</div>
+</div>
 	{{{_footer}}}
 	{{{_popups.mppInfo}}}
 </div> 
-</script><!--}}}-->
+</script>
+
+
 
 
 <script id="actMember_header_tpl"<!--{{{-->
@@ -132,24 +135,15 @@
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
 		data-rel="back" href="#">{{_global.back}}</a>
-  <div data-role="navbar" class="ui-persist">
+  <div data-role="navbar" class="ui-persist tabbar">
 	<ul>
-		<li><a href="#memberPublicProfile">{{_nav.publicProfile}}</a></li>
-		<li><a href="#memberPrivateProfile">{{_nav.privateProfile}}</a></li>
+		<li><a href="#memberPublicProfile">{{pub.label}}</a></li>
+		<li><a href="#memberPrivateProfile">{{priv.label}}</a></li>
 	</ul>
   </div>
 </div>
 </script><!--}}}-->
 
-<script id="actMember_content_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-		<li><input placeholder="{{_nav.phone}}" type="text"></input></li>
-		<li><input placeholder="{{_nav.name}}" type="text"></input></li>
-		<li><input placeholder="{{_nav.surname}}" type="text"></input></li>
-		<li><input placeholder="{{_nav.birthDate}}" type="text"></input></li>
-		<li><input placeholder="{{_nav.comments}}" type="text"></input></li>
-</script><!--}}}-->
 
 
 <script id="mppInfo_popup_tpl"<!--{{{-->
@@ -157,7 +151,7 @@
 >
 <div data-role="popup" id="mppInfo">
 	<div data-role="main" class="ui-content">
-		{{{info}}}
+		{{{priv.info}}}
 	</div>
 </div> 
 </script><!--}}}-->

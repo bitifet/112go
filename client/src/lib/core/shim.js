@@ -49,18 +49,36 @@ define([
 			});
 		});//}}}
 
-		// Avoid back behaviour between tabs (need to mark related pages with common data-pagegroup id)://{{{
-		$("[data-rel=back]", target).on("click", function(e){
-			var group = $("#"+history.state.pageUrl, target).data("pagegroup");
-			if (group) {
-				e.preventDefault();
-				var newGroup = group;
-				while (newGroup == group) {
-					history.back();
-					newGroup = $("#"+history.state.pageUrl, target).data("pagegroup");
+		// Implement "in-page" tab navigation://{{{
+		$("div.tabbar", target).each(function() {
+			var links = $("a", this);
+			var container = $("div" + links.first().attr("href")).closest("div.ui-content");
+			var allTabs = $("div.tab", container);
+			allTabs.css({
+				display: "none",
+				height: "100%",
+				width: "100%",
+				margin: "0px",
+				border: "0px",
+				padding: "0px",
+			});
+			var pageTitle = allTabs.closest("div[data-role=page]").find("h1").first();
+			var initialTitleText = pageTitle.text();
+			links.each(function(i){
+				var link = $(this);
+				var me = $("div"+link.attr("href"), container);
+				var myTitle = me.data("title");
+				if (!myTitle.length) myTitle = initialTitleText;
+				if (i == 0) { // First tab:
+					me.css({display: "block"});
+					pageTitle.text(myTitle);
 				};
-			};
-		}); //}}}
+				link.on("click", function() {
+					allTabs.hide();
+					me.show();
+				});
+			});
+		});//}}}
 
 	};
 
