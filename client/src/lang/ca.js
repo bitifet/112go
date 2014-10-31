@@ -7,6 +7,8 @@ define({
 		emergencyBtn: "Emergència",
 		sendPosition: "Enviar posició",
 		checkin: "Marcar Fita",
+		ok: "D'acord",
+		cancel: "Cancel·lar",
 	},
 	panels: {
 		menu: {//{{{
@@ -38,18 +40,38 @@ define({
 			start: "Començar",
 		},//}}}
 		userProfile: {//{{{
-			title: "Dades personals",
-			phoneNo: "Telèfon",
+			pub: {
+				title: "Perfil Públic",
+				label: "Públic",
+				role: "Rol",
+				roles: {
+					pguide: "Guia professional",
+					aguide: "Guia amateur",
+					master: "Expert",
+					average: "Participant",
+					novice: "Principiant",
+					contact: "Persona de contacte (no participa)",
+				},
+			},
+			priv: {
+				title: "Perfil Privat",
+				label: "Privat",
+				whatsThis: "Que és el perfil privat?",
+				info: "<p>El perfil permet aportar dades dels usuaris que aquests no vulguin compartir amb la resta de participants, garantint així la seva privacitat.</p><p>Les dades d'aquesta pantalla no seràn compartides amb els altres membres de l'activitat, però sí amb l'112 en cas necessari.</p><p>Per simplifiar, les dades de perfil públic es copiaran automàticament al privat sempre que el mateix camp estigui buïd o el contingut anterior fos el mateix.</p><p>Les modificacions realitzades al perfil privat mai es sincronitzaran al públic.</p>"
+			},
+			phone: "Telèfon",
 			name: "Nom",
 			surname: "Llinatges",
 			birthDate: "Data de naixement",
 			comments: "Comentaris",
+			save: "Actualitzar",
+			remove: "Eliminar",
 		},//}}}
 		activitys: {//{{{
 			title: "Activitats",
 			remove: "Eliminar",
 		},//}}}
-		activity: {
+		activity: {//{{{
 			title: "Activitat",
 			gral: {//{{{
 				description: "Descripció de l'Activitat",
@@ -88,34 +110,6 @@ define({
 				nextMilestone: "Propera fita",
 				checkin: "Som aquí",
 			},//}}}
-		},
-		actMember: {//{{{
-			pub: {
-				title: "Perfil Públic",
-				label: "Públic",
-				role: "Rol",
-				roles: {
-					pguide: "Guia professional",
-					aguide: "Guia amateur",
-					master: "Expert",
-					average: "Participant",
-					novice: "Principiant",
-					contact: "Persona de contacte (no participa)",
-				},
-			},
-			priv: {
-				title: "Perfil Privat",
-				label: "Privat",
-				whatsThis: "Que és el perfil privat?",
-				info: "<p>El perfil permet aportar dades dels usuaris que aquests no vulguin compartir amb la resta de participants, garantint així la seva privacitat.</p><p>Les dades d'aquesta pantalla no seràn compartides amb els altres membres de l'activitat, però sí amb l'112 en cas necessari.</p><p>Per simplifiar, les dades de perfil públic es copiaran automàticament al privat sempre que el mateix camp estigui buïd o el contingut anterior fos el mateix.</p><p>Les modificacions realitzades al perfil privat mai es sincronitzaran al públic.</p>"
-			},
-			phone: "Telèfon",
-			name: "Nom",
-			surname: "Llinatges",
-			birthDate: "Data de naixement",
-			comments: "Comentaris",
-			save: "Actualitzar",
-			remove: "Eliminar",
 		},//}}}
 		actRoute: {//{{{
 			title: "Ruta",
@@ -133,6 +127,7 @@ define({
 			latitude: "Latitud",
 			longitude: "Longitud",
 			remove: "Eliminar",
+			map: "Mapa",
 			here: "Aquí",
 		},//}}}
 		actVehicles: {//{{{

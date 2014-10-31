@@ -36,9 +36,9 @@
 "use strict";
 define ([
 	'handlebars',
-	'text!../../tpl/layout.html',
+	'text!../../tpl/general.html',
 	'text!../../tpl/activitys.html',
-	'text!../../tpl/members.html',
+	'text!../../tpl/userProfile.html',
 	'text!../../tpl/route.html',
 	'text!../../tpl/other.html',
 ], function(

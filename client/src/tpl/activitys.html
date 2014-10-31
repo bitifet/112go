@@ -81,7 +81,7 @@
 <div data-role="page" id="activity">
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
-		<div class="tab" id="actGeneral">
+		<div class="tab" id="actGeneral"><!--{{{-->
 			<ul data-role="listview">
 				<li><select>
 					<option value="" selected disabled>{{gral.activityType}}</option>
@@ -105,8 +105,8 @@
 				<li><a href="#actVehicles">Vehicles</a></li>
 				<li><textarea name="comments" rows="5" placeholder="{{gral.comments}}"></textarea></li>
 			</ul>
-		</div>
-		<div class="tab" id="actMembers">
+		</div><!--}}}-->
+		<div class="tab" id="actMembers"><!--{{{-->
 			<div data-role="collapsibleset"
 				data-collapsed-icon="carat-r"
 				data-expanded-icon="carat-d"
@@ -115,7 +115,7 @@
 					<h3>{{members.guides}}</h3>
 					<ul data-role="listview">
 						<li>
-							<a data-action="" href="#memberPublicProfile">Tomeu</a>
+							<a data-action="" href="#userPublicProfile">Tomeu</a>
 						</li>
 					</ul>
 					<div class="ui-grid-a ui-grid-7030">
@@ -124,7 +124,7 @@
 						</div>
 						<div class="ui-block-b">
 							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-								href="#memberPublicProfile">
+								href="#userPublicProfile">
 							{{members.addMember}}</a>
 						</div>
 					</div>
@@ -139,7 +139,7 @@
 						</div>
 						<div class="ui-block-b">
 							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-								href="#memberPublicProfile">
+								href="#userPublicProfile">
 							{{members.addMember}}</a>
 						</div>
 					</div>
@@ -154,14 +154,14 @@
 						</div>
 						<div class="ui-block-b">
 							<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-								href="#memberPublicProfile">
+								href="#userPublicProfile">
 							{{members.addMember}}</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="tab" id="actTracking">
+		</div><!--}}}-->
+		<div class="tab" id="actTracking"><!--{{{-->
 			<ul data-role="listview">
 			<li class="ui-grid-a ui-grid-3070">
 				<label class="ui-block-a">
@@ -190,7 +190,7 @@
 			<li data-role="list-divider" role="heading">
 			</li>
 			</ul>
-		</div>
+		</div><!--}}}-->
 	</div>
 	{{{_footer}}}
 </div> 
@@ -256,3 +256,6 @@
   </ul>
 </div>
 </script><!--}}}-->
+
+
+

@@ -172,36 +172,27 @@
 </script><!--}}}-->
 
 
-<!-- User Profile Page -->
+<!-- Footers -->
 
-<script id="userProfile_page_tpl"<!--{{{-->
-	data-leftPanel="menu"
+<script id="okCancel_footer_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-<div data-role="page" id="userProfile">
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fullscreen">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
-		data-rel="back" href="#">{{_global.back}}</a>
-</div>
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li><label>{{phoneNo}}</label>
-		<input type="text"></input></li>
-		<li><label>{{name}}</label>
-		<input type="text"></input></li>
-		<li><label>{{surname}}</label>
-		<input type="text"></input></li>
-		<li><label>{{birthDate}}</label>
-		<input type="text"></input></li>
-		<li><label>{{comments}}</label>
-		<input type="text"></input></li>
+<div class="ui-footer" data-role="footer" data-position="fixed">
+	<ul class="ui-grid-b">
+		<li class="ui-block-a">
+			<a class="ui-btn ui-icon-delete ui-btn-icon-top"
+				data-rel="back" href="#">
+			{{_global.cancel}}</a>
+		</li>
+		<li class="ui-block-b">
+		</li>
+		<li class="ui-block-c">
+			<a class="ui-btn ui-icon-check ui-btn-icon-top"
+				data-rel="back" href="#">
+			{{_global.ok}}</a>
+		</li>
 	</ul>
-	</div>
-</div> 
+</div>
 </script><!--}}}-->
-
 
 
