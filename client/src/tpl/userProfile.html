@@ -4,9 +4,8 @@
 <script id="userProfile_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-{{{_leftPanel}}}
 <div class="ui-header" data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+	<a class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
 		data-rel="back" href="#">{{_global.back}}</a>
@@ -24,8 +23,7 @@
 <script id="userProfile_page_tpl"<!--{{{-->
 	data-header="userProfile"
 	data-content="userProfile"
-	data-footer="okCancel"
-	data-leftPanel="menu"
+	data-footer="saveRemove"
 	data-popups="mppInfo"
 	type="text/x-handlebars-template"
 >

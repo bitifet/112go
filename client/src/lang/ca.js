@@ -1,14 +1,15 @@
 define({
 	global: {
 		menu: "Menú",
+		home: "Inici",
 		homePage: "Llista",
 		back: "Tornar",
 		close: "Tancar",
 		emergencyBtn: "Emergència",
 		sendPosition: "Enviar posició",
 		checkin: "Marcar Fita",
-		ok: "D'acord",
-		cancel: "Cancel·lar",
+		save: "Fet",
+		remove: "Eliminar",
 	},
 	panels: {
 		menu: {//{{{
@@ -69,7 +70,19 @@ define({
 		},//}}}
 		activitys: {//{{{
 			title: "Activitats",
-			remove: "Eliminar",
+
+			edit: "Editar",
+			checkin: "Som aquí",
+
+			list: "Lista",
+			notifications: "Notificacions",
+
+
+			nextMilestone: "Propera fita",
+
+
+
+
 		},//}}}
 		activity: {//{{{
 			title: "Activitat",
@@ -99,21 +112,11 @@ define({
 				contacts: "Contactes",
 				contactsInfo: "Persones a contactar en cas d'accident (no participen a l'activitat).",
 			},//}}}
-			track: {//{{{
-				status: "Estat",
-				stat: {
-					draft: "Esborrany",
-					planned: "Planificada",
-					active: "En curs",
-					finished: "Finalitzada",
-				},
-				nextMilestone: "Propera fita",
-				checkin: "Som aquí",
-			},//}}}
 		},//}}}
 		actRoute: {//{{{
 			title: "Ruta",
 			start: "Inici",
+			day: "Dia",
 			milestone: "Fita",
 			end: "Fi",
 			add: "Afegir",
@@ -124,6 +127,7 @@ define({
 			description: "Descripció del lloc",
 			dayNumber: "Dia",
 			hour: "Hora",
+			specify: "Especifiqui",
 			latitude: "Latitud",
 			longitude: "Longitud",
 			remove: "Eliminar",

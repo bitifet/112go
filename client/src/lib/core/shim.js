@@ -40,12 +40,50 @@ define([
 
 	return function applyShims (target) {
 
-		// Fix placeholders on date inputs://{{{
-		$("input[type=date]", target).each(function fixDatePlaceholder(){
+		// Fix placeholders on date and time inputs://{{{
+		(function() {
+			function fixPlaceholders(iType) {
+				var elems = $("input[type="+iType+"]", target);
+				elems.each(function fixPlaceholder(){
+					var input = $(this);
+					input.attr("type", "text");
+					input.on("focus", function(){
+						input.attr("type", iType);
+					});
+				});
+			};
+			fixPlaceholders("date");
+			fixPlaceholders("time");
+		})();//}}}
+
+		// Make number imputs become spinners://{{{
+		$("input[type=number]", target).each(function becomeSpinner() {
 			var input = $(this);
-			input.attr("type", "text");
-			input.on("focus", function(){
-				input.attr("type", "date");
+			var min = parseInt(input.attr("min"));
+			var max = parseInt(input.attr("max"));
+			var step = parseInt(input.attr("step"));
+			if (step === undefined) step = 1;
+			input.on("swipe", function (e) {
+				// Event:
+				var start = e.swipestart.coords
+				var stop = e.swipestop.coords
+				var xinc = stop[0] - start[0];
+				var yinc = start[1] - stop[1];
+				var sign = xinc + yinc;
+
+				// Value:
+				var v0 = parseInt(input.val());
+				var v = v0;
+				if (sign > 0) v += step;
+				if (sign < 0) v -= step;
+				if (v > max) v = max;
+				if (v < min) v = min;
+
+				// Update:
+				if (v != v0) {
+					input.val(v);
+					input.trigger("change");
+				};
 			});
 		});//}}}
 

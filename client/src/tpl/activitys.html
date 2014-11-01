@@ -1,70 +1,141 @@
 
 <!-- Headings -->
 
-<script id="activity_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
+<script id="actSection_header_tpl"
+       type="text/x-handlebars-template"
 >
 {{{_leftPanel}}}
 <div class="ui-header" data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-home ui-btn-icon-right ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
-  <div data-role="navbar" class="tabbar ui-persist">
-	<ul>
-		<li><a href="#actGeneral">{{_nav.general}}</a></li>
-		<li><a href="#actMembers">{{_nav.members}}</a></li>
-		<li><a href="#actTracking">{{_nav.tracking}}</a></li>
-	</ul>
-  </div>
+	   <a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+       <h1>{{title}}</h1>
+       <a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+               data-rel="back" href="#">{{_global.back}}</a>
 </div>
-</script><!--}}}-->
+</script>
 
-<script id="activitys_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" href="#activity">{{_nav.newActivity}}</a>
-</div>
-</script><!--}}}-->
 
-<script id="actSection_header_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-{{{_leftPanel}}}
-<div class="ui-header" data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
-	<h1>{{title}}</h1>
-	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
-		data-rel="back" href="#">{{_global.back}}</a>
-</div>
-</script><!--}}}-->
+
+
+
+
 
 
 <!-- Activity List View -->
 
 <script id="activitys_page_tpl"<!--{{{-->
 	data-header="activitys"
-	data-footer="activity"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="activitys">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li>
-			<a href="#activity">__description__</a>
-			<a data-action="remove"
-				href="#"
-				class="action ui-btn ui-icon-minus ui-btn-icon-right ui-btn-icon-notext"
-			>{{remove}}</a>
-		</li>
-	</ul>
+	{{{_leftPanel}}}
+	<div
+	class="ui-header" data-role="header" data-position="fixed">
+		<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
+		<h1>{{title}}</h1>
+
+		<div class="ui-grid-a ui-grid-7030 actSummary ui-contents">
+			<ul data-role="listview">
+			<li<!-- Activity description {{{-->
+			class="ui-grid-a ui-grid-7030">
+				<div class="ui-block-a">
+					<h3>__tipus__</h3>
+					<p>__descripció_</p>
+				</div>
+				<div class="ui-block-b">
+					<a class="wide-btn ui-btn ui-icon-edit ui-btn-icon-top"
+						href="#activity">
+					{{edit}}</a>
+				</div>
+			</li><!--}}}-->
+			<li<!-- Next milestone {{{-->
+			class="ui-grid-b ui-grid-602020">
+				<div class="ui-block-a">
+					<h3>{{nextMilestone}}</h3>
+					<p>__propera fita__
+				</div>
+				<div class="ui-block-b">
+					<a class="wide-btn ui-btn ui-icon-check ui-btn-icon-top"
+						href="#">
+					{{checkin}}</a>
+				</div>
+				<div class="ui-block-c">
+					<a class="wide-btn ui-btn ui-icon-location ui-btn-icon-top"
+						href="#foobar">
+					{{_global.sendPosition}}</a>
+				</div>
+			</li><!--}}}-->
+			</ul>
+		</div>
+		<div class="tabbar" data-role="navbar"><!--{{{-->
+			<ul>
+				<li>
+					<a class="ui-btn ui-icon-bullets ui-btn-icon-top"
+						href="#actList">
+					{{list}}</a>
+				</li>
+				<li>
+					<a class="ui-btn ui-icon-eye ui-btn-icon-top"
+						href="#actNotify">
+					{{notifications}}</a>
+				</li>
+				<li>
+					<a class="ui-btn ui-icon-alert ui-btn-icon-top"
+						href="#actEmergency">
+						{{_global.emergencyBtn}}</a>
+				</li>
+			</ul>
+		</div><!--}}}-->
 	</div>
-	{{{_footer}}}
+
+
+
+
+
+	<div data-role="main" class="ui-content">
+		<div class="tab" id="actList">
+			<ul data-role="listview">
+				<li>
+					<a href="#">__description__</a>
+				</li>
+			</ul>
+		</div>
+		<div class="tab" id="actNotify">
+		<p>Notificacions...</p>
+		</div>
+		<div class="tab" id="actEmergency">
+			<ul data-role="listview">
+				<li data-role="list-divider" role="heading">{{emergencyCall}}</li>
+				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+				<li data-role="list-divider" role="heading">{{callForHelp}}</li>
+				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+				<li data-role="list-divider" role="heading">{{warnPartners}}</li>
+				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
+				<li data-role="list-divider" role="heading">{{cancel}}</li>
+			</ul>
+		</div> 
+	</div>
+
+
+
+
+
+	<!-- Footer {{{-->
+	<div class="ui-footer" data-role="footer" data-position="fixed">
+		<ul class="ui-grid-b">
+			<li class="ui-block-a">
+			</li>
+			<li class="ui-block-b">
+			</li>
+			<li class="ui-block-c">
+				<a class="ui-btn ui-icon-plus ui-btn-icon-top"
+					href="#activity">
+				{{_nav.newActivity}}</a>
+			</li>
+		</ul>
+	</div>
+	<!--}}}-->
+
 </div> 
 </script><!--}}}-->
 
@@ -74,12 +145,22 @@
 
 <script id="activity_page_tpl"<!--{{{-->
 	data-header="activity"
-	data-footer="activity"
-	data-leftPanel="menu"
+	data-footer="saveRemove"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="activity">
-	{{{_header}}}
+	<div class="ui-header" data-role="header" data-position="fixed"><!--{{{-->
+		<a class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
+		<h1>{{title}}</h1>
+		<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
+			data-rel="back" href="#">{{_global.back}}</a>
+	  <div data-role="navbar" class="tabbar ui-persist">
+		<ul>
+			<li><a href="#actGeneral">{{_nav.general}}</a></li>
+			<li><a href="#actMembers">{{_nav.members}}</a></li>
+		</ul>
+	  </div>
+	</div><!--}}}-->
 	<div data-role="main" class="ui-content">
 		<div class="tab" id="actGeneral"><!--{{{-->
 			<ul data-role="listview">
@@ -161,36 +242,6 @@
 				</div>
 			</div>
 		</div><!--}}}-->
-		<div class="tab" id="actTracking"><!--{{{-->
-			<ul data-role="listview">
-			<li class="ui-grid-a ui-grid-3070">
-				<label class="ui-block-a">
-					{{track.status}}
-				</label>
-				<span class="ui-block-b">
-					<select>
-						<option value="draft">{{track.stat.draft}}</option>
-						<option value="planned">{{track.stat.planned}}</option>
-						<option value="active">{{track.stat.active}}</option>
-						<option value="finished">{{track.stat.finished}}</option>
-					</select>
-				</span>
-			</li>
-			<li class="ui-grid-a ui-grid-7030">
-				<span class="ui-block-a">
-					<p><strong>{{track.nextMilestone}}:</strong></p>
-					<p>__propera fita__</p>
-				</span>
-				<span class="ui-block-b">
-					<a class="ui-btn ui-icon-check ui-btn-icon-top"
-						href="#">
-					{{track.checkin}}</a>
-				</span>
-			</li>
-			<li data-role="list-divider" role="heading">
-			</li>
-			</ul>
-		</div><!--}}}-->
 	</div>
 	{{{_footer}}}
 </div> 
@@ -208,54 +259,9 @@
 	data-footer=""
 	type="text/x-handlebars-template"
 >
-<div data-role="page" data-dialog="true" id="emergency">
-	<div class="ui-header" data-role="header" data-position="fixed">
-		<h1>{{title}}</h1>
-		<a class="ui-btn ui-icon-delete ui-btn-icon-right ui-btn-icon-notext"
-			data-rel="back" href="#">{{_global.close}}</a>
-	</div>
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li data-role="list-divider" role="heading">{{emergencyCall}}</li>
-		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-		<li data-role="list-divider" role="heading">{{callForHelp}}</li>
-		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-		<li data-role="list-divider" role="heading">{{warnPartners}}</li>
-		<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-		<li data-role="list-divider" role="heading">{{cancel}}</li>
-	</ul>
-	</div>
-	{{{_footer}}}
-</div> 
 </script><!--}}}-->
 
 
-<!-- Footers -->
-
-<script id="activity_footer_tpl"<!--{{{-->
-	type="text/x-handlebars-template"
->
-<div class="ui-footer" data-role="footer" data-position="fixed">
-  <ul class="ui-grid-b">
-	<li class="ui-block-a">
-		<a class="ui-btn ui-icon-alert ui-btn-icon-top"
-			href="#emergency">
-		{{_global.emergencyBtn}}</a>
-	</li>
-	<li class="ui-block-b">
-		<a class="ui-btn ui-icon-location ui-btn-icon-top"
-			href="#">
-		{{_global.sendPosition}}</a>
-	</li>
-	<li class="ui-block-c">
-		<a class="ui-btn ui-icon-check ui-btn-icon-top"
-			href="#">
-		{{_global.checkin}}</a>
-	</li>
-  </ul>
-  </ul>
-</div>
-</script><!--}}}-->
 
 
 
