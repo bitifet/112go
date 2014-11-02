@@ -105,10 +105,6 @@ define([
 				{ // And some parameters..
 					"_pageId": pageId,
 					"_global": lang.model.global,
-					"_nav": $.extend(
-						{},
-						lang.model.navs[tplModel.headerId]
-					),
 				}
 			);
 

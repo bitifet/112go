@@ -42,16 +42,15 @@ define([
 
 		// Fix placeholders on date and time inputs://{{{
 		(function() {
-			function fixPlaceholder(){ // Define once;
-				var input = $(this);
-				input.attr("type", "text");
-				input.on("focus", function(){
-					input.attr("type", iType);
-				});
-			};
 			function fixPlaceholders(iType) {
 				var elems = $("input[type="+iType+"]", target);
-				elems.each(fixPlaceholder);
+				elems.each(function fixPlaceholder(){ // Define once;
+					var input = $(this);
+					input.attr("type", "text");
+					input.on("focus", function(){
+						input.attr("type", iType);
+					});
+				});
 			};
 			fixPlaceholders("date");
 			fixPlaceholders("time");
@@ -97,7 +96,6 @@ define([
 				if (classes !== undefined) {
 					classes = classes.split(/\s+/);
 					for (var i in classes) {
-						console.log ("Adding class " + classes [i]);
 						container.addClass(classes[i]);
 					};
 				};

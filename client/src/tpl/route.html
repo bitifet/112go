@@ -3,53 +3,6 @@
 
 <!-- Pages -->
 
-<script id="actRoute_page_tpl"<!--{{{-->
-	data-leftPanel="menu"
-	type="text/x-handlebars-template"
->
-<div data-role="page" id="actRoute">
-	{{{_header}}}
-	<div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li data-role="list-divider"><span>{{day}}</span><span>1</span></li>
-		<li>
-			<a href="#actCheckpoint">
-			<h3>{{start}}:</h3>
-			<p>__Descripció__</p>
-			</a>
-		</li>
-		<li>
-			<a href="#actCheckpoint">
-			<h3>{{milestone}}:</h3>
-			<p>__Descripció__</p>
-			</a>
-		</li>
-		<li>
-			<a href="#actCheckpoint">
-			<h3>{{end}}:</h3>
-			<p>__Descripció__</p>
-			</a>
-		</li>
-	</ul>
-	<ul class="ui-grid-b">
-		<li class="ui-block-a">
-			<a class="ui-btn ui-icon-arrow-l ui-btn-icon-top"
-				data-rel="back" href="#">
-			{{_global.back}}</a>
-		</li>
-		<li class="ui-block-b"></li>
-		<li class="ui-block-c">
-			<a href="#actCheckpoint"
-				class="ui-btn ui-icon-plus ui-btn-icon-top"
-			>{{add}}</a>
-		</li>
-	</ul>
-	</div>
-	{{{_footer}}}
-</div> 
-</script><!--}}}-->
-
-
 <script id="actCheckpoint_page_tpl"<!--{{{-->
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"

@@ -67,23 +67,18 @@
 			</ul>
 		</div><!--}}}-->
 	</div>
-
-
-
-
-
 	<div data-role="main" class="ui-content">
-		<div class="tab" id="actList">
+		<div class="tab" id="actList"><!-- Activity list. {{{-->
 			<ul data-role="listview">
 				<li>
 					<a href="#">__description__</a>
 				</li>
 			</ul>
-		</div>
-		<div class="tab" id="actNotify">
+		</div><!--}}}-->
+		<div class="tab" id="actNotify"><!-- Notifications. {{{-->
 		<p>Notificacions...</p>
-		</div>
-		<div class="tab" id="actEmergency">
+		</div><!--}}}-->
+		<div class="tab" id="actEmergency"><!-- Emergency call. {{{-->
 			<ul data-role="listview">
 				<li data-role="list-divider" role="heading">{{emergencyCall}}</li>
 				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
@@ -93,13 +88,8 @@
 				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
 				<li data-role="list-divider" role="heading">{{cancel}}</li>
 			</ul>
-		</div> 
+		</div> <!--}}}-->
 	</div>
-
-
-
-
-
 	<!-- Footer {{{-->
 	<div class="ui-footer" data-role="footer" data-position="fixed">
 		<ul class="ui-grid-b">
@@ -110,12 +100,11 @@
 			<li class="ui-block-c">
 				<a class="ui-btn ui-icon-plus ui-btn-icon-top"
 					href="#activity">
-				{{_nav.newActivity}}</a>
+				{{newActivity}}</a>
 			</li>
 		</ul>
 	</div>
 	<!--}}}-->
-
 </div> 
 </script><!--}}}-->
 
@@ -136,8 +125,9 @@
 			data-rel="back" href="#">{{_global.back}}</a>
 	  <div data-role="navbar" class="tabbar ui-persist">
 		<ul>
-			<li><a href="#actGeneral">{{_nav.general}}</a></li>
-			<li><a href="#actMembers">{{_nav.members}}</a></li>
+			<li><a href="#actGeneral">{{gral.title}}</a></li>
+			<li><a href="#actRoute">{{route.title}}</a></li>
+			<li><a href="#actMembers">{{members.title}}</a></li>
 		</ul>
 	  </div>
 	</div><!--}}}-->
@@ -162,9 +152,40 @@
 					type="date"
 					placeholder="{{gral.activityDate}}"
 					></input></li>
-				<li><a href="#actRoute">{{gral.route}}</a></li>
 				<li><a href="#actVehicles">Vehicles</a></li>
 				<li><textarea name="comments" rows="5" placeholder="{{gral.comments}}"></textarea></li>
+			</ul>
+		</div><!--}}}-->
+		<div class="tab" id="actRoute"><!--{{{-->
+			<ul data-role="listview">
+				<li data-role="list-divider"><span>{{route.day}}</span><span>1</span></li>
+				<li>
+					<a href="#actCheckpoint">
+					<h3>{{route.start}}:</h3>
+					<p>__Descripció__</p>
+					</a>
+				</li>
+				<li>
+					<a href="#actCheckpoint">
+					<h3>{{route.milestone}}:</h3>
+					<p>__Descripció__</p>
+					</a>
+				</li>
+				<li>
+					<a href="#actCheckpoint">
+					<h3>{{route.end}}:</h3>
+					<p>__Descripció__</p>
+					</a>
+				</li>
+			</ul>
+			<ul class="ui-grid-b"><!--{{{-->
+				<li class="ui-block-a"></li>
+				<li class="ui-block-b"></li>
+				<li class="ui-block-c">
+					<a href="#actCheckpoint"
+						class="ui-btn ui-icon-plus ui-btn-icon-top"
+					>{{route.add}}</a>
+				</li><!--}}}-->
 			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actMembers"><!--{{{-->

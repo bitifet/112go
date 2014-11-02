@@ -21,18 +21,6 @@ define({
 			positionTrack: "Enviament de coordenades",
 		},//}}}
 	},
-	navs: {
-		activitys: {//{{{
-			newActivity: "Nova",
-		},//}}}
-		activity: {//{{{
-			general: "General",
-			members: "Participants",
-			tracking: "Seguiment",
-		},//}}}
-		actMember: {//{{{
-		},//}}}
-	},
 	pages: {
 		home: {//{{{
 			title: "112go",
@@ -72,23 +60,17 @@ define({
 		},//}}}
 		activitys: {//{{{
 			title: "Activitats",
-
 			edit: "Editar",
 			checkin: "Som aquí",
-
 			list: "Lista",
 			notifications: "Notificacions",
-
-
 			nextMilestone: "Propera fita",
-
-
-
-
+			newActivity: "Nova",
 		},//}}}
 		activity: {//{{{
 			title: "Activitat",
 			gral: {//{{{
+				title: "General",
 				description: "Descripció de l'Activitat",
 				activityType: "Tipus d'Activitat",
 				type: {
@@ -102,10 +84,18 @@ define({
 				},
 				activityDate: "Data Activitat",
 				otherTypeSpecify: "Especifiqui",
-				route: "Ruta",
 				comments: "Observacions",
 			},//}}}
+			route: {//{{{
+				title: "Ruta",
+				start: "Inici",
+				day: "Dia",
+				milestone: "Fita",
+				end: "Fi",
+				add: "Afegir",
+			},//}}}
 			members: {//{{{
+				title: "Participants",
 				addMember: "Afegir",
 				guides: "Guies",
 				guidesInfo: "Participants que exerciran el rol de guia.",
@@ -114,14 +104,6 @@ define({
 				contacts: "Contactes",
 				contactsInfo: "Persones a contactar en cas d'accident (no participen a l'activitat).",
 			},//}}}
-		},//}}}
-		actRoute: {//{{{
-			title: "Ruta",
-			start: "Inici",
-			day: "Dia",
-			milestone: "Fita",
-			end: "Fi",
-			add: "Afegir",
 		},//}}}
 		actCheckpoint: {//{{{
 			title: "Punt",
