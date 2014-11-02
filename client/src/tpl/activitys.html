@@ -14,7 +14,9 @@
 		<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 		<h1>{{title}}</h1>
 
-		<div class="ui-grid-a ui-grid-7030 actSummary ui-contents">
+		<div<!-- Current activity summary. {{{-->
+			class="ui-grid-a ui-grid-7030 actSummary ui-contents"
+		>
 			<ul data-role="listview">
 			<li<!-- Activity description {{{-->
 			class="ui-grid-a ui-grid-7030">
@@ -46,18 +48,18 @@
 				</div>
 			</li><!--}}}-->
 			</ul>
-		</div>
+		</div><!--}}}-->
 		<div class="tabbar" data-role="navbar"><!--{{{-->
 			<ul>
 				<li>
 					<a class="ui-btn ui-icon-bullets ui-btn-icon-top"
 						href="#actList">
-					{{list}}</a>
+						{{list}}</a>
 				</li>
 				<li>
 					<a class="ui-btn ui-icon-eye ui-btn-icon-top"
 						href="#actNotify">
-					{{notifications}}</a>
+						{{notifications}}</a>
 				</li>
 				<li>
 					<a class="ui-btn ui-icon-alert ui-btn-icon-top"
@@ -71,23 +73,38 @@
 		<div class="tab" id="actList"><!-- Activity list. {{{-->
 			<ul data-role="listview">
 				<li>
-					<a href="#">__description__</a>
+					<a href="#">__activity_description__</a>
 				</li>
 			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actNotify"><!-- Notifications. {{{-->
-		<p>Notificacions...</p>
+			<ul data-role="listview">
+				<li>
+					<a href="#">__notification_description__</a>
+				</li>
+			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actEmergency"><!-- Emergency call. {{{-->
-			<ul data-role="listview">
-				<li data-role="list-divider" role="heading">{{emergencyCall}}</li>
-				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-				<li data-role="list-divider" role="heading">{{callForHelp}}</li>
-				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-				<li data-role="list-divider" role="heading">{{warnPartners}}</li>
-				<li><textarea name="comments" rows="5" placeholder="{{comments}}"></textarea></li>
-				<li data-role="list-divider" role="heading">{{cancel}}</li>
-			</ul>
+			<textarea placeholder="{{emergency.comments}}"></textarea>
+			<div data-role="navbar" class="ui-persist">
+				<ul>
+					<li>
+						<a class="ui-btn ui-icon-phone ui-btn-icon-top"
+							href="#">
+							{{emergency.call}}</a>
+					</li>
+					<li>
+						<a class="ui-btn ui-icon-alert ui-btn-icon-top"
+							href="#">
+							{{emergency.warnPartners}}</a>
+					</li>
+					<li>
+						<a class="ui-btn ui-icon-back ui-btn-icon-top"
+							href="#">
+							{{emergency.cancel}}</a>
+					</li>
+				</ul>
+			</div>
 		</div> <!--}}}-->
 	</div>
 	<!-- Footer {{{-->
@@ -152,11 +169,31 @@
 					type="date"
 					placeholder="{{gral.activityDate}}"
 					></input></li>
-				<li><a href="#actVehicles">Vehicles</a></li>
 				<li><textarea name="comments" rows="5" placeholder="{{gral.comments}}"></textarea></li>
 			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actRoute"><!--{{{-->
+			<ul data-role="listview">
+				<li>
+					<div class="ui-grid-a ui-grid-3070">
+						<div class="ui-block-a">
+							<h3>Dia i hora:</h3>
+						</div>
+						<div class="ui-block-b">
+							<select class="switcher" data-id="routeTimingRecalc">
+								<option value="start">{{route.timing.recStartLbl}}</option>
+								<option value="always">{{route.timing.recAlwaysLbl}}</option>
+								<option value="never">{{route.timing.recNeverLbl}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="switchBox" data-id="routeTimingRecalc">
+						<p class="switchItem" data-id="start">{{route.timing.recStartDesc}}</p>
+						<p class="switchItem" data-id="always">{{route.timing.recAlwaysDesc}}</p>
+						<p class="switchItem" data-id="never">{{route.timing.recNeverDesc}}</p>
+					</div>
+				</li>
+			</ul>
 			<ul data-role="listview">
 				<li data-role="list-divider"><span>{{route.day}}</span><span>1</span></li>
 				<li>
@@ -247,22 +284,6 @@
 	{{{_footer}}}
 </div> 
 </script><!--}}}-->
-
-
-
-
-
-
-<!-- Emergency call dialog -->
-
-<script id="emergency_page_tpl"<!--{{{-->
-	data-header=""
-	data-footer=""
-	type="text/x-handlebars-template"
->
-</script><!--}}}-->
-
-
 
 
 

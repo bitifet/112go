@@ -87,7 +87,7 @@ define([
 			});
 		});//}}}
 
-		// Fix <select> classes:
+		// Fix <select> classes://{{{
 		target.on("pagecreate", function(e) {
 			$("select", e.target).each(function populateSelectClasses() {
 				var select = $(this);
@@ -100,7 +100,7 @@ define([
 					};
 				};
 			});
-		});
+		});//}}}
 
 		// Implement "in-page" tab navigation://{{{
 		$("div.tabbar", target).each(function() {
@@ -142,6 +142,21 @@ define([
 				;
 				//}}}
 			});//}}}
+		});//}}}
+
+		// Implement <select.switcher> //{{{
+		$("select.switcher", target).each(function() {
+			var select = $(this);
+			var page = select.closest("div[data-role=page]");
+			var switchId = select.data("id");
+			var switchBox = $(".switchBox[data-id="+switchId+"]", page);
+			var switchItems = $(".switchItem", switchBox);
+			function update () {
+				switchItems.hide();
+				switchItems.filter("[data-id="+select.val()+"]").show();
+			};
+			update();
+			select.on("change", update);
 		});//}}}
 
 	};

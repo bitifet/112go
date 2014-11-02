@@ -40,7 +40,6 @@ define ([
 	'text!../../tpl/activitys.html',
 	'text!../../tpl/userProfile.html',
 	'text!../../tpl/route.html',
-	'text!../../tpl/other.html',
 ], function(
 	handlebars
 ) {

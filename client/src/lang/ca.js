@@ -66,6 +66,17 @@ define({
 			notifications: "Notificacions",
 			nextMilestone: "Propera fita",
 			newActivity: "Nova",
+
+			emergency: {
+				call: "112",
+				warnPartners: "Alertar als companys",
+				cancel: "Falsa Alarma",
+				comments: "Anoti aquí qualsevol informació que consideri pugui ser útil."
+			},
+
+
+
+
 		},//}}}
 		activity: {//{{{
 			title: "Activitat",
@@ -87,6 +98,14 @@ define({
 				comments: "Observacions",
 			},//}}}
 			route: {//{{{
+				timing: {
+					recStartLbl: "Recalcular només l'inici",
+					recStartDesc: "El dia i hora de les fites s'actualitzaran proporcionalment en iniciar l'activitat",
+					recAlwaysLbl: "Recalcular sempre",
+					recAlwaysDesc: "En iniciar l'activitat o marcar una fita, el dia i hora de les següents fites s'actualitzaran proporcionalment",
+					recNeverLbl: "No recalcular mai",
+					recNeverDesc: "Els dies i hores de es fites no es recalcularan mai",
+				},
 				title: "Ruta",
 				start: "Inici",
 				day: "Dia",
@@ -131,11 +150,5 @@ define({
 			add: "Afegir",
 			remove: "Eliminar",
 		},//}}}
-		emergency: {
-			emergencyCall: "Emetre un avís als companys",
-			callForHelp: "Sol·licitar ajuda als companys",
-			warnPartners: "Emetre un avís als companys",
-			cancel: "Anul·lar",
-		},
 	},
 });
