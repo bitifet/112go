@@ -42,15 +42,16 @@ define([
 
 		// Fix placeholders on date and time inputs://{{{
 		(function() {
+			function fixPlaceholder(){ // Define once;
+				var input = $(this);
+				input.attr("type", "text");
+				input.on("focus", function(){
+					input.attr("type", iType);
+				});
+			};
 			function fixPlaceholders(iType) {
 				var elems = $("input[type="+iType+"]", target);
-				elems.each(function fixPlaceholder(){
-					var input = $(this);
-					input.attr("type", "text");
-					input.on("focus", function(){
-						input.attr("type", iType);
-					});
-				});
+				elems.each(fixPlaceholder);
 			};
 			fixPlaceholders("date");
 			fixPlaceholders("time");
@@ -86,6 +87,22 @@ define([
 				};
 			});
 		});//}}}
+
+		// Fix <select> classes:
+		target.on("pagecreate", function(e) {
+			$("select", e.target).each(function populateSelectClasses() {
+				var select = $(this);
+				var container = select.closest("div");
+				var classes = select.attr("class");
+				if (classes !== undefined) {
+					classes = classes.split(/\s+/);
+					for (var i in classes) {
+						console.log ("Adding class " + classes [i]);
+						container.addClass(classes[i]);
+					};
+				};
+			});
+		});
 
 		// Implement "in-page" tab navigation://{{{
 		$("div.tabbar", target).each(function() {

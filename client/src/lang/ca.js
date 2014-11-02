@@ -8,8 +8,10 @@ define({
 		emergencyBtn: "Emergència",
 		sendPosition: "Enviar posició",
 		checkin: "Marcar Fita",
-		save: "Fet",
+		save: "Desar",
 		remove: "Eliminar",
+		ok: "Fet",
+		cancel: "Cancel·lar",
 	},
 	panels: {
 		menu: {//{{{
