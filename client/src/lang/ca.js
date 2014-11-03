@@ -48,7 +48,6 @@ define({
 				title: "Perfil Privat",
 				label: "Privat",
 				whatsThis: "Que és el perfil privat?",
-				info: "<p>El perfil permet aportar dades dels usuaris que aquests no vulguin compartir amb la resta de participants, garantint així la seva privacitat.</p><p>Les dades d'aquesta pantalla no seràn compartides amb els altres membres de l'activitat, però sí amb l'112 en cas necessari.</p><p>Per simplifiar, les dades de perfil públic es copiaran automàticament al privat sempre que el mateix camp estigui buïd o el contingut anterior fos el mateix.</p><p>Les modificacions realitzades al perfil privat mai es sincronitzaran al públic.</p>"
 			},
 			phone: "Telèfon",
 			name: "Nom",
@@ -66,17 +65,12 @@ define({
 			notifications: "Notificacions",
 			nextMilestone: "Propera fita",
 			newActivity: "Nova",
-
 			emergency: {
 				call: "112",
 				warnPartners: "Alertar als companys",
 				cancel: "Falsa Alarma",
 				comments: "Anoti aquí qualsevol informació que consideri pugui ser útil."
 			},
-
-
-
-
 		},//}}}
 		activity: {//{{{
 			title: "Activitat",

@@ -1,0 +1,263 @@
+
+
+
+
+<script id="welcome_ca_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<h1 id="text-de-benvinguda-provisional">TEXT DE BENVINGUDA PROVISIONAL</h1>
+<h2 id="objectíu">Objectíu:</h2>
+<p>Reemplaçar el formulari que actualment fan servir els excursionistes per notificar al SEIB112 quan van d'excursió en previsió de que puguin tenir algún accident i no puguin contactar amb els serveïs d'emergència pel seu compte.</p>
+<p>Actualment això es fa mitjançant un formulari web, disponible a la web de la CAIB, que simplement envia un correu electrònic que reben els supervisors del centre d'emergències a partir del qual, han de crear manualment un incident amb una alarma de manera que, si a una hora determinada, els excursionistes no han telefonat a l'112 per notificar que estan sans i estalvis de manera que un operador tanqui l'incident, aquest s'activa i alerta de que possiblement hagi succeït alguna cosa.</p>
+<h3 id="motivació">Motivació:</h3>
+<p>Aquesta mecànica representa alguns problemes. Entre ells:</p>
+<ul>
+<li><p>Una sobrecàrrega de feina a la sala per gestionar el que, en la majoría dels casos, afortunadament, no derivarà en una incidència real. Malmetent així recursos que poden ser valuosos per l'atenció d'altres incidències.</p></li>
+<li><p>No existeix cap tipus de validació de les dades enviades amb el formulari. Si alguna dada, com ara el telèfon de contacte o les senyes per localitzar la ubicació de l'activitat, és errònia o incompleta, probablement no es detectarà fins que, si és el cas, sigui necessari intentar contactar o localitzar els excursionistes per no haver tengut notícies d'ells en el termini estipulat.</p></li>
+<li><p>El sistema actual permet detectar quan és possible que s'hagi produït una incidència, però no aporta cap tipus de informació adicional, com ara coordenades del lloc on es troben els participants de l'activitat o ón es trobaven en el darrer moment que tengueren cobertura.</p></li>
+<li><p>Si la sala no reb la notificació de finalització de l'activitat, haurà d'iniciar accions per esbrinar què ha passat, fins i tot mobilitzar recursos per localitzar-los si no aconsegueixen contactar amb els excursionistes quan existeix la possibilitat que simplement hagin exhaurit la bateria del mòbil.</p></li>
+</ul>
+<h3 id="possibilitats">Possibilitats:</h3>
+<p>Una aplicació mòbil ofereix la possibilitat de millorar sensiblement tot aquest procés.</p>
+<p>A més, totes aquestes millores es poden implementar de forma escalonada, començant per les més bàsiques, com automatitzar la recollida de dades i generació de les alarmes però notificant primer l'aplicació, de forma automatitzada, al propi usuari per assegurar que no es genera una alarma perquè s'ha oblidat d'avisar o només pateixen un lleuger retard en la planificació.</p>
+<p>Les següents son vàries de les funcionalitats que es podríen arribar a implementar. Lògicament no totes estaran disponibles des del principi. Però l'aplicació es construïrà tenint en ment la possibilitat (i desig) de que totes elles o, com a mínim les més importants, arribin a ser una realitat:</p>
+<ul>
+<li><p>Completa automatització de la recollida de dades i generació de les alarmes.</p></li>
+<li><p>Ha de ser multi-idioma.</p></li>
+<li><p>Ampliar el formulari original per possibilitar afegir més informació que pugui ser útil en cas de que es produeïxi alguna incidència.</p></li>
+<li><p>Incorporar coordenades dels punts d'inici i de fi de l'activitat, associades a l'hora de partida i d'arribada de la mateixa.</p></li>
+<li><p>Permetre introduïr també coordenades de punts intermitjos i, opcionalment, també l'hora estimada a la que es preveu passar-hi com qualsevol altra informació relacionada que pugui ser d'utilitat.</p></li>
+<li>Enviament de la posició del terminal:
+<ul>
+<li>De forma manual: Quan els usuaris ho considerin oportú (o en el moment de l'emergència).</li>
+<li>De forma automatitzada: En passar aprop dels punts definits, cada cert temps (configurable), etc...</li>
+</ul></li>
+<li><p>Seguiment en el servidor de la informació rebuda. Així, en cas de pèrdua de cobertura, encara es disposarà de la posició en el darrer moment en que tengueren cobertura.</p></li>
+<li><p>UX: L'aplicació ha de ser usable i, a l'hora, oferir a l'usuari la possiblitat de triar les opcions més adequades a les seves necessitats i mitjans. Per exemple: Enviar coordenades molt sovint podria esgotar la bateria del terminal abans que acabin l'activitat. Però si la bateria ho aguanta o disposen de carregadors (bateries) auxiliars, pot incidir molt positivament en minimitzar el temps de localització i rescat en cas d'accident.</p></li>
+<li><p>Notificació des de la pròpia aplicació de quan s'ha finalitzat l'activitat. Moment en que es desactivaria el seguiment automatitzat des del servidor sense haver generat cap tasca innecessària als operadors.</p></li>
+<li><p>Recordar a l'usuari, en arribar l'hora de finalització o detectar el terminal estar en la posició final de l'activitat (alternatíu / configurable) que ha de notificar (mitjançant l'aplicació) la finalització de l'activitat. En aquest punt, l'usuari podría perllongar-la el temps que consideri oportú o confirmar la finalització.</p></li>
+<li><p>Si l'usuari no respòn a l'alerta, l'aplicació podría alertar immediatament de que l'usuari no està responent. Reduint així considerablement el temps que es tarda en generar l'alerta.</p></li>
+<li><p>En cas de considerar-se que l'activitat té un risc elevat, es podría configurar la possibilitat que l'aplicació requeris periòdicament a l'usuari que confirmi que estan bé a intervals raonables de temps, sense esperar la finalització de l'activitat.</p></li>
+<li><p>En qualsevol cas, en qualsevol moment l'usuari disposaria d'un botó per realitzar una telefonada d'emergència. Fent-ho des de l'aplicació, al temps que es fa la telefonada, s'activaria automàticament l'alerta d'accident enviant-se a la sala totes les dades recollides fins aleshores, inclosa la posició en l'instant de la telefonada.</p></li>
+<li><p>Aiximateix, quan es realitzi la integració del servidor amb els sistemes del SEIB112, aquest es comunicarà amb el sistema d'ANI (Informació de telefonades entrants) del centre de manera que aquest conegui en tot moment tots els números de telèfon dels participants en l'actifitat de forma que, en cas de rebre's al centre una telefonada des de qualsevol d'ells (fins i tot telèfons, ja siguin o no smartphones, que no disposin de l'aplicació instal·lada), s'activi automàticament l'estat d'incidència i s'enviin totes les dades pertinents a la sala perquè els operadors disposin des del primer moment de tota la informació recollida.</p></li>
+<li><p>Notificacions des del centre d'emergències als usuaris: Disposant de la posició i la ruta prevista dels excursionistes, es podría alertar aquests d'incidències o fenòmens, com ara incendis declarats en zones pròximes, que puguin suposar un risc afegit. Això requeriria, lògicament, la integració del servidor amb altres serveïs interns del centre, però facilitaria no només l'alerta dels propis usuaris, sino la notificació automatizada a la sala de la seva presència en les proximitats de l'incident de manera que, donat el cas, el supervisor podría decidir contactar amb ells i donar-los instruccions perquè s'allunyin o organitzar la seva evacuació preventiva en cas necessari.</p></li>
+<li><p>Posicionament en els sistemes de mapping del centre: El sistema es podria integrar amb el sistema de posicionament del SEIB112. De manera que els operadors podrien veure posicionats al mapa les distintes activitats monitoritzades per aquest sistema de manera que, encara que no salti cap alarma automatitzada, els operadors podràn veure la ubicació d'aquestes activitats i valorar, si ho consideren, la procedència de qualsevol mesura preventiva en funció de les incidències en curs.</p></li>
+</ul>
+<h2 id="punt-de-partida">Punt de partida:</h2>
+<p>El formulari original es pot trobar a:</p>
+<p>http://www.caib.es/sacmicrofront/contacto.do?idsite=264&amp;cont=180 ò http://www.112ib.com -&gt; Formularis -&gt; Excursions.</p>
+<p>En ell es poden cumplimentar les següents dades, en les que ens basarem per construïr l'especificació posterior.</p>
+<ul>
+<li>Data Activitat</li>
+<li>Participants. noms, edats i telèfons.</li>
+<li>Guia. Nom i telèfon.</li>
+<li>Persones de contacte fora de l'excursió (noms i telèfons).</li>
+<li>Tipus d'activitat:
+<ul>
+<li>Senderisme.</li>
+<li>Escalada.</li>
+<li>Torrents.</li>
+<li>Espeleologia.</li>
+<li>Mountain Bike.</li>
+<li>Equitacio.</li>
+<li>Altres. (Especificar).</li>
+</ul></li>
+<li>Ruta. Punt de partida.</li>
+<li>Hora de partida.</li>
+<li>Punt d'arribada.</li>
+<li>Hora d'aribada.</li>
+<li>Hora d'alarma.</li>
+<li>Grau de coneixement i experiència.
+<ul>
+<li>Baix.</li>
+<li>Mitjà.</li>
+<li>Alt.</li>
+</ul></li>
+<li>Utilitza vehicle (Sí / No)
+<ul>
+<li>Marca i model.</li>
+<li>Matrícula.</li>
+<li>Color.</li>
+</ul></li>
+<li>Observacions.</li>
+</ul>
+<h2 id="especificació">Especificació:</h2>
+<h3 id="pantalles-principals">Pantalles principals</h3>
+<h4 id="benvinguda">Benvinguda</h4>
+<p><img style="float:right;margin:1px" src="img/Benvinguda.jpg"></p>
+<ul>
+<li><p>Serà la pantalla d'entrada el primer cop que s'obre l'aplicació.</p></li>
+<li><p>Sortirà per defecte en l'idioma del dispositiu en cas que estigui suporat i, en cas contrari, se'n sel·leccionarà un dels suportats segons unes regles d'idoneitat (en principi, galeg i euskera derivaràn en castellà i la resta en anglès).</p></li>
+<li><p>Permetrà a l'usuari de forma intuitiva sel·leccionar-ne un diferent d'entre els suportats.</p></li>
+<li><p>Oferirà, en l'idioma sel·leccionat, una breu explicació del funcionament de l'aplicació i, opcionalment, enllaçarà a un manual més detallat.</p></li>
+<li><p>Enllaçarà (emfàticament) a la pantalla per introduïr les dades personals de l'usuari que s'enregistraràn al dispositiu.</p></li>
+<li><p>Finalment, enllaçarà a la pantalla de &quot;Llistat d'activitats&quot; que, un cop l'usuari hagi emplenat les seves dades personals, passarà a ser la pantalla d'entrada de l'aplicació en substitució d'aquesta.</p></li>
+<li><p>Igualment, aquesta pantalla continuarà sent accessible des del menú de navegació.</p></li>
+</ul>
+<h4 id="menú-lateral">Menú lateral</h4>
+<p><img style="float:right;margin:1px" src="img/Menu.jpg"></p>
+<ul>
+<li><p>Proporcionarà accés a la pàgina de benvinguda un cop l'usuari ja hagi cumplimentat les seves dades.</p></li>
+<li><p>Proporcionará accés a altres opcions de configuració.</p></li>
+</ul>
+<h4 id="peu-de-pàgina">Peu de pàgina</h4>
+<p>No és una pantalla pròpiament. Però totes les pantalles següents, excepte els popups, portaràn el mateix peu de pàgina amb les següents funcionalitats que es reconfiguraràn automàticament segons la situació:</p>
+<ul>
+<li>Botó de telefonada d'emergència.
+<ul>
+<li>SEMPRE demanarà confirmació per evitar telefonades accidentals.</li>
+</ul></li>
+<li>En cas d'haver-hi una activitat programada de la que s'aproximi l'hora d'inici:
+<ul>
+<li>Notificació d'inici d'activitat.</li>
+</ul></li>
+<li>En cas d'haver-hi una activitat en curs, mostrarà contingut pertinent:
+<ul>
+<li>Informació de l'activitat activa (Indicació i nom).</li>
+<li>Botó de notificació de finalització.</li>
+<li>Botó d'enviament manual de la posició.</li>
+</ul></li>
+</ul>
+<h4 id="activitats">Activitats</h4>
+<p><img style="float:right;margin:1px" src="img/Activitats.jpg"></p>
+<ul>
+<li><p>Llista de les activitats definides.</p></li>
+<li><p>Permetrà accedir-hi (clicant en elles), eliminar-les, o crear-ne de noves.</p></li>
+<li><p>Si hi ha una activitat en curs, la mostrarà ressaltada.</p></li>
+</ul>
+<h4 id="activitat---general">Activitat - General</h4>
+<p><img style="float:right;margin:1px" src="img/Activitat_General.jpg"></p>
+<ul>
+<li><p>Primera pestanya de la fitxa de l'activitat.</p></li>
+<li><p>Mostrà el fomrulari amb la informaicó més bàsica (tipus, descriptió...)</p></li>
+<li><p>Donarà accés a la pantalla de ruta (on s'especificarà com a mínim el punt d'inici i fi de l'activitat i l'horari).</p></li>
+<li><p>Mostrarà els controls de configuració d'alarmes (possiblement assistits per un popup).</p></li>
+</ul>
+<h4 id="activitat---participants">Activitat - Participants</h4>
+<ul>
+<li><p>Llista de participants en l'activitat.</p>
+<ul>
+<li><p>El propi usuari (no s'hi pot eliminar) donarà accés a la pantalla de dades personals de l'usuari.</p></li>
+<li><p>La resta es podràn afegir / eliminar a gust i donaran accés a un formulari semblant a l'anterior per introduïr dades dels participants. S'emfatitzarà el número de telèfon.</p></li>
+</ul></li>
+</ul>
+<h4 id="activitat---altres">Activitat - Altres</h4>
+<p><img style="float:right;margin:1px" src="img/Activitat_Altres.jpg"></p>
+<ul>
+<li><p>Donarà accés a la pantalla de vehicles.</p></li>
+<li><p>Permetrà introduïr observacions.</p></li>
+</ul>
+<h3 id="pantales-auxiliars">Pantales auxiliars</h3>
+<h4 id="ruta">Ruta</h4>
+<p><img style="float:right;margin:1px" src="img/Ruta.jpg"></p>
+<ul>
+<li>S'hi especificaran el punt de partida i fi de l'activitat amb:
+<ul>
+<li>Coordenades (es podrà posicionar sobre un mapa) mitjançant popup.</li>
+<li>Descripció (text)</li>
+<li>Hora.</li>
+</ul></li>
+<li><p>Tots els camps dels punts d'inici i fi seràn &quot;gairebé&quot; obligatoris (s'alertarà si s'intenta enviar una activitat sense alguna d'aquestes dads).</p></li>
+<li><p>S'hi podràn especificar atres punts intermigs, en els quals tots els camps seran opcionals (mentre al menys se n'aporti un).</p></li>
+<li><p>Les hores seran timesamps complets i es consideraran en referència a la data d'inici de l'activitat. Si es canvia aquesta a la pantalla princpal, ja sigui per replanificació o per repetir una activitat antiga, aquests es recalcularan automàticament en funció de la primera.</p></li>
+</ul>
+<h4 id="participant">Participant</h4>
+<ul>
+<li><p>Formulari per introduïr les dades personals de l'usuari (accedint-hi des del menú de configuració o des de la línia corresponent a ell mateix de la pestanya de participants de l'activitat) i per les dades d'altres participants.</p></li>
+<li><p>El formulari es podrà emplenar manualment o carregar les dades a partir dels contactes de l'agenda del dispositiu. Permetent, en qualsevol cas, editar el contingut carregat sense alterar aquesta.</p></li>
+<li><p>Les dades d'aquest formulari, basant-se en el número de telèfon, son el nexe d'unió entre les instàncies de l'aplicació entre diversos terminals dels participants en l'activitat (Veure detalls a l'apartat d'arquitectura de l'aplicació).</p></li>
+<li>Dades de la fitxa d'usuari / participant (ja sigui la pública o la privada):
+<ul>
+<li>Nom.</li>
+<li>Llinatges.</li>
+<li>Telèfon.</li>
+<li>Perfil*</li>
+<li>Data de naixement.</li>
+<li>Persona de contacte en cas que li passi alguna cosa: (Nom i telèfon). (Només per incidències concretes amb aquest participant)</li>
+<li>Comentaris.</li>
+</ul></li>
+<li>Perfils:
+<ul>
+<li>Persona de contacte: No és un participant real (no s'en farà seguiment GPS) sino una persona amb qui contactar, en primera instància, en cas d'accident (en general).</li>
+<li>Guia professional: Professional que exerceix el rol de guia dins el grup.</li>
+<li>Guia amateur: Amateur que exerceix el ro de guia dins el grup.</li>
+<li>Expert.</li>
+<li>Participant.</li>
+<li>Principiant.</li>
+</ul></li>
+</ul>
+<h4 id="vehicles">Vehicles</h4>
+<p>Informació de vehicles utilitzats en l'activitat o per arribar-hi.</p>
+<p>Consistirà en una llista en que es podràn afegir, modificar o eliminar vehicles mitjançant un formulari en popup auxiliar.</p>
+<p>Es podràn emplenar les següents dades:</p>
+<ul>
+<li>Matrícula.</li>
+<li>Tipus.</li>
+<li>Marca.</li>
+<li>Model.</li>
+<li>Color.</li>
+<li>Observacions.</li>
+</ul>
+<p>NOTA: De moment no s'implementarà. És aquí perquè apareixia al formuari original. Però disposant de coordenades gps de la posició dels participants, a priori s'entén que aquesta informació ja no és necessària.</p>
+<h2 id="arquitectura">Arquitectura:</h2>
+<h3 id="sincrontizació-entre-participants">Sincrontizació entre participants</h3>
+<p>Si una activitat té múltiples participants, un cop es faci &quot;pública&quot; l'activitat enviant-la al servidor. Tots aquels que el seu número de telèfon aparegui entre els de la llista de participants, rebràn la informació de l'activitat que es sincronitzarà a la seva instància de l'aplicació. Així:</p>
+<ul>
+<li><p>Qualsevol modificació d'una activitat pujada al servidor, es replicarà entre totes les instàncies connectades via websocket i els dispositius que es connectin amb posterioritat SEMPRE sincronitzaran les activitats en les que apareix el seu telèfon des del servidor.</p></li>
+<li><p>Quan un participant rebi una activitat en la que apareix, l'aplicació ignorarà les dades rebudes sobre ell mateix i enviarà les que té configurades al servidor per actualitzar-lo. Però aquestes dades no seran servides a la resta de participants que rebràn només les dades introduïdes originalment pel creador de l'activitat.</p></li>
+<li><p>Alternativament, els usuaris podràn tenir un perfil &quot;públic&quot; que sí s'enviaria a la resta i sobrescriuria les dades empenades originalment pel creador de l'activitat qui, al seu torn, també enviaria el seu perfil públic mantenint així la privacitat del personal.</p></li>
+<li><p>D'aquesta manera, els usuaris podrien afegir als seus perfils personals qualsevol informació privada que puguin considerar d'interés davant una situació d'emergència sense necessitat de compartir-la amb altres participants d'una mateixa activitat que poden ser potencialment desconeguts.</p></li>
+<li><p>Excepte els perfils públic i privat del propi usuari, la resta de perfils de participants s'emmagatzemaran en el propi document d'intercanvi (JSON) que defineix l'activitat i enlloc més.</p></li>
+<li><p>Els usuaris es podran eliminar a sí mateixos o a altres usuaris d'una activitat i, automàticament, els seus perfils públics desapareixeràn de l'activitat i, per tant, dels terminals dels altres usuaris.</p></li>
+<li><p>Quan un usuari és eliminat per un altre, aquest rebrà una notificació. Bé en el mateix instant si es troba connectat o amb posterioritat, quan l'aplicació es connecti i vegi que una de les seves activitats, marcada (mitjançant un identificador) com a pujada al servidor, ja no apareix a la llista d'activitats que el servidor li envia. Aiximateix, com que coneix l'identificador, tendrà a possibilitat de tornar-s'hi a afegir (la finalitat del serveï és rebre la informació dels usuaris, no resoldre possibles conflictes).</p></li>
+<li><p>El servidor, en canvi, conservarà aquesta informació fins un temps prudencial passada la finalització de l'activitat.</p></li>
+<li><p>Dit d'altra manera: La seguretat de l'aplicació es basa en la confiança mútua que es suposa entre els participants d'una activitat de risc, però qualsevol possible acció maliciosa, com ara eliminar deiberadament algú del grup, quedaria registrada inclosa la identitat de qui ho ha fet.</p></li>
+</ul>
+<h3 id="estructures-de-dades">Estructures de dades</h3>
+<h4 id="dades-en-fitxers">Dades en fitxers</h4>
+<ul>
+<li>Fitxers d'idiomes (JSON).</li>
+</ul>
+<h4 id="local-local-storage">Local (Local Storage</h4>
+<ul>
+<li>Configuració:
+<ul>
+<li>Idioma.</li>
+<li>Preferències d'alarmes.</li>
+<li>Preferències d'enviament de coordenades.</li>
+<li>Etc...</li>
+</ul></li>
+<li><p>Fitxes personals (pública i privada).</p></li>
+<li>Llista (Array JSON) d'activitats.
+<ul>
+<li>Si tenen identifiador estàn sincronitzades al servidor.</li>
+</ul></li>
+<li><p>Vehicles: (Opcionalment es podria permetre &quot;recordar-los&quot; i sel·leccionar d'una llista en emplenar les activitats).</p></li>
+</ul>
+<h4 id="servidor">Servidor</h4>
+<ul>
+<li>Activitats:
+<ul>
+<li>Planificades (per sincronització entre usuaris).</li>
+<li>En curs (seguiment).</li>
+<li>Finalitzades recents (eliminades automàticament passat un temps prudencial sense indidències).</li>
+</ul></li>
+</ul>
+<p>No s'enregistraràn ni mantendràn altres informacions relatives als usuaris o activitats passades excepte aquelles que hagin tengut incidències, en cas que dita informació no es decideixi traslladar a altres sistemes.</p>
+<p>Les dades dels perfils públics i privats s'enregistraran internamet dins la mateixa estructura de cada activitat i que serà lleugerament distinta a les enviades i rebudes dels clients (els usuaris &quot;manaràn&quot; sobre les seves dades personals, rebràn només els perfils públics dels altres i seràn corresponsables de la resta d'informació).</p>
+<p>La identificació dels usuaris serà mitjançant el número de telèfon de l'usuari (participant).</p>
+<p>Hi podrà haver participants sense número de telèfon, però no podràn fer servir l'aplicació. Excepte, pot ser, en el futur si es permetés l'accés via web, que s'hauria d'estabir un mecanisme d'autenticació. Però preferentment seria també via número de telèfon validat per codi enviat via sms en cas de no ser smartphone.</p>
+<p>Però aquest és un supòsit cada dia més improbable...</p>
+</script><!--}}}-->
+
+
+
+
+
+<script id="privateProfileInfo_ca_tpl"<!--{{{-->
+	type="text/x-handlebars-template"
+>
+<p>El perfil permet aportar dades dels usuaris que aquests no vulguin compartir amb la resta de participants, garantint així la seva privacitat.</p><p>Les dades d'aquesta pantalla no seràn compartides amb els altres membres de l'activitat, però sí amb l'112 en cas necessari.</p>
+<p>Per simplifiar, les dades de perfil públic es copiaran automàticament al privat sempre que el mateix camp estigui buïd o el contingut anterior fos el mateix.</p>
+<p>Les modificacions realitzades al perfil privat mai es sincronitzaran al públic.</p>
+</script><!--}}}-->

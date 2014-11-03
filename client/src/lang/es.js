@@ -48,7 +48,6 @@ define({
 				title: "Perfil Privado",
 				label: "Privado",
 				whatsThis: "¿Qué es el perfil privado?",
-				info: "<p>El perfil privado permite aportar datos de los usuarios que éstos no quieran compartir con el resto de participantes, garantizando así su privacidad.</p><p>Los datos de ésta pantalla no serán compartidos con los demás miembros de la actividad, pero sí con el 112 en caso necesario.</p><p>Para simplificar, los datos del perfil público se copiarán automáticamente al privado siempre que el mismo campo esté vacio o el contenido anterior coincida.</p><p>Las modificaciones realizadas en el perfil privado nunca se sincronizarán al púbico.</p>",
 			},
 			phone: "Teléfono",
 			name: "Nombre",

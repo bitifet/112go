@@ -36,12 +36,14 @@
 "use strict";
 define ([
 	'core/cfg',
+	'core/tpl',
 	'../../lang/ca',
 	'../../lang/es',
 	'../../lang/en',
 	'../../lang/de',
 ], function(
 	cfg,
+	tpl,
 	ca_model,
 	es_model,
 	en_model,
@@ -88,10 +90,22 @@ define ([
 					);
 				};
 				delete(baseModels[newLang]);
+
+				// Check for html template snippets:
+				if (models[newLang].tpl === undefined) models[newLang].tpl = {};
+				if (
+					tpl[newLang] !== undefined
+					&& typeof tpl[newLang] == 'object'
+				) {
+					for (var i in tpl[newLang]) {
+						models[newLang].tpl[i] = tpl[newLang][i](models[newLang]);
+					};
+				};
+
 			};//}}}
 
 			// Set:
-			api.model = $.extend({}, models[newLang]);
+			api.model = models[newLang];
 
 		};//}}}
 

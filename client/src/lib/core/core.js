@@ -121,6 +121,7 @@ define([
 					{ // And some parameters..
 						"_pageId": pageId,
 						"_global": lang.model.global,
+						"_tpl": lang.model.tpl,
 					}
 				);
 
@@ -132,6 +133,7 @@ define([
 						{
 							"_pageId" : pageId,
 							"_global": lang.model.global,
+							"_tpl": lang.model.tpl,
 						},
 						lang.model.panels[panId]
 					);
