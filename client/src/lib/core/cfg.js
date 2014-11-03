@@ -1,4 +1,4 @@
-// lib/ctrl/home.js (about & copyright) //{{{
+// cfg.js (about & copyright) //{{{
 /* ------------------------------------
  * 112go - Risky activitys tracking app
  * ------------------------------------
@@ -34,32 +34,49 @@
  *
  *///}}}
 "use strict";
-define([
-	'core/lang',
+define ([
 ], function (
-	lang
 ) {
 
-	function implementLangSelector (langsel) {
-		langsel.val(lang.get());
-		langsel.on("change", function () {
-			lang.set(langsel.val());
-			langsel.trigger("reload");
-		});
+	// ==============================
+	// Persistent preferences system:
+	// ==============================
+
+	// Initialyze / load (sync) user preferences:
+	try {
+		var prefs = JSON.parse(localStorage.getItem("cfg"));
+		if (prefs === null) throw "Empty";
+	} catch (e) {
+		var prefs = {};
 	};
 
-	function implementAppCheckin(beginButton) {
-		///beginButton.css({background: "#ffff00"});
+
+	// Provide prefs saving function:
+	function savePrefs() {
+		localStorage.setItem("cfg", JSON.stringify(prefs));
 	};
 
+	return function getConfigHandler(pname, defpvalue) {
 
-	return {
-		type: "footer",
-		id: "home",
-		run: function homeRun (target) {
-			implementLangSelector($("select.langSelector", target));
-			implementAppCheckin($("a.appCheckin", target));
-		},
+		function getset(pvalue) {//{{{
+
+			if (pvalue !== undefined) { // Act as setter if pvalue is provided.//{{{
+				prefs[pname] = pvalue; // Update preference.
+				savePrefs(); // Save to Local Storage.
+			};//}}}
+
+			return prefs[pname]; // Always act as getter.
+
+		};//}}}
+
+		getset.switch = function() {//{{{
+			return getset(! prefs[pname]);
+		};//}}}
+
+		if (prefs[pname] === undefined) getset(defpvalue); // Application default.
+
+		return getset;
+
 	};
 
 });

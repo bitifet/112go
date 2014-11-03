@@ -35,11 +35,13 @@
  *///}}}
 "use strict";
 define ([
+	'core/cfg',
 	'../../lang/ca',
 	'../../lang/es',
 	'../../lang/en',
 	'../../lang/de',
 ], function(
+	cfg,
 	ca_model,
 	es_model,
 	en_model,
@@ -48,6 +50,7 @@ define ([
 
 	// Failback model.
 	var defLang = 'ca'; // FIXME: Should end up being en.
+	var currLang = cfg('lang', 'ca'); // FIXME: Should be readed from browser/system lang preferences.
 
 	// Base models:
 	var baseModels = {
@@ -65,10 +68,10 @@ define ([
 	// api.model = (AutoMagically set to default).
 	api.set = (function buildLanguageSetter(defLang){//{{{
 
-		// Setter implementation:
+		// Setter implementation://{{{
 		function setLanguage(newLang) {
 
-			// Auto-extend by demand:
+			// Auto-extend by demand://{{{
 			if (models[newLang] === undefined) {
 				if (newLang == defLang) {
 					// Default is suposed to be fully complete:
@@ -76,22 +79,40 @@ define ([
 				} else {
 					// Extend others with default as a uncompletion failback:
 					if (baseModels[newLang] === undefined) throw "Unsupported language: " + newLang;
+
 					models[newLang] = $.extend(
-						baseModels[newLang], models[defLang] // Allocated at first time.
+						true, // Recursive.
+						{}, // New object (don't override base one).
+						models[defLang], // Provide default values.
+						baseModels[newLang] // Preferent values.
 					);
 				};
 				delete(baseModels[newLang]);
-			};
+			};//}}}
 
 			// Set:
-			api.model = models[newLang];
-		};
+			api.model = $.extend({}, models[newLang]);
+
+		};//}}}
 
 		// Initially set default lang:
 		setLanguage(defLang); // And ensure it's available on extensions.
 
-		return setLanguage;
+		return function setter (newLang) {
+			// Remember:
+			currLang(newLang); // Remember.
+
+
+			// Set:
+			setLanguage (newLang);
+		};
 	})(defLang);//}}}
+
+	api.get = function () {//{{{
+		return currLang();
+	};//}}}
+
+	api.set(currLang());
 
 	return api;
 

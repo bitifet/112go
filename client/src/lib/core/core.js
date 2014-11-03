@@ -80,6 +80,8 @@ define([
 	};
 
 
+
+
 	// Startup:
 	// ########
 
@@ -87,91 +89,100 @@ define([
 
 		var pageContainer = $(":mobile-pagecontainer");
 
-		for (var pageId in tpl.page) {
-			var mainTemplate = tpl.page[pageId];
-			var tplModel = mainTemplate.tplModel;
+		function appRender () {//{{{
 
-			// Foreign subtemplates ids:
-			// =========================
-			var mainHeaderTpl = headers[tplModel.headerId];
-			var mainContentTpl = contents[tplModel.contentId];
-			var mainFooterTpl = footers[tplModel.footerId];
+			pageContainer.html("");
 
-			// Build specific model:
-			// =====================
-			var model = $.extend(
-				{}, // Start with empty object to avoid overidding.
-				lang.model.pages[pageId], // Add page's model.
-				{ // And some parameters..
-					"_pageId": pageId,
-					"_global": lang.model.global,
-				}
-			);
+			for (var pageId in tpl.page) {
+				var mainTemplate = tpl.page[pageId];
+				var tplModel = mainTemplate.tplModel;
 
-			// Add properly rendered panels:
-			// =============================
-			if (tplModel["leftPanel"]) {
-				var panId = tplModel["leftPanel"];
-				var panModel = $.extend (
-					{
-						"_pageId" : pageId,
+				// Foreign subtemplates ids:
+				// =========================
+				var mainHeaderTpl = headers[tplModel.headerId];
+				var mainContentTpl = contents[tplModel.contentId];
+				var mainFooterTpl = footers[tplModel.footerId];
+
+				// Build specific model:
+				// =====================
+				var model = $.extend(
+					{}, // Start with empty object to avoid overidding.
+					lang.model.pages[pageId], // Add page's model.
+					{ // And some parameters..
+						"_pageId": pageId,
 						"_global": lang.model.global,
-					},
-					lang.model.panels[panId]
+					}
 				);
-				model["_leftPanel"] = panels[tplModel["leftPanel"]](panModel);
+
+				// Add properly rendered panels:
+				// =============================
+				if (tplModel["leftPanel"]) {
+					var panId = tplModel["leftPanel"];
+					var panModel = $.extend (
+						{
+							"_pageId" : pageId,
+							"_global": lang.model.global,
+						},
+						lang.model.panels[panId]
+					);
+					model["_leftPanel"] = panels[tplModel["leftPanel"]](panModel);
+				};
+				/// Other panels...
+
+				// Add properly rendered foreign subtemplates:
+				// ===========================================
+				if (typeof mainHeaderTpl == 'function') model["_header"] = mainHeaderTpl(model);
+				if (typeof mainContentTpl == 'function') model["_content"] = mainContentTpl(model);
+				if (typeof mainFooterTpl == 'function') model["_footer"] = mainFooterTpl(model);
+
+				// Add properly rendered popups:
+				// =============================
+				var pagePopups = {};
+				for (var i in tplModel.popups) {
+					var popId = tplModel.popups[i];
+					pagePopups[popId] = popups[popId](model);
+				}
+				model["_popups"] = pagePopups;
+
+
+				// Render page:
+				// ============
+				var html = mainTemplate(model);
+				pageContainer.append(html);
+
+				/*/ Debugging stuff...
+				console.log ("===========================");
+				console.log("pageId", pageId);
+				console.log("model", model);
+				console.log ("---------------------------");
+				console.log (html);
+				console.log ("===========================");
+				//*/
+
 			};
-			/// Other panels...
 
-			// Add properly rendered foreign subtemplates:
-			// ===========================================
-			if (typeof mainHeaderTpl == 'function') model["_header"] = mainHeaderTpl(model);
-			if (typeof mainContentTpl == 'function') model["_content"] = mainContentTpl(model);
-			if (typeof mainFooterTpl == 'function') model["_footer"] = mainFooterTpl(model);
+			// Run shims:
+			// ==========
+			shim(pageContainer);
 
-			// Add properly rendered popups:
-			// =============================
-			var pagePopups = {};
-			for (var i in tplModel.popups) {
-				var popId = tplModel.popups[i];
-				pagePopups[popId] = popups[popId](model);
-			}
-			model["_popups"] = pagePopups;
+			// Run controllers:
+			// ================
+			ctrl.run(pageContainer);
 
+			// Startup page:
+			if (config.validated) {
+				// Normal usage:
+				pageContainer.pagecontainer( "change", "#activitys");
+			} else {
+				// First usage:
+				pageContainer.pagecontainer( "change", "#home");
+			};
 
-			// Render page:
-			// ============
-			var html = mainTemplate(model);
-			pageContainer.append(html);
+		};//}}}
 
-			/*/ Debugging stuff...
-			console.log ("===========================");
-			console.log("pageId", pageId);
-			console.log("model", model);
-			console.log ("---------------------------");
-			console.log (html);
-			console.log ("===========================");
-			//*/
+		appRender();
 
-		};
-
-		// Run shims:
-		// ==========
-		shim(pageContainer);
-
-		// Run controllers:
-		// ================
-		ctrl.run(pageContainer);
-
-		// Startup page:
-		if (config.validated) {
-			// Normal usage:
-			pageContainer.pagecontainer( "change", "#activitys");
-		} else {
-			// First usage:
-			pageContainer.pagecontainer( "change", "#home");
-		};
-
+		pageContainer.on("reload", appRender);
 
 	});
 

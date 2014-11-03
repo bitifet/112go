@@ -62,7 +62,7 @@ define({
 			title: "Activitats",
 			edit: "Editar",
 			checkin: "Som aquí",
-			list: "Lista",
+			list: "Llista",
 			notifications: "Notificacions",
 			nextMilestone: "Propera fita",
 			newActivity: "Nova",
@@ -104,7 +104,7 @@ define({
 					recAlwaysLbl: "Recalcular sempre",
 					recAlwaysDesc: "En iniciar l'activitat o marcar una fita, el dia i hora de les següents fites s'actualitzaran proporcionalment",
 					recNeverLbl: "No recalcular mai",
-					recNeverDesc: "Els dies i hores de es fites no es recalcularan mai",
+					recNeverDesc: "Els dies i hores de les fites no es recalcularan mai",
 				},
 				title: "Ruta",
 				start: "Inici",
@@ -125,7 +125,7 @@ define({
 			},//}}}
 		},//}}}
 		actCheckpoint: {//{{{
-			title: "Punt",
+			title: "Fita",
 			select: "Sel·leccioni",
 			description: "Descripció del lloc",
 			dayNumber: "Dia",
@@ -136,19 +136,6 @@ define({
 			remove: "Eliminar",
 			map: "Mapa",
 			here: "Aquí",
-		},//}}}
-		actVehicles: {//{{{
-			title: "Vehicles",
-			trademark: "Marca",
-			model: "Model",
-			plate: "Matrícula",
-			colour: "Color",
-			comments: "Observacions",
-		},//}}}
-		actVehicle: {//{{{
-			title: "Vehicle",
-			add: "Afegir",
-			remove: "Eliminar",
 		},//}}}
 	},
 });
