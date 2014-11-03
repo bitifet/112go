@@ -46,6 +46,16 @@ define([
 	ctrl
 ) {
 
+	var pageContainer;
+
+	$(document).on("menubutton", function() {
+		// I can do it better... :-P
+		var page = $.mobile.activePage;
+		var menu = page.data("menu");
+		if (menu) $(menu, page).panel("toggle"); 
+	});
+
+
 	var config = { // FIXME: Link to local storage config data.
 	};
 
@@ -87,7 +97,7 @@ define([
 
 	$(function(){
 
-		var pageContainer = $(":mobile-pagecontainer");
+		pageContainer = $(":mobile-pagecontainer");
 
 		function appRender () {//{{{
 
@@ -183,6 +193,9 @@ define([
 		appRender();
 
 		pageContainer.on("reload", appRender);
+
+
+
 
 	});
 
