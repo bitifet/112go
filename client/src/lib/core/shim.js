@@ -62,7 +62,7 @@ define([
 			var min = parseInt(input.attr("min"));
 			var max = parseInt(input.attr("max"));
 			var step = parseInt(input.attr("step"));
-			if (step === undefined) step = 1;
+			if (isNaN(step)) step = 1;
 			input.on("swipe", function (e) {
 				// Event:
 				var start = e.swipestart.coords

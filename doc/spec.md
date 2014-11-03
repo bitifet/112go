@@ -111,6 +111,16 @@ Les següents son vàries de les funcionalitats que es podríen arribar a implem
   enviant-se a la sala totes les dades recollides fins aleshores, inclosa la
   posició en l'instant de la telefonada.
 
+  * Aiximateix, quan es realitzi la integració del servidor amb els sistemes
+  del SEIB112, aquest es comunicarà amb el sistema d'ANI (Informació de
+  telefonades entrants) del centre de manera que aquest conegui en tot moment
+  tots els números de telèfon dels participants en l'actifitat de forma que, en
+  cas de rebre's al centre una telefonada des de qualsevol d'ells (fins i tot
+  telèfons, ja siguin o no smartphones, que no disposin de l'aplicació
+  instal·lada), s'activi automàticament l'estat d'incidència i s'enviin totes
+  les dades pertinents a la sala perquè els operadors disposin des del primer
+  moment de tota la informació recollida.
+
   * Notificacions des del centre d'emergències als usuaris: Disposant de la
   posició i la ruta prevista dels excursionistes, es podría alertar aquests
   d'incidències o fenòmens, com ara incendis declarats en zones pròximes, que
@@ -324,6 +334,8 @@ Es podràn emplenar les següents dades:
   - Model.
   - Color.
   - Observacions.
+
+NOTA: De moment no s'implementarà. És aquí perquè apareixia al formuari original. Però disposant de coordenades gps de la posició dels participants, a priori s'entén que aquesta informació ja no és necessària.
 
 
 Arquitectura:
