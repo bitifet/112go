@@ -54,9 +54,9 @@ define([
 
 
 	return {
-		type: "footer",
 		id: "home",
-		run: function homeRun (target) {
+		run: function homeRun (container) {
+			var target = $("div#homeFooter", container);
 			implementLangSelector($("select.langSelector", target));
 			implementAppCheckin($("a.appCheckin", target));
 		},

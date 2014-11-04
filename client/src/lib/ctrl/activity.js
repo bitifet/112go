@@ -1,4 +1,4 @@
-// lib/core/ctrl.js (about & copyright) //{{{
+// lib/ctrl/activity.js (about & copyright) //{{{
 /* ------------------------------------
  * 112go - Risky activitys tracking app
  * ------------------------------------
@@ -35,36 +35,32 @@
  *///}}}
 "use strict";
 define([
-	'ctrl/home',
-	'ctrl/userProfile',
-	'ctrl/activity',
 ], function (
 ) {
-	var ctrl = {};
 
-	// Load all controllers://{{{
-	for (
-		var i = 0; // Number of non controller depnedencys (at begining)
-		i < arguments.length;
-		i++
-	) { 
-		var src = arguments[i];
-		if (src.id === undefined) throw "Controller must have an id.";
-		if (ctrl[src.id] !== undefined) throw "Duplicated controller: " + src.id;
-		ctrl[src.id] = src;
+	function enhaceTypeSelector(target) {//{{{
+		var select = $("select[data-id=typeselector]", target);
+		var input = $("input[name=type]", target);
+		function update(){
+			var v = select.val();
+			if (v == "other") {
+				input.val("").show();
+			} else {
+				input.val(v).hide();
+			};
+		};
+		update();
+		select.on("change", update);
 	};//}}}
 
+	return {
+		id: "activity",
+		run: function userProfileRun (container) {
+			var target = $("div#activity", container);
 
-	var masterCtrl = {
-		run: function runControllers(pageContainer) {
-
-			// Run all specialyzed controlers:
-			for (var ctrlId in ctrl) {
-				ctrl[ctrlId].run(pageContainer);
-			};
+			enhaceTypeSelector($("div#actGeneral", target));
 
 		},
 	};
 
-	return masterCtrl;
 });

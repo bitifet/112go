@@ -151,25 +151,31 @@
 	<div data-role="main" class="ui-content">
 		<div class="tab" id="actGeneral"><!--{{{-->
 			<ul data-role="listview">
-				<li><select>
+				<li><select data-id="typeselector">
 					<option value="" selected disabled>{{gral.activityType}}</option>
-					<option>{{gral.type.hiking}}</option>
-					<option>{{gral.type.climbing}}</option>
-					<option>{{gral.type.torrents}}</option>
-					<option>{{gral.type.speleology}}</option>
-					<option>{{gral.type.mountainBike}}</option>
-					<option>{{gral.type.riding}}</option>
-					<option>{{gral.type.other}}</option>
-				</select>
-				<input type="hidden" placeholder={{gral.otherTypeSpecify}}></input>
-				</li>
-				<li><input placeholder="{{gral.description}}" type="text"></input></li>
+					<option value="hiking">{{gral.type.hiking}}</option>
+					<option value="climbing">{{gral.type.climbing}}</option>
+					<option value="torrents">{{gral.type.torrents}}</option>
+					<option value="speleology">{{gral.type.speleology}}</option>
+					<option value="mountainbike">{{gral.type.mountainBike}}</option>
+					<option value="riding">{{gral.type.riding}}</option>
+					<option value="other">{{gral.type.other}}</option>
+				</select><input
+					name="type" type="text"
+					placeholder={{gral.otherTypeSpecify}}
+				></input></li>
 				<li><input
-					class="fixit"
-					type="date"
+					name="description" type="text"
+					placeholder="{{gral.description}}"
+				></input></li>
+				<li><input
+					name="date" type="date"
 					placeholder="{{gral.activityDate}}"
 					></input></li>
-				<li><textarea name="comments" rows="5" placeholder="{{gral.comments}}"></textarea></li>
+				<li><textarea
+					name="comments"
+					placeholder="{{gral.comments}}"
+				></textarea></li>
 			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actRoute"><!--{{{-->
