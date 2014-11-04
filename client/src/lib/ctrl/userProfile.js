@@ -38,15 +38,132 @@ define([
 ], function (
 ) {
 
+	var actions = {};
+	var inputs; 
+	var controls = {};
+
+	function enhaceActions(target) {//{{{
+		$(".action", target).each(function(){
+			var action=$(this);
+			var fn = action.data("action");
+			actions[fn] = action;
+			action.on("vclick", function(){
+				if (typeof controls[fn] == 'function') {
+					controls[fn](exportForm());
+				};
+			});
+		});
+	};//}}}
+
+	function indexInputs(target) {//{{{
+		inputs = {
+			public: {},
+			private: {},
+		};
+		function enhace (placeholder, target) {
+			target.each(function(){
+				var input = $(this);
+				var id = input.attr("name");
+				placeholder[id]=input;
+			});
+		};
+		enhace(inputs.public, $("div#userPublicProfile :input", target));
+		enhace(inputs.private, $("div#userPrivateProfile :input", target));
+
+	};//}}}
+
+
+	function clearForm () {
+		for (var i in inputs) {
+			for (var fname in inputs[i]) {
+				inputs[i][fname].val("");
+			};
+		};
+	};
+
+
+	function importForm (//{{{
+		data0,
+		saveCbk,
+		removeCbk
+	) {
+		var data = $.extend({}, data0);
+		for (var i in inputs) {
+			if (data[i] === undefined) data[i] = {};
+			for (var fname in inputs[i]) {
+				var input = inputs[i][fname];
+				input.val(data[i][fname]);
+			};
+		};
+		controls = {
+			save: saveCbk,
+			remove: removeCbk
+		};
+	};//}}}
+
+	function exportForm() {//{{{
+		var data = {};
+		for (var i in inputs) {
+			data[i] = {};
+			for (var fname in inputs[i]) {
+				var input = inputs[i][fname];
+				if (! input.hasClass("disabled")) {
+					data[i][fname] = input.val();
+				};
+			};
+		};
+		return data;
+	};//}}}
+
+
+
+
+	var editSelfProfile = (function implementSelfProfile() {
+
+		// Initialyze / load user profile
+		try {
+			var myProfile = JSON.parse(localStorage.getItem("userProfile"));
+			if (myProfile === null) throw "Empty";
+		} catch (e) {
+			var myProfile = {};
+		};
+
+
+		function saveProfile(prof) {
+			delete prof.public.role;
+			myProfile = prof;
+			localStorage.setItem("userProfile", JSON.stringify(myProfile));
+			inputs.public.role.closest("li").show();
+			actions.remove.show();
+			clearForm();
+		};
+
+
+		return function edit() {
+			inputs.public.role.closest("li").hide();
+			actions.remove.hide();
+			importForm(
+				myProfile,
+				saveProfile
+			);
+		};
+
+	})();
+
+
+
 
 	return {
 		id: "userProfile",
 		run: function userProfileRun (container) {
 			var target = $("div#userProfile", container);
-
-			// ....
-
+			indexInputs(container);
+			enhaceActions(container);
 		},
+
+		load: importForm,
+
+		editSelf: editSelfProfile,
 	};
 
 });

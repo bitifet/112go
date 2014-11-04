@@ -36,8 +36,10 @@
 "use strict";
 define([
 	'core/lang',
+	'ctrl/userProfile',
 ], function (
-	lang
+	lang,
+	userProfile
 ) {
 
 	function implementLangSelector (langsel) {
@@ -47,6 +49,7 @@ define([
 			langsel.trigger("reload");
 		});
 	};
+
 
 	function implementAppCheckin(beginButton) {
 		///beginButton.css({background: "#ffff00"});
@@ -58,6 +61,7 @@ define([
 		run: function homeRun (container) {
 			var target = $("div#homeFooter", container);
 			implementLangSelector($("select.langSelector", target));
+			$(".action[data-action=edituserprofile]", target).on("vclick", userProfile.editSelf);
 			implementAppCheckin($("a.appCheckin", target));
 		},
 	};

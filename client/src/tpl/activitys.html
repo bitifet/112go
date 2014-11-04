@@ -186,7 +186,10 @@
 							<h3>Dia i hora:</h3>
 						</div>
 						<div class="ui-block-b">
-							<select class="switcher" data-id="routeTimingRecalc">
+							<select
+								name="timingRecalc"
+								class="switcher" data-id="routeTimingRecalc"
+							>
 								<option value="start">{{route.timing.recStartLbl}}</option>
 								<option value="always">{{route.timing.recAlwaysLbl}}</option>
 								<option value="never">{{route.timing.recNeverLbl}}</option>
@@ -201,7 +204,7 @@
 				</li>
 			</ul>
 			<ul data-role="listview">
-				<li data-role="list-divider"><span>{{route.day}}</span><span>1</span></li>
+				<li id="milestoneList" data-role="list-divider"><span>{{route.day}}</span><span>1</span></li>
 				<li>
 					<a href="#actCheckpoint">
 					<h3>{{route.start}}:</h3>

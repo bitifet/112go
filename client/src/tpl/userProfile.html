@@ -32,7 +32,7 @@
 	<div data-role="main" class="ui-content">
 		<div class="tab" data-title="{{pub.title}}" id="userPublicProfile"><!--{{{-->
 			<ul data-role="listview">
-				<li><select>
+				<li><select name="role">
 						<option value="" disabled selected>{{pub.role}}</option>
 						<option>{{pub.roles.pguide}}</option>
 						<option>{{pub.roles.aguide}}</option>
@@ -41,11 +41,11 @@
 						<option>{{pub.roles.novice}}</option>
 						<option>{{pub.roles.contact}}</option>
 				</select></li>
-				<li><input placeholder="{{phone}}" type="text"></input></li>
-				<li><input placeholder="{{name}}" type="text"></input></li>
-				<li><input placeholder="{{surname}}" type="text"></input></li>
-				<li><input placeholder="{{birthDate}}" type="text"></input></li>
-				<li><input placeholder="{{comments}}" type="text"></input></li>
+				<li><input name="tel" placeholder="{{phone}}" type="tel"></input></li>
+				<li><input name="name" placeholder="{{name}}" type="text"></input></li>
+				<li><input name="surname" placeholder="{{surname}}" type="text"></input></li>
+				<li><input name="birthdate" placeholder="{{birthDate}}" type="date"></input></li>
+				<li><input name="comments" placeholder="{{comments}}" type="text"></input></li>
 			</ul>
 		</div><!--}}}-->
 		<div class="tab" data-title="{{priv.title}}" id="userPrivateProfile"><!--{{{-->
@@ -54,11 +54,11 @@
 					data-rel="popup"
 					class="ui-btn ui-icon-info ui-btn-icon-left"
 				>{{priv.whatsThis}}</a></li>
-				<li><input placeholder="{{phone}}" type="text"></input></li>
-				<li><input placeholder="{{name}}" type="text"></input></li>
-				<li><input placeholder="{{surname}}" type="text"></input></li>
-				<li><input placeholder="{{birthDate}}" type="text"></input></li>
-				<li><input placeholder="{{comments}}" type="text"></input></li>
+				<li><input name="tel" placeholder="{{phone}}" type="tel"></input></li>
+				<li><input name="name" placeholder="{{name}}" type="text"></input></li>
+				<li><input name="surname" placeholder="{{surname}}" type="text"></input></li>
+				<li><input name="birthdate" placeholder="{{birthDate}}" type="date"></input></li>
+				<li><input name="comments" placeholder="{{comments}}" type="text"></input></li>
 			</ul>
 		</div><!--}}}-->
 	</div>

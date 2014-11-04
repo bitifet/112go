@@ -61,7 +61,7 @@
 			<option value="de">German</option>
 		</select>
 		</li>
-		<li><a href="#userProfile">{{userProfile}}</a></li>
+		<li><a class="action" data-action="edituserprofile" href="#userProfile">{{userProfile}}</a></li>
 		<li><a class="appCheckin" href="#activitys">{{start}}</a></li>
 		</ul>
 		</div>
@@ -81,14 +81,14 @@
 <div class="ui-footer" data-role="footer" data-position="fixed">
 	<ul class="ui-grid-b">
 		<li class="ui-block-a">
-			<a class="ui-btn ui-icon-minus ui-btn-icon-top"
+			<a data-action="remove" class="action ui-btn ui-icon-minus ui-btn-icon-top"
 				data-rel="back" href="#">
 			{{_global.remove}}</a>
 		</li>
 		<li class="ui-block-b">
 		</li>
 		<li class="ui-block-c">
-			<a class="ui-btn ui-icon-check ui-btn-icon-top"
+			<a data-action="save" class="action ui-btn ui-icon-check ui-btn-icon-top"
 				data-rel="back" href="#">
 			{{_global.save}}</a>
 		</li>
