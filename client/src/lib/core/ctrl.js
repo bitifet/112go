@@ -35,14 +35,15 @@
  *///}}}
 "use strict";
 define([
-	'ctrl/home',
+	'ctrl/welcome',
 	'ctrl/userProfile',
 	'ctrl/activity',
 ], function (
 ) {
 	var ctrl = {};
+	var actions = {};
 
-	// Load all controllers://{{{
+	// Load all controllers and actions://{{{
 	for (
 		var i = 0; // Number of non controller depnedencys (at begining)
 		i < arguments.length;
@@ -52,7 +53,19 @@ define([
 		if (src.id === undefined) throw "Controller must have an id.";
 		if (ctrl[src.id] !== undefined) throw "Duplicated controller: " + src.id;
 		ctrl[src.id] = src;
+		if (typeof src.actions == "object") {
+			for (var actionId in src.actions) {
+				if (actions[actionId] !== undefined) throw "Duplicated action handler: " + actionId;
+				actions[actionId] = src.actions[actionId];
+			};
+		};
 	};//}}}
+
+
+	function unimplementedAction(target, actionId) {
+		console.log ("Unimplemented action: " + actionId);
+		console.log ("Target: ", target);
+	};
 
 
 	var masterCtrl = {
@@ -62,6 +75,19 @@ define([
 			for (var ctrlId in ctrl) {
 				ctrl[ctrlId].run(pageContainer);
 			};
+
+
+			// Link actions:
+			$(".action", pageContainer).on("vclick", function(e) {
+				var target = $(this);
+				var actionId = target.data("action");
+				var cbk = actions[actionId];
+				if (typeof cbk == "function") {
+					cbk(target, actionId, e);
+				} else {
+					unimplementedAction(target, actionId);
+				};
+			});
 
 		},
 	};

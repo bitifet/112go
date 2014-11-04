@@ -16,13 +16,14 @@ define({
 	panels: {
 		menu: {//{{{
 			home: "Inici",
+			welcomePage: "Benvinguda",
 			personalData: "Dades Personals",
 			gpsConfig: "Configuració GPS",
 			positionTrack: "Enviament de coordenades",
 		},//}}}
 	},
 	pages: {
-		home: {//{{{
+		welcome: {//{{{
 			title: "112go",
 			welcome: "Benvinguts",
 			selectLanguage: "Sel·leccioni l'idioma",

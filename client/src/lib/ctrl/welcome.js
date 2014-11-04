@@ -1,4 +1,4 @@
-// lib/ctrl/home.js (about & copyright) //{{{
+// lib/ctrl/welcome.js (about & copyright) //{{{
 /* ------------------------------------
  * 112go - Risky activitys tracking app
  * ------------------------------------
@@ -57,11 +57,10 @@ define([
 
 
 	return {
-		id: "home",
-		run: function homeRun (container) {
-			var target = $("div#homeFooter", container);
+		id: "welcome",
+		run: function welcomeRun (container) {
+			var target = $("div#welcomeFooter", container);
 			implementLangSelector($("select.langSelector", target));
-			$(".action[data-action=edituserprofile]", target).on("vclick", userProfile.editSelf);
 			implementAppCheckin($("a.appCheckin", target));
 		},
 	};

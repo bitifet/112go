@@ -7,8 +7,9 @@
 <div data-role="panel" id="{{_pageId}}_menu">
 	<ul data-role="listview">
 		<li data-role="list-divider">&nbsp;</li>
-		<li><a href="#home">{{home}}</a></li>
-		<li><a href="#userProfile">{{personalData}}</a></li>
+		<li><a href="#welcome">{{welcomePage}}</a></li>
+		<li><a href="#activitys">{{home}}</a></li>
+		<li><a class="action" data-action="editUserProfile" href="#userProfile">{{personalData}}</a></li>
 		<li><a href="#">{{gpsConfig}}</a></li>
 		<li><a href="#">{{positionTrack}}</a></li>
 	</ul>
@@ -21,8 +22,9 @@
 <script id="default_header_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
+{{{_leftPanel}}}
 <div class="ui-header" data-role="header" data-position="fixed">
-	<a class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-icon-notext" href="#activitys">{{_global.home}}</a>
+	<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 	<h1>{{title}}</h1>
 	<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
 		data-rel="back" href="#">{{_global.back}}</a>
@@ -31,13 +33,12 @@
 
 
 
-<!-- Home Page -->
+<!-- Welcome Page -->
 
-<script id="home_page_tpl"<!--{{{-->
-	data-leftPanel="menu"
+<script id="welcome_page_tpl"<!--{{{-->
 	type="text/x-handlebars-template"
 >
-<div data-role="page" id="home" style="background:#ffffff">
+<div data-role="page" id="welcome" style="background:#ffffff">
 	<div class="ui-header" data-role="header" data-position="fixed">
 		<p>
 		<img src="img/112go.jpg" alt="{{title}}" stye="vertical-align:bottom;float:left" />
@@ -49,7 +50,7 @@
 	{{{_tpl.welcome}}}
 	</div>
 
-	<div data-role="footer" id="homeFooter" class="ui-footer" data-position="fixed">
+	<div data-role="footer" id="welcomeFooter" class="ui-footer" data-position="fixed">
 		<div class="ui-controlgroup">
 		<ul data-role="listview">
 		<li>
@@ -61,7 +62,7 @@
 			<option value="de">German</option>
 		</select>
 		</li>
-		<li><a class="action" data-action="edituserprofile" href="#userProfile">{{userProfile}}</a></li>
+		<li><a class="action" data-action="editUserProfile" href="#userProfile">{{userProfile}}</a></li>
 		<li><a class="appCheckin" href="#activitys">{{start}}</a></li>
 		</ul>
 		</div>
@@ -81,14 +82,14 @@
 <div class="ui-footer" data-role="footer" data-position="fixed">
 	<ul class="ui-grid-b">
 		<li class="ui-block-a">
-			<a data-action="remove" class="action ui-btn ui-icon-minus ui-btn-icon-top"
+			<a data-control="remove" class="control ui-btn ui-icon-minus ui-btn-icon-top"
 				data-rel="back" href="#">
 			{{_global.remove}}</a>
 		</li>
 		<li class="ui-block-b">
 		</li>
 		<li class="ui-block-c">
-			<a data-action="save" class="action ui-btn ui-icon-check ui-btn-icon-top"
+			<a data-control="save" class="control ui-btn ui-icon-check ui-btn-icon-top"
 				data-rel="back" href="#">
 			{{_global.save}}</a>
 		</li>

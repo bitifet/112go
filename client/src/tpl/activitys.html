@@ -7,7 +7,7 @@
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
-<div data-role="page" data-menu="#activitys_menu" id="activitys">
+<div data-role="page" id="activitys">
 	{{{_leftPanel}}}
 	<div
 	class="ui-header" data-role="header" data-position="fixed">
@@ -130,13 +130,14 @@
 
 
 <script id="activity_page_tpl"<!--{{{-->
-	data-header="activity"
 	data-footer="saveRemove"
+	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
 <div data-role="page" id="activity">
+{{{_leftPanel}}}
 	<div class="ui-header" data-role="header" data-position="fixed"><!--{{{-->
-		<a class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-icon-notext" href="#activitys">{{_global.homePage}}</a>
+		<a class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext" href="#{{_pageId}}_menu">{{_global.menu}}</a>
 		<h1>{{title}}</h1>
 		<a class="ui-btn ui-icon-arrow-l ui-btn-icon-right ui-btn-icon-notext"
 			data-rel="back" href="#">{{_global.back}}</a>
@@ -243,7 +244,7 @@
 					<h3>{{members.guides}}</h3>
 					<ul data-role="listview">
 						<li>
-							<a data-action="" href="#userPublicProfile">Tomeu</a>
+							<a href="#userPublicProfile">Tomeu</a>
 						</li>
 					</ul>
 					<div class="ui-grid-a ui-grid-7030">

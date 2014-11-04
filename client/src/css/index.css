@@ -2,18 +2,18 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */ }
 
-div#home div.ui-header, div#home div.ui-contents, div#home div.ui-footer {
+div#welcome div.ui-header, div#welcome div.ui-contents, div#welcome div.ui-footer {
   background: #ffffff !important;
   border: #ffffff 0px; }
-div#home div.ui-header {
+div#welcome div.ui-header {
   padding-left: 1em; }
-div#home div.ui-btn {
+div#welcome div.ui-btn {
   margin: 0px !important;
   width: 100%;
   text-align: left; }
-  div#home div.ui-btn option {
+  div#welcome div.ui-btn option {
     text-align: left; }
-div#home div.ui-select, div#home li.first-child, div#home .ui-body-inherit {
+div#welcome div.ui-select, div#welcome li.first-child, div#welcome .ui-body-inherit {
   margin: 0px !important;
   padding: 0px !important; }
 

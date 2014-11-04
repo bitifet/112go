@@ -38,16 +38,16 @@ define([
 ], function (
 ) {
 
-	var actions = {};
+	var buttons = {};
 	var inputs; 
 	var controls = {};
 
 	function enhaceActions(target) {//{{{
-		$(".action", target).each(function(){
-			var action=$(this);
-			var fn = action.data("action");
-			actions[fn] = action;
-			action.on("vclick", function(){
+		$(".control", target).each(function(){
+			var control=$(this);
+			var fn = control.data("control");
+			buttons[fn] = control;
+			control.on("vclick", function(){
 				if (typeof controls[fn] == 'function') {
 					controls[fn](exportForm());
 				};
@@ -73,14 +73,13 @@ define([
 	};//}}}
 
 
-	function clearForm () {
+	function clearForm () {//{{{
 		for (var i in inputs) {
 			for (var fname in inputs[i]) {
 				inputs[i][fname].val("");
 			};
 		};
-	};
-
+	};//}}}
 
 	function importForm (//{{{
 		data0,
@@ -116,9 +115,7 @@ define([
 	};//}}}
 
 
-
-
-	var editSelfProfile = (function implementSelfProfile() {
+	var editSelfProfile = (function implementSelfProfile() {//{{{
 
 		// Initialyze / load user profile
 		try {
@@ -128,27 +125,26 @@ define([
 			var myProfile = {};
 		};
 
-
-		function saveProfile(prof) {
+		function saveProfile(prof) {//{{{
 			delete prof.public.role;
 			myProfile = prof;
 			localStorage.setItem("userProfile", JSON.stringify(myProfile));
 			inputs.public.role.closest("li").show();
-			actions.remove.show();
+			buttons.remove.show();
 			clearForm();
-		};
+		};//}}}
 
-
-		return function edit() {
+		return function edit() {//{{{
+	$(document).trigger("menubutton");
 			inputs.public.role.closest("li").hide();
-			actions.remove.hide();
+			buttons.remove.hide();
 			importForm(
 				myProfile,
 				saveProfile
 			);
-		};
+		};//}}}
 
-	})();
+	})();//}}}
 
 
 
@@ -163,7 +159,9 @@ define([
 
 		load: importForm,
 
-		editSelf: editSelfProfile,
+		actions: {
+			editUserProfile: editSelfProfile,
+		},
 	};
 
 });

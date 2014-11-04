@@ -51,10 +51,9 @@ define([
 	$(document).on("menubutton", function() {
 		// I can do it better... :-P
 		var page = $.mobile.activePage;
-		var menu = page.data("menu");
-		if (menu) $(menu, page).panel("toggle"); 
+		var menu = $('#'+page.attr("id")+"_menu", page);
+		if(menu.length) menu.panel("toggle"); 
 	});
-
 
 	var config = { // FIXME: Link to local storage config data.
 	};
@@ -187,7 +186,7 @@ define([
 				pageContainer.pagecontainer( "change", "#activitys");
 			} else {
 				// First usage:
-				pageContainer.pagecontainer( "change", "#home");
+				pageContainer.pagecontainer( "change", "#welcome");
 			};
 
 		};//}}}

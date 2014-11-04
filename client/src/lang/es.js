@@ -15,6 +15,7 @@ define({
 	},
 	panels: {
 		menu: {//{{{
+			welcomePage: "Bienvenida",
 			home: "Inicio",
 			personalData: "Datos Personales",
 			gpsConfig: "Configuración GPS",
@@ -22,7 +23,7 @@ define({
 		},//}}}
 	},
 	pages: {
-		home: {//{{{
+		welcome: {//{{{
 			title: "112go",
 			welcome: "Bienvenidos",
 			selectLanguage: "Seleccione su idioma",
