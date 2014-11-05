@@ -69,6 +69,7 @@ define([
 		};
 	};//}}}
 
+
 	function unimplementedAction(target, actionId) {
 		console.log ("Unimplemented action: " + actionId);
 		console.log ("Target: ", target);
@@ -83,10 +84,16 @@ define([
 				ctrl[ctrlId].run(pageContainer);
 			};
 
-			function actionHandler (e) {//{{{
-				var target = $(this);
-				var pageId = pageContainer.pagecontainer("getActivePage").attr("id");
-				var actionId = target.data("action");
+			function actionHandler (e, data) {//{{{
+				if (typeof this == "string") {
+					var target = null;
+					var actionId = String(this);
+					var pageId = data;
+				} else {
+					var target = $(this);
+					var actionId = target.data("action");
+					var pageId = pageContainer.pagecontainer("getActivePage").attr("id");
+				};
 				if ( // Page specialyzed action.//{{{
 					actions[pageId] !== undefined
 					&& typeof actions[pageId][actionId] == "function"
@@ -111,6 +118,33 @@ define([
 
 			// Link actions:
 			$(".action", pageContainer).on("vclick", actionHandler);
+
+			///window.onpopstate = function (e) {
+			///	actionHandler.apply("back", e); // Triggers ONLY on __forward__ WTF!!!!!
+			///};
+
+
+			(function backDetection() {
+				var currentPageId;
+				var oldPageId;
+				$(document).on("pageshow", function(event) {
+					oldPageId = currentPageId;
+					currentPageId = $(event.target).attr("id");
+				});
+				$(window).on("navigate", function (event, data) {
+					var direction = data.state.direction;
+					if (direction == 'back') {
+						actionHandler.apply("back", [event, oldPageId]);
+					}
+					if (direction == 'forward') {
+						// do something else
+					}
+				});
+			})();
+
+
+
+
 
 		},
 	};

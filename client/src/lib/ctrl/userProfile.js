@@ -74,11 +74,9 @@ define([
 
 
 	function clearForm () {//{{{
-		for (var i in inputs) {
-			for (var fname in inputs[i]) {
-				inputs[i][fname].val("");
-			};
-		};
+		importForm({});
+		inputs.public.role.closest("li").show();
+		buttons.remove.show();
 	};//}}}
 
 	function importForm (//{{{
@@ -129,8 +127,6 @@ define([
 			delete prof.public.role;
 			myProfile = prof;
 			localStorage.setItem("userProfile", JSON.stringify(myProfile));
-			inputs.public.role.closest("li").show();
-			buttons.remove.show();
 			clearForm();
 		};//}}}
 
@@ -160,6 +156,7 @@ define([
 
 		actions: {
 			editUserProfile: ['*', editSelfProfile],
+			back: clearForm,
 		},
 	};
 
