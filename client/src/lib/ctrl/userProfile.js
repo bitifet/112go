@@ -38,22 +38,15 @@ define([
 ], function (
 ) {
 
-	var buttons = {};
 	var inputs; 
 	var controls = {};
+	var removeButton;
 
-	function enhaceActions(target) {//{{{
-		$(".control", target).each(function(){
-			var control=$(this);
-			var fn = control.data("control");
-			buttons[fn] = control;
-			control.on("vclick", function(){
-				if (typeof controls[fn] == 'function') {
-					controls[fn](exportForm());
-				};
-			});
-		});
-	};//}}}
+
+	function ctrlHandler(actionId, target, e) {
+		if (typeof controls[actionId] == 'function') controls[actionId](exportForm());
+	};
+
 
 	function indexInputs(target) {//{{{
 		inputs = {
@@ -73,10 +66,10 @@ define([
 	};//}}}
 
 
-	function clearForm () {//{{{
+	function clearForm (e) {//{{{
 		importForm({});
 		inputs.public.role.closest("li").show();
-		buttons.remove.show();
+		removeButton.show();
 	};//}}}
 
 	function importForm (//{{{
@@ -134,7 +127,7 @@ define([
 
 		return function edit() {//{{{
 			inputs.public.role.closest("li").hide();
-			buttons.remove.hide();
+			removeButton.hide();
 			importForm(
 				myProfile,
 				saveProfile
@@ -150,15 +143,20 @@ define([
 		id: "userProfile",
 		run: function userProfileRun (container) {
 			var target = $("div#userProfile", container);
+			removeButton = $(".action[data-action=remove]", container);
 			indexInputs(container);
-			enhaceActions(container);
 		},
 
 		load: importForm,
 
 		actions: {
 			editUserProfile: ['*', editSelfProfile],
-			back: clearForm,
+			save: ctrlHandler,
+			remove: ctrlHandler,
+			back: function backAction(actionId, target, e) {
+				//// :-) e.preventDefault();
+				clearForm();
+			},
 		},
 	};
 

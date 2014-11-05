@@ -70,7 +70,7 @@ define([
 	};//}}}
 
 
-	function unimplementedAction(target, actionId) {
+	function unimplementedAction(actionId, target, event) {
 		console.log ("Unimplemented action: " + actionId);
 		console.log ("Target: ", target);
 	};
@@ -79,16 +79,19 @@ define([
 	var masterCtrl = {
 		run: function runControllers(pageContainer) {
 
-			// Run all specialyzed controlers:
+			// Run all specialyzed controlers://{{{
 			for (var ctrlId in ctrl) {
 				ctrl[ctrlId].run(pageContainer);
-			};
+			};//}}}
 
 			function actionHandler (e, data) {//{{{
 				if (typeof this == "string") {
-					var target = null;
+					var target = {
+						from: "#" + data[0],
+						to: "#" + data[1],
+					};
 					var actionId = String(this);
-					var pageId = data;
+					var pageId = data[0];
 				} else {
 					var target = $(this);
 					var actionId = target.data("action");
@@ -109,42 +112,34 @@ define([
 				else { // Unimplemented action.//{{{
 					cbk = unimplementedAction;
 				};//}}}
-				cbk(target, actionId, e);
+				cbk(actionId, target, e);
 			};//}}}
 
-
-
-
-
-			// Link actions:
+			// Link actions://{{{
 			$(".action", pageContainer).on("vclick", actionHandler);
+			//}}}
 
-			///window.onpopstate = function (e) {
-			///	actionHandler.apply("back", e); // Triggers ONLY on __forward__ WTF!!!!!
-			///};
-
-
+			// Implement "back" virtual action://{{{
 			(function backDetection() {
-				var currentPageId;
+				var newPageId;
 				var oldPageId;
-				$(document).on("pageshow", function(event) {
-					oldPageId = currentPageId;
-					currentPageId = $(event.target).attr("id");
+				$(document).on("pageshow", function(e) {
+					oldPageId = newPageId;
+					newPageId = $(e.target).attr("id");
 				});
-				$(window).on("navigate", function (event, data) {
+				$(window).on("navigate", function (e, data) {
+					e.preventDefault=function backRollBack(){
+						window.history.forward();
+					};
 					var direction = data.state.direction;
 					if (direction == 'back') {
-						actionHandler.apply("back", [event, oldPageId]);
+						actionHandler.apply("back", [e, [oldPageId, newPageId]]);
 					}
 					if (direction == 'forward') {
 						// do something else
 					}
 				});
-			})();
-
-
-
-
+			})();//}}}
 
 		},
 	};
