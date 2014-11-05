@@ -159,7 +159,7 @@ define([
 		load: importForm,
 
 		actions: {
-			editUserProfile: editSelfProfile,
+			editUserProfile: ['*', editSelfProfile],
 		},
 	};
 

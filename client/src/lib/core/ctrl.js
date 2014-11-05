@@ -55,12 +55,19 @@ define([
 		ctrl[src.id] = src;
 		if (typeof src.actions == "object") {
 			for (var actionId in src.actions) {
-				if (actions[actionId] !== undefined) throw "Duplicated action handler: " + actionId;
-				actions[actionId] = src.actions[actionId];
+				var actSpec = src.actions[actionId];
+				if (! (actSpec instanceof Array)) actSpec = [[src.id], actSpec]; // Defaults to selfPage action.
+				if (! (actSpec[0] instanceof Array)) actSpec[0] = [actSpec[0]]; // Let to specify single page alone.
+				for (var j in actSpec[0]) {
+					var pageId = actSpec[0][j];
+					if (actions[pageId] === undefined) actions[pageId] = {};
+					if (actions[pageId][actionId] !== undefined) throw "Duplicated action handler: " + actionId;
+					actions[pageId][actionId] = actSpec[1];
+				};
+
 			};
 		};
 	};//}}}
-
 
 	function unimplementedAction(target, actionId) {
 		console.log ("Unimplemented action: " + actionId);
@@ -76,18 +83,34 @@ define([
 				ctrl[ctrlId].run(pageContainer);
 			};
 
+			function actionHandler (e) {//{{{
+				var target = $(this);
+				var pageId = pageContainer.pagecontainer("getActivePage").attr("id");
+				var actionId = target.data("action");
+				if ( // Page specialyzed action.//{{{
+					actions[pageId] !== undefined
+					&& typeof actions[pageId][actionId] == "function"
+				) {
+					var cbk = actions[pageId][actionId];
+				} //}}}
+				else if ( // General action.//{{{
+					actions["*"] !== undefined
+					&& typeof actions["*"][actionId] == "function"
+				) {
+					var cbk = actions["*"][actionId];
+				}//}}}
+				else { // Unimplemented action.//{{{
+					cbk = unimplementedAction;
+				};//}}}
+				cbk(target, actionId, e);
+			};//}}}
+
+
+
+
 
 			// Link actions:
-			$(".action", pageContainer).on("vclick", function(e) {
-				var target = $(this);
-				var actionId = target.data("action");
-				var cbk = actions[actionId];
-				if (typeof cbk == "function") {
-					cbk(target, actionId, e);
-				} else {
-					unimplementedAction(target, actionId);
-				};
-			});
+			$(".action", pageContainer).on("vclick", actionHandler);
 
 		},
 	};
