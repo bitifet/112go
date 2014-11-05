@@ -50,6 +50,9 @@ define([
 					input.on("focus", function(){
 						input.attr("type", iType);
 					});
+					input.on("change", function iReset(){
+						if (input.val() == "") input.attr("type", "text");
+					});
 				});
 			};
 			fixPlaceholders("date");

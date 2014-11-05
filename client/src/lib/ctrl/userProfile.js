@@ -89,7 +89,9 @@ define([
 			if (data[i] === undefined) data[i] = {};
 			for (var fname in inputs[i]) {
 				var input = inputs[i][fname];
-				input.val(data[i][fname]);
+				input.val(data[i][fname])
+					.trigger("change")
+				;
 			};
 		};
 		controls = {
