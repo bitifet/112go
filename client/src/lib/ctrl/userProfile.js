@@ -41,12 +41,11 @@ define([
 	var inputs; 
 	var controls = {};
 	var removeButton;
+	var modified;
 
-
-	function ctrlHandler(actionId, target, e) {
+	function ctrlHandler(actionId, target, e) {//{{{
 		if (typeof controls[actionId] == 'function') controls[actionId](exportForm());
-	};
-
+	};//}}}
 
 	function indexInputs(target) {//{{{
 		inputs = {
@@ -54,6 +53,9 @@ define([
 			private: {},
 		};
 		function enhace (placeholder, target) {
+			target.on("change", function(){
+				modified = true;
+			});
 			target.each(function(){
 				var input = $(this);
 				var id = input.attr("name");
@@ -65,11 +67,11 @@ define([
 
 	};//}}}
 
-
 	function clearForm (e) {//{{{
 		importForm({});
 		inputs.public.role.closest("li").show();
 		removeButton.show();
+		modified = false;
 	};//}}}
 
 	function importForm (//{{{
@@ -87,6 +89,7 @@ define([
 				;
 			};
 		};
+		modified = false;
 		controls = {
 			save: saveCbk,
 			remove: removeCbk
@@ -155,7 +158,15 @@ define([
 			remove: ctrlHandler,
 			back: function backAction(actionId, target, e) {
 				//// :-) e.preventDefault();
-				clearForm();
+				if (modified) {
+					e.preventDefault();
+					// console.log(modified); // FUNNY!!! If uncommented always report true.
+					modified = true; // ...but withot this back prevention only works once!!!
+					// ...seems strange. But remember that previous
+					// preventDefault() call IMPLIES cascading back call ;-)
+				} else {
+					clearForm();
+				};
 			},
 		},
 	};
