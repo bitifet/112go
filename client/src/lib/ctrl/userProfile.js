@@ -135,7 +135,6 @@ define([
 		};//}}}
 
 		return function edit() {//{{{
-	$(document).trigger("menubutton");
 			inputs.public.role.closest("li").hide();
 			buttons.remove.hide();
 			importForm(
