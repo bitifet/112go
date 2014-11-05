@@ -5,6 +5,20 @@
 
 }
 
+.ui-focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+
+h1 {
+	font-size: x-large !important;
+}
+
+li, li *, a, a * {
+	font-size: large !important;
+}
 
 div#welcome {
 

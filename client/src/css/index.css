@@ -2,6 +2,17 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */ }
 
+.ui-focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important; }
+
+h1 {
+  font-size: x-large !important; }
+
+li, li *, a, a * {
+  font-size: large !important; }
+
 div#welcome div.ui-header, div#welcome div.ui-contents, div#welcome div.ui-footer {
   background: #ffffff !important;
   border: #ffffff 0px; }
