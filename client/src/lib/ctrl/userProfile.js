@@ -35,7 +35,9 @@
  *///}}}
 "use strict";
 define([
+	'ctrl/confirmDialog',
 ], function (
+	confirm
 ) {
 
 	var inputs; 
@@ -140,8 +142,6 @@ define([
 	})();//}}}
 
 
-
-
 	return {
 		id: "userProfile",
 		run: function userProfileRun (container) {
@@ -156,14 +156,47 @@ define([
 			editUserProfile: ['*', editSelfProfile],
 			save: ctrlHandler,
 			remove: ctrlHandler,
-			back: function backAction(actionId, target, e) {
-				//// :-) e.preventDefault();
+			pagechange: function backAction(actionId, target, e) {
+
 				if (modified) {
-					e.preventDefault();
-					// console.log(modified); // FUNNY!!! If uncommented always report true.
-					modified = true; // ...but withot this back prevention only works once!!!
-					// ...seems strange. But remember that previous
-					// preventDefault() call IMPLIES cascading back call ;-)
+					var discardPage = target.toPage;
+					var cancelPage = "#" + $(target.prevPage[0]).attr("id");
+					console.log("/////////////////");
+					///console.log ($(cancelPage[0]).attr("id"));
+					console.log (discardPage);
+					console.log (cancelPage);
+					console.log("/////////////////");
+					target.toPage = target.prevPage; // Redirect back;
+					modified = false; // Avoid infinite loop.
+
+
+					var formBackup = exportForm();
+
+///					setTimeout(function(){ // "nextTickFn"
+						confirm.yesNo(
+							{
+								title: "title",
+								message: "Ese caballo que viene de Bonansaaaaarr!!",
+								ok: "Idò",
+								cancel: "Idò no!",
+							},
+							function discardChanges(){
+								clearForm();
+								////history.back();
+								$.mobile.navigate(discardPage); // Redirect.
+							},
+							function cancelFormExit(){
+								console.log ("Cancelling exit!!!");
+								history.back();
+								setTimeout(function(){
+									$.mobile.navigate(cancelPage); // Redirect.
+								}, 100);
+								importForm(formBackup);
+								modified = true; // Restore modified status.
+							}
+						);
+///					}, 1);
+					//*/
 				} else {
 					clearForm();
 				};

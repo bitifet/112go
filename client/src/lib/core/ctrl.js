@@ -38,10 +38,15 @@ define([
 	'ctrl/welcome',
 	'ctrl/userProfile',
 	'ctrl/activity',
+	'ctrl/confirmDialog',
 ], function (
 ) {
 	var ctrl = {};
-	var actions = {};
+	var actions = {
+		"*": {
+			pagechange: function(){}, // Default back action.
+		},
+	};
 
 	// Load all controllers and actions://{{{
 	for (
@@ -69,6 +74,9 @@ define([
 		};
 	};//}}}
 
+////console.log ("=============================");
+////console.log (actions);
+////console.log ("=============================");
 
 	function unimplementedAction(actionId, target, event) {
 		console.log ("Unimplemented action: " + actionId);
@@ -86,12 +94,9 @@ define([
 
 			function actionHandler (e, data) {//{{{
 				if (typeof this == "string") {
-					var target = {
-						from: "#" + data[0],
-						to: "#" + data[1],
-					};
+					var target = data;
 					var actionId = String(this);
-					var pageId = data[0];
+					var pageId = $.mobile.activePage.attr("id");
 				} else {
 					var target = $(this);
 					var actionId = target.data("action");
@@ -101,6 +106,7 @@ define([
 					actions[pageId] !== undefined
 					&& typeof actions[pageId][actionId] == "function"
 				) {
+				console.log ("@@@@----------@@@@@@@@@@@");
 					var cbk = actions[pageId][actionId];
 				} //}}}
 				else if ( // General action.//{{{
@@ -110,6 +116,9 @@ define([
 					var cbk = actions["*"][actionId];
 				}//}}}
 				else { // Unimplemented action.//{{{
+					////console.log(pageId, actionId);
+					////console.log(actions[pageId]);
+					////console.log(actions);
 					cbk = unimplementedAction;
 				};//}}}
 				cbk(actionId, target, e);
@@ -119,7 +128,25 @@ define([
 			$(".action", pageContainer).on("vclick", actionHandler);
 			//}}}
 
+
+			$(document).on("pagebeforechange", function(e, data) {
+				var fromPage = $.mobile.activePage.attr("id");
+				////console.log ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+				////console.log (fromPage);
+				////console.log (data.toPage);
+				////console.log (data);
+				////console.log ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+				if (typeof data.toPage == "string") actionHandler.apply("pagechange", [e, data]);
+
+			});
+
+
+
+
+
+
 			// Implement "back" virtual action://{{{
+			/*
 			(function backDetection() {
 				var newPageId;
 				var oldPageId;
@@ -139,7 +166,9 @@ define([
 						// do something else
 					}
 				});
-			})();//}}}
+			})();
+				//*/
+			//}}}
 
 		},
 	};
