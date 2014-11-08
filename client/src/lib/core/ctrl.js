@@ -38,7 +38,6 @@ define([
 	'ctrl/welcome',
 	'ctrl/userProfile',
 	'ctrl/activity',
-	'ctrl/confirmDialog',
 ], function (
 ) {
 	var ctrl = {};
@@ -106,7 +105,6 @@ define([
 					actions[pageId] !== undefined
 					&& typeof actions[pageId][actionId] == "function"
 				) {
-				console.log ("@@@@----------@@@@@@@@@@@");
 					var cbk = actions[pageId][actionId];
 				} //}}}
 				else if ( // General action.//{{{
@@ -129,46 +127,26 @@ define([
 			//}}}
 
 
+			// "Virtual" action over pagechange event://{{{
 			$(document).on("pagebeforechange", function(e, data) {
-				var fromPage = $.mobile.activePage.attr("id");
-				////console.log ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-				////console.log (fromPage);
-				////console.log (data.toPage);
-				////console.log (data);
-				////console.log ("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-				if (typeof data.toPage == "string") actionHandler.apply("pagechange", [e, data]);
 
-			});
+				var fromPage = $(data.prevPage[0]).attr("id");
 
+				var toPage = data.toPage;
+				if (typeof toPage == "string") {
+					toPage = toPage.replace(/^[^#]*#/, '');
+					toPage = $("#" + toPage);
+				};
+				if (toPage.data("role") != "page") { // Fucking jQuery-mobile is lying me!!
+					toPage = toPage.closest("div[data-role=page]").attr("id");
+				} else {
+					toPage = toPage.attr("id");
+				};
 
+				if (fromPage != toPage) actionHandler.apply("pagechange", [e, data]);
 
+			});//}}}
 
-
-
-			// Implement "back" virtual action://{{{
-			/*
-			(function backDetection() {
-				var newPageId;
-				var oldPageId;
-				$(document).on("pageshow", function(e) {
-					oldPageId = newPageId;
-					newPageId = $(e.target).attr("id");
-				});
-				$(window).on("navigate", function (e, data) {
-					e.preventDefault=function backRollBack(){
-						window.history.forward();
-					};
-					var direction = data.state.direction;
-					if (direction == 'back') {
-						actionHandler.apply("back", [e, [oldPageId, newPageId]]);
-					}
-					if (direction == 'forward') {
-						// do something else
-					}
-				});
-			})();
-				//*/
-			//}}}
 
 		},
 	};

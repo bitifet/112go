@@ -50,6 +50,12 @@ define({
 				label: "Privado",
 				whatsThis: "¿Qué es el perfil privado?",
 			},
+			confirmDialog: {
+				msg: "El formulario contiene modificaciones sin guardar. Si continua se perderán los cambios.",
+				modified: "Modificado",
+				cancel: "Cancelar",
+				continue: "Continuar",
+			},
 			phone: "Teléfono",
 			name: "Nombre",
 			surname: "Apellidos",

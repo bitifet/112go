@@ -35,15 +35,16 @@
  *///}}}
 "use strict";
 define([
-	'ctrl/confirmDialog',
+	'core/lang',
 ], function (
-	confirm
+	lang
 ) {
 
 	var inputs; 
 	var controls = {};
 	var removeButton;
 	var modified;
+	var model;
 
 	function ctrlHandler(actionId, target, e) {//{{{
 		if (typeof controls[actionId] == 'function') controls[actionId](exportForm());
@@ -55,7 +56,7 @@ define([
 			private: {},
 		};
 		function enhace (placeholder, target) {
-			target.on("change", function(){
+			target.on("change keyup", function(){
 				modified = true;
 			});
 			target.each(function(){
@@ -148,6 +149,7 @@ define([
 			var target = $("div#userProfile", container);
 			removeButton = $(".action[data-action=remove]", container);
 			indexInputs(container);
+			model = lang.model.pages.userProfile.confirmDialog;
 		},
 
 		load: importForm,
@@ -157,47 +159,26 @@ define([
 			save: ctrlHandler,
 			remove: ctrlHandler,
 			pagechange: function backAction(actionId, target, e) {
-
 				if (modified) {
 					var discardPage = target.toPage;
 					var cancelPage = "#" + $(target.prevPage[0]).attr("id");
-					console.log("/////////////////");
-					///console.log ($(cancelPage[0]).attr("id"));
-					console.log (discardPage);
-					console.log (cancelPage);
-					console.log("/////////////////");
 					target.toPage = target.prevPage; // Redirect back;
-					modified = false; // Avoid infinite loop.
-
-
-					var formBackup = exportForm();
-
-///					setTimeout(function(){ // "nextTickFn"
-						confirm.yesNo(
-							{
-								title: "title",
-								message: "Ese caballo que viene de Bonansaaaaarr!!",
-								ok: "Idò",
-								cancel: "Idò no!",
-							},
-							function discardChanges(){
+					navigator.notification.confirm(
+						model.msg,
+						function (btnIndex) {//{{{
+							if (btnIndex == 2) { // Continue:
 								clearForm();
-								////history.back();
-								$.mobile.navigate(discardPage); // Redirect.
-							},
-							function cancelFormExit(){
-								console.log ("Cancelling exit!!!");
-								history.back();
-								setTimeout(function(){
-									$.mobile.navigate(cancelPage); // Redirect.
-								}, 100);
-								importForm(formBackup);
-								modified = true; // Restore modified status.
-							}
-						);
-///					}, 1);
-					//*/
-				} else {
+								$.mobile.navigate(discardPage);
+							} else { // Cancel (1) or dialog closed (0):
+								// Do nothing.
+							};
+						},//}}}
+						model.modified,
+						[model.cancel, model.continue]
+					);
+
+				}
+				 else {
 					clearForm();
 				};
 			},

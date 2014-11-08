@@ -32,7 +32,7 @@ define({
 			start: "Començar",
 		},//}}}
 		userProfile: {//{{{
-			pub: {
+			pub: {//{{{
 				title: "Perfil Públic",
 				label: "Públic",
 				role: "Rol",
@@ -44,11 +44,17 @@ define({
 					novice: "Principiant",
 					contact: "Persona de contacte (no participa)",
 				},
-			},
-			priv: {
+			},//}}}
+			priv: {//{{{
 				title: "Perfil Privat",
 				label: "Privat",
 				whatsThis: "Que és el perfil privat?",
+			},//}}}
+			confirmDialog: {
+				msg: "El formulari ha sofert modificacions que encara no s'han desat. Si continua es perdràn els canvis.",
+				modified: "Modificat",
+				cancel: "Cancel·lar",
+				continue: "Continuar",
 			},
 			phone: "Telèfon",
 			name: "Nom",

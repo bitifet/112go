@@ -2,7 +2,14 @@
 // cordova.js is internally provided by cordova cli at compile time.
 
 // Testing stuff...
-///$(function(){
-///	appReady = true;
-///	$(document).trigger("deviceready");
-///});
+
+if (navigator.notification === undefined) navigator.notification = {};
+navigator.notification.confirm = function cordovaConfirm(message, confirmCallback, title, buttonLabels) {
+	if (window.confirm(message)) {
+		confirmCallback(2);
+	} else {
+		confirmCallback(1);
+	};
+};
+
+
