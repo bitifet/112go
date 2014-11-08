@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bitifet.seib112go" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.bitifet.seib112go" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>112go</name>
+
     <description>
         Emergency prevention app
     </description>
-	<author email="jmtorres@112ib.com" href="https://github.com/bitifet/112go">
+    <author email="jmtorres@112ib.com" href="https://github.com/bitifet/112go">
         Joan Miquel Torres.
     </author>
     <content src="index.html" />
