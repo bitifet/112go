@@ -13,11 +13,15 @@ h1 {
 li, li *, a, a * {
   font-size: large !important; }
 
-div#welcome div.ui-header, div#welcome div.ui-contents, div#welcome div.ui-footer {
+div#welcome div.ui-header {
+  background: #ffffff !important;
+  border: #ffffff 0px;
+  padding-left: 1em; }
+div#welcome div.ui-content, div#welcome div.ui-footer {
   background: #ffffff !important;
   border: #ffffff 0px; }
-div#welcome div.ui-header {
-  padding-left: 1em; }
+div#welcome div.ui-content {
+  padding-top: 2em; }
 div#welcome div.ui-btn {
   margin: 0px !important;
   width: 100%;
@@ -30,6 +34,8 @@ div#welcome div.ui-select, div#welcome li.first-child, div#welcome .ui-body-inhe
 
 div.ui-footer ul.ui-grid-b li a.ui-btn {
   width: 100%; }
+div.ui-footer li, div.ui-footer li *, div.ui-footer a, div.ui-footer a * {
+  font-size: x-large !important; }
 
 .ui-li-desc {
   white-space: normal; }

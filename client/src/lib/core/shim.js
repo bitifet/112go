@@ -91,7 +91,7 @@ define([
 		});//}}}
 
 		// Fix <select> classes://{{{
-		target.on("pagecreate", function(e) {
+		target.one("pagecreate", function(e) {
 			$("select", e.target).each(function populateSelectClasses() {
 				var select = $(this);
 				var container = select.closest("div");

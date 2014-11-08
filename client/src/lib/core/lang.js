@@ -37,6 +37,7 @@
 define ([
 	'core/cfg',
 	'core/tpl',
+	'../../lang/langs',
 	'../../lang/ca',
 	'../../lang/es',
 	'../../lang/en',
@@ -44,6 +45,7 @@ define ([
 ], function(
 	cfg,
 	tpl,
+	langs,
 	ca_model,
 	es_model,
 	en_model,
@@ -127,6 +129,8 @@ define ([
 	};//}}}
 
 	api.set(currLang());
+
+	api.langs = langs;
 
 	return api;
 

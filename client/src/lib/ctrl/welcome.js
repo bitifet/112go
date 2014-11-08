@@ -42,11 +42,40 @@ define([
 	userProfile
 ) {
 
-	function implementLangSelector (langsel) {
-		langsel.val(lang.get());
+	function implementLangSelector (target) {
+		var langsel = $("select.langSelector", target);
+		var currLang = lang.get();
+
+		for (var l in lang.langs) {
+			var x = $("<option></option>")
+					.attr("value", l)
+					.text(lang.langs[l])
+					.prepend($("<img></img>")
+						.attr("src", "img/flags/"+l+".png")
+						.attr("alt", "["+l+"]")
+						.css({
+							"height": "25px",
+							"margin-right": "1em",
+						})
+					)
+					.appendTo(langsel)
+			;
+		};
+		langsel.val(currLang);
 		langsel.on("change", function () {
 			lang.set(langsel.val());
 			langsel.trigger("reload");
+		});
+
+		target.one("pagecreate", function() {
+			var container = $("span", langsel.closest("div")).first();
+			container.prepend($("<img></img>")
+				.attr("src", "img/flags/"+currLang+".png")
+				.css({
+					"height": "25px",
+					"margin-right": "1em",
+				})
+			);
 		});
 	};
 
@@ -60,7 +89,7 @@ define([
 		id: "welcome",
 		run: function welcomeRun (container) {
 			var target = $("div#welcomeFooter", container);
-			implementLangSelector($("select.langSelector", target));
+			implementLangSelector(container);
 			implementAppCheckin($("a.appCheckin", target));
 		},
 	};

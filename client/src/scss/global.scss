@@ -22,14 +22,20 @@ li, li *, a, a * {
 
 div#welcome {
 
-	div.ui-header, div.ui-contents, div.ui-footer {
+	div.ui-header {
 		background: #ffffff !important;
 		border: #ffffff 0px;
-	}
-	div.ui-header {
 		padding-left: 1em;
 	}
 
+	div.ui-content, div.ui-footer {
+		background: #ffffff !important;
+		border: #ffffff 0px;
+	}
+
+	div.ui-content {
+		padding-top: 2em;
+	}
 
 	div.ui-btn {
 		margin: 0px !important;
@@ -52,12 +58,16 @@ div.ui-footer {
 	ul.ui-grid-b li a.ui-btn {
 		width: 100%;
 	}
+	li, li *, a, a * {
+		font-size: x-large !important;
+	}
 }
 
 
 .ui-li-desc {
 	white-space:normal;
 }
+
 
 
 
