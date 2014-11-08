@@ -38,6 +38,7 @@ define([
 	'ctrl/welcome',
 	'ctrl/userProfile',
 	'ctrl/activity',
+	'ctrl/actCheckpoint',
 ], function (
 ) {
 	var ctrl = {};

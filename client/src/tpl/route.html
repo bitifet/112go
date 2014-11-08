@@ -17,6 +17,7 @@
 			</span>
 			<span class="ui-block-b">
 				<input
+					name="dayNumber"
 					type="number"
 					value=1
 					min=1
@@ -30,26 +31,31 @@
 			</span>
 			<span class="ui-block-d">
 				<input
+					name="hour"
 					placeholder="{{specify}}"
 					type="time"
 				></input>
 			</span>
 		</li>
 		<li>
-			<input type="text" placeholder="{{description}}"></input>
+			<input name="description" type="text" placeholder="{{description}}"></input>
 		</li>
 		<li class="ui-grid-c">
 			<span class="ui-block-a">
-				<input placeholder="{{latitude}}" type="text"></input>
+				<input name="lat" placeholder="{{latitude}}" type="text"></input>
 			</span>
 			<span class="ui-block-b">
-				<input placeholder="{{longitude}}" type="text"></input>
+				<input name="long" placeholder="{{longitude}}" type="text"></input>
 			</span>
 			<span class="ui-block-c">
-				<a href="#" class="wide-btn ui-btn ui-icon-navigation ui-btn-icon-left">{{map}}</a>
+				<a href="#" data-action="map"
+					class="action wide-btn ui-btn ui-icon-navigation ui-btn-icon-left"
+				>{{map}}</a>
 			</span>
 			<span class="ui-block-d">
-				<a href="#" class="wide-btn ui-btn ui-icon-location ui-btn-icon-left">{{here}}</a>
+				<a href="#" data-action="getCurrentPosition"
+					class="action wide-btn ui-btn ui-icon-location ui-btn-icon-left"
+				>{{here}}</a>
 			</span>
 		</li>
 	</ul>

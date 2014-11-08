@@ -12,4 +12,22 @@ navigator.notification.confirm = function cordovaConfirm(message, confirmCallbac
 	};
 };
 
+if (navigator.geolocation === undefined) navigator.geolocation = {};
+navigator.geolocation.getCurrentPosition = function cordovaGetCurrentPosition(
+	geolocationSuccess
+) {
+	geolocationSuccess({
+		coords: {
+			latitude: "lat",
+			longitude: "long",
+			altitude: "alt",
+			accuracy: "acc",
+			altitudeAccuracy: "altAcc",
+			heading: "heading",
+			speed: "speed",
+		},
+		timestamp: "timestamp",
+	});
+};
+
 
