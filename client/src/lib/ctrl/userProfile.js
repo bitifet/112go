@@ -114,7 +114,7 @@ define([
 	};//}}}
 
 
-	var editSelfProfile = (function implementSelfProfile() {//{{{
+	var selfProfile = (function implementSelfProfile() {//{{{
 
 		// Initialyze / load user profile
 		try {
@@ -131,14 +131,19 @@ define([
 			clearForm();
 		};//}}}
 
-		return function edit() {//{{{
-			inputs.public.role.closest("li").hide();
-			removeButton.hide();
-			importForm(
-				myProfile,
-				saveProfile
-			);
-		};//}}}
+		return {
+			edit: function edit() {//{{{
+				inputs.public.role.closest("li").hide();
+				removeButton.hide();
+				importForm(
+					myProfile,
+					saveProfile
+				);
+			},//}}}
+			get: function getSelfProfile() {//{{{
+				return $.extend({}, myProfile);
+			},//}}}
+		};
 
 	})();//}}}
 
@@ -153,9 +158,10 @@ define([
 		},
 
 		load: importForm,
+		selfProfile: selfProfile.get,
 
-		actions: {
-			editUserProfile: ['*', editSelfProfile],
+		actions: {//{{{
+			editUserProfile: ['*', selfProfile.edit],
 			save: ctrlHandler,
 			remove: ctrlHandler,
 			pagechange: function backAction(actionId, target, e) {
@@ -182,7 +188,8 @@ define([
 					clearForm();
 				};
 			},
-		},
+		},//}}}
+
 	};
 
 });

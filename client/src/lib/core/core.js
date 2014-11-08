@@ -39,11 +39,13 @@ define([
 	'core/lang',
 	'core/shim',
 	'core/ctrl',
+	'ctrl/userProfile',
 ], function (
 	tpl,
 	lang,
 	shim,
-	ctrl
+	ctrl,
+	userProfile
 ) {
 
 	var pageContainer;
@@ -54,9 +56,6 @@ define([
 		var menu = $('#'+page.attr("id")+"_menu", page);
 		if(menu.length) menu.panel("toggle"); 
 	});
-
-	var config = { // FIXME: Link to local storage config data.
-	};
 
 	// Header templates to be rendered within page model.
 	var headers = {};
@@ -181,7 +180,7 @@ define([
 			ctrl.run(pageContainer);
 
 			// Startup page:
-			if (config.validated) {
+			if (Object.keys(userProfile.selfProfile()).length) {
 				// Normal usage:
 				pageContainer.pagecontainer( "change", "#activitys");
 			} else {
