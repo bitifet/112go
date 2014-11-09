@@ -1,0 +1,23 @@
+Avisa i ajuda a l'112 a trobar-te en cas d'Emergència encara que tu no puguis.
+
+-------------------------------------
+
+Excursionisme i activitats de risc. Monitoritza les vostres activitats i avisa automàticament al Serveï d'Emergències 112 si no donau senyals de vida en el temps previst.
+
+ATENCIÓ: Aquesta aplicació encara és un prototip. No tot el que s'explica seguidament està ja implementat i, encara que ho estigui, **aquest serveï no està encara en producció** pel que no s'enviaria res al 112. Podeu fer-la servir per avaluar-la si voleu i aportar-nos els vostres comentaris per millorar-la. Però per activitats reals heu de fer servir el formulari web que podeu trobar a la pàgina de l'112 de les Illes Balears. (http://www.112ib.com)
+
+Amb 112go, si anau d'excursió o realitzau activitats de risc o a l'aire lliure a la comunitat de les Illes Balears, podeu aportar informació sobre aquestes (com ara el punt de partida, llocs per ón pensau passar, les persones que hi participen i, sobretot, a quina hora i en quin lloc teniu previst acabar).
+
+L'aplicació enviarà aquesta informació a un servidor del Centre d'Emergències 112 de les Illes Balears que farà un seguiment de la vostra activitat de manera que, si per qualsevol motiu no poguéssiu comunicar que estau sans i estalvis en el moment indicat, el serveï d'emergències seria alertat automàticament possibilitant que s'inicii la vostra recerca quan abans millor, reduïnt així al màxim el temps necessari per localitzar-vos i fer-vos arribar l'ajuda necessària si és el cas.
+
+També podeu fer que periòdicament s'envii la vostra posició a aquest servidor o enviar-la vosaltres manualment quan ho estimeu oportú.
+
+A mesura que arribeu als punts marcats, podreu indicar-ho a l'aplicació o podeu fer que aquesta ho detecti automàticament per la vostra ubicació GPS, segons la vostra preferència.
+
+Si a l'hora estipulada no heu confirmat que estau sans i estalvis, vos sonarà una alarma avisant-vos. Si només vos heu endarrerit per qualsevol motíu, podreu demorar l'hora el que faci falta. Però si no responeu en un temps prudencial, fins i tot encara que no tengueu cobertura o se vos hagi espatllat el mòbil, el servidor alertarà el serveï d'emergència comunicant-li tota la informació recollida, inclosa al darrera posició coneguda del vostre terminal i, si pot contactar amb ell, la d'aquell mateix moment. Si no teníeu cobertura però heu marcat que havieu arribat sans i estalvis, l'aplicació cancel·larà l'avís tan aviat com torneu a tenir cobertura.
+
+Podeu incloure, a més, informació de totes les persones que participin de l'activitat i també de persones a qui desitgeu es contacti en cas d'accident.
+
+Aiximateix, si sou varis els participants que tengueu l'aplicació instal·lada, també podreu fer que els vostres smartphones es reparteixin la feina d'enviar la posició del grup. Fins i tot tenint en compte el nivell de càrrega de la bateria de cadascun.
+
+
