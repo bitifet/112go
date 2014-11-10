@@ -50,7 +50,7 @@ define([
 					input.on("focus", function(){
 						input.attr("type", iType);
 					});
-					input.on("change", function iReset(){
+					input.on("init change", function iReset(){
 						if (input.val() == "") input.attr("type", "text");
 					});
 				});
@@ -159,7 +159,7 @@ define([
 				switchItems.filter("[data-id="+select.val()+"]").show();
 			};
 			update();
-			select.on("change", update);
+			select.on("init change", update);
 		});//}}}
 
 	};

@@ -5,9 +5,9 @@ Avisa y ayuda al 112 a encontrarte en caso de emergéncia aún cuando no puedas.
 Excursionismo y actividades de riesgo. Monitoriza vuestras actividades y avisa automáticamente al Servicio de Emergéncias 112 en caso de que no deis señales de vida en el plazo previsto.
 
 
-**ATENCIÓN:** Ésta aplicación todavia es un prototipo. No todo lo que se explica seguidamente está ya implementado y, aun cuando lo esté, **éste servicio no está todavia en producción** por lo que no se enviará nada realmente al 112. Podeis utilizarla con el fin de evaluarla y, si quereis, aportarnos vuestros comentarios para mejorarla. Pero para actividades reales debeis hacer uso del formulario web que podeis encontrar en la página del 112 de les Illes Balears (http://www.112ib.com)
+ATENCIÓN: Ésta aplicación todavia es un prototipo. No todo lo que se explica seguidamente está ya implementado y, aun cuando lo esté, **éste servicio no está todavia en producción** por lo que no se enviará nada realmente al 112. Podeis utilizarla con el fin de evaluarla y, si quereis, aportarnos vuestros comentarios para mejorarla. Pero para actividades reales debeis hacer uso del formulario web que podeis encontrar en la página del 112 de les Illes Balears (http://www.112ib.com)
 
-Con 112go, si vais de excursión o realizais actividades de riesgo o al aire libre, **en la comunidad de les Illes Balears**, podreis aportar información sobre éstas (como el punto de partida, lugar por donde pensais pasar, las personas que participan y, sobretodo, a qué hora y en que lugar teneis previsto terminar).
+Con 112go, si vais de excursión o realizais actividades de riesgo o al aire libre, en la comunidad de les Illes Balears, podreis aportar información sobre éstas (como el punto de partida, lugar por donde pensais pasar, las personas que participan y, sobretodo, a qué hora y en que lugar teneis previsto terminar).
 
 La aplicación enviará ésta información a un servidor del Centro de Emergéncias 112 de les Illes Balears que hará un seguimiento de vuestra actividad de forma que, si por cualquier motivo no pudiérais comunicar que estais a salvo en el momento indicado, el servicio de emergencias seria alertado automáticamente posibilitando que se inicie vuestra búsqueda lo antes posible, reduciendo así al máximo el tiempo necesario para localizaros y haceros llegar la ayuda necesaria si fuera el caso.
 

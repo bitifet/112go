@@ -51,11 +51,11 @@ define([
 	};//}}}
 
 	function indexInputs(target) {//{{{
-		inputs = {
+		inputs = {//{{{
 			public: {},
 			private: {},
-		};
-		function enhace (placeholder, target) {
+		};//}}}
+		function enhace (placeholder, target) {//{{{
 			target.on("change keyup", function(){
 				modified = true;
 			});
@@ -64,10 +64,26 @@ define([
 				var id = input.attr("name");
 				placeholder[id]=input;
 			});
-		};
+		};//}}}
 		enhace(inputs.public, $("div#userPublicProfile :input", target));
 		enhace(inputs.private, $("div#userPrivateProfile :input", target));
-
+		// Implement easy pub->priv profile sync://{{{
+		for (var i in inputs.public) {
+			(function() {
+				var pub = inputs.public[i];
+				var priv = inputs.private[i];
+				pub.data("oldval", pub.val());
+				pub.on("init change", function (e) {
+					var oldv = pub.data("oldval");
+					var newv = pub.val();
+					pub.data("oldval", newv);
+					if (e.type == "change") {
+						var privv = priv.val();
+						if ((privv == oldv) || (privv == "")) priv.val(newv);
+					};
+				});
+			})();
+		};//}}}
 	};//}}}
 
 	function clearForm (e) {//{{{
@@ -88,7 +104,7 @@ define([
 			for (var fname in inputs[i]) {
 				var input = inputs[i][fname];
 				input.val(data[i][fname])
-					.trigger("change")
+					.trigger("init")
 				;
 			};
 		};
