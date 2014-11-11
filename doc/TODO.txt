@@ -1,6 +1,1 @@
 
-
-  * Add placeholders to all inputs.
-  * Change app icon.
-  * Implement similar "nl2br" preprocessor for long texts.
-  * Review http://davidwalsh.name/more-html5-apis

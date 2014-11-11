@@ -88,7 +88,7 @@ define([
 
 	function clearForm (e) {//{{{
 		importForm({});
-		inputs.public.role.closest("li").show();
+		inputs.public.role.closest("div.ui-select").show();
 		removeButton.show();
 		modified = false;
 	};//}}}
@@ -149,7 +149,16 @@ define([
 
 		return {
 			edit: function edit() {//{{{
-				inputs.public.role.closest("li").hide();
+				(function hideFuckingJqueryMobileSelect(select){//{{{
+					var container = select.closest("div.ui-select");
+					if (! container.length) {
+						select.closest("div[data-role=page]").one("pagecreate", function(){
+							select.closest("div.ui-select").hide();
+						});
+					} else {
+						container.hide();
+					};
+				})(inputs.public.role);//}}}
 				removeButton.hide();
 				importForm(
 					myProfile,

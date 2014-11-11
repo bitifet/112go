@@ -21,30 +21,31 @@
 			<li<!-- Activity description {{{-->
 			class="ui-grid-a ui-grid-7030">
 				<div class="ui-block-a">
-					<h3>__tipus__</h3>
-					<p>__descripció_</p>
+					<h3 class="label" data-name="type">__tipus__</h3>
+					<p class="label" data-name="description">__descripció_</p>
 				</div>
 				<div class="ui-block-b">
-					<a class="wide-btn ui-btn ui-icon-edit ui-btn-icon-top"
-						href="#activity">
-					{{edit}}</a>
+					<a href="#activity" data-action="edit"
+						class="action wide-btn ui-btn ui-icon-edit ui-btn-icon-top"
+					>{{edit}}</a>
 				</div>
 			</li><!--}}}-->
 			<li<!-- Next milestone {{{-->
-			class="ui-grid-b ui-grid-602020">
+			class="ui-grid-a ui-grid-7030">
 				<div class="ui-block-a">
 					<h3>{{nextMilestone}}</h3>
-					<p>__propera fita__
+					<p class="label" data-name="nextMilestone">__propera fita__
 				</div>
 				<div class="ui-block-b">
-					<a class="wide-btn ui-btn ui-icon-check ui-btn-icon-top"
-						href="#">
-					{{checkin}}</a>
-				</div>
-				<div class="ui-block-c">
-					<a class="wide-btn ui-btn ui-icon-location ui-btn-icon-top"
-						href="#foobar">
-					{{_global.sendPosition}}</a>
+					<a href="#" data-action="start"
+						class="action wide-btn ui-btn ui-icon-gear ui-btn-icon-top"
+					>{{start}}</a>
+					<a href="#" data-action="checkin"
+						class="action wide-btn ui-btn ui-icon-check ui-btn-icon-top"
+					>{{checkin}}</a>
+					<a href="#" data-action="end"
+						class="action wide-btn ui-btn ui-icon-home ui-btn-icon-top"
+					>{{end}}</a>
 				</div>
 			</li><!--}}}-->
 			</ul>
@@ -143,41 +144,46 @@
 			data-rel="back" href="#">{{_global.back}}</a>
 	  <div data-role="navbar" class="tabbar ui-persist">
 		<ul>
-			<li><a href="#actGeneral">{{gral.title}}</a></li>
-			<li><a href="#actRoute">{{route.title}}</a></li>
-			<li><a href="#actMembers">{{members.title}}</a></li>
+			<li><a href="#actGeneral"
+				class="ui-btn ui-icon-bullets ui-btn-icon-top"
+			>{{gral.title}}</a></li>
+			<li><a href="#actRoute"
+				class="ui-btn ui-icon-clock ui-btn-icon-top"
+			>{{route.title}}</a></li>
+			<li><a href="#actMembers"
+				class="ui-btn ui-icon-user ui-btn-icon-top"
+			>{{members.title}}</a></li>
 		</ul>
 	  </div>
 	</div><!--}}}-->
 	<div data-role="main" class="ui-content">
 		<div class="tab" id="actGeneral"><!--{{{-->
-			<ul data-role="listview">
-				<li><select data-id="typeselector">
-					<option value="" selected disabled>{{gral.activityType}}</option>
-					<option value="hiking">{{gral.type.hiking}}</option>
-					<option value="climbing">{{gral.type.climbing}}</option>
-					<option value="torrents">{{gral.type.torrents}}</option>
-					<option value="speleology">{{gral.type.speleology}}</option>
-					<option value="mountainbike">{{gral.type.mountainBike}}</option>
-					<option value="riding">{{gral.type.riding}}</option>
-					<option value="other">{{gral.type.other}}</option>
-				</select><input
-					name="type" type="text"
-					placeholder={{gral.otherTypeSpecify}}
-				></input></li>
-				<li><input
-					name="description" type="text"
-					placeholder="{{gral.description}}"
-				></input></li>
-				<li><input
-					name="date" type="date"
-					placeholder="{{gral.activityDate}}"
-					></input></li>
-				<li><textarea
-					name="comments"
-					placeholder="{{gral.comments}}"
-				></textarea></li>
-			</ul>
+			<select data-id="typeselector">
+				<option value="" selected disabled>{{gral.activityType}}</option>
+				<option value="hiking">{{gral.type.hiking}}</option>
+				<option value="climbing">{{gral.type.climbing}}</option>
+				<option value="torrents">{{gral.type.torrents}}</option>
+				<option value="speleology">{{gral.type.speleology}}</option>
+				<option value="mountainbike">{{gral.type.mountainBike}}</option>
+				<option value="riding">{{gral.type.riding}}</option>
+				<option value="other">{{gral.type.other}}</option>
+			</select>
+			<input
+				name="type" type="text"
+				placeholder={{gral.otherTypeSpecify}}
+			></input>
+			<input
+				name="description" type="text"
+				placeholder="{{gral.description}}"
+			></input>
+			<input
+				name="date" type="date"
+				placeholder="{{gral.activityDate}}"
+				></input>
+			<textarea
+				name="comments"
+				placeholder="{{gral.comments}}"
+			></textarea>
 		</div><!--}}}-->
 		<div class="tab" id="actRoute"><!--{{{-->
 			<ul data-role="listview">

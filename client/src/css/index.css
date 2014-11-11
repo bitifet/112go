@@ -34,7 +34,7 @@ div#welcome div.ui-select, div#welcome li.first-child, div#welcome .ui-body-inhe
 
 div.ui-footer ul.ui-grid-b li a.ui-btn, div.ui-panel ul.ui-grid-b li a.ui-btn {
   width: 100%; }
-div.ui-footer li, div.ui-footer li *, div.ui-footer a, div.ui-footer a *, div.ui-panel li, div.ui-panel li *, div.ui-panel a, div.ui-panel a * {
+div.ui-footer li, div.ui-footer li *, div.ui-footer a, div.ui-footer a *, div.ui-footer .select, div.ui-panel li, div.ui-panel li *, div.ui-panel a, div.ui-panel a *, div.ui-panel .select {
   font-size: x-large !important; }
 
 .ui-li-desc {

@@ -6,7 +6,6 @@ define({
 		back: "Volver",
 		close: "Cerrar",
 		emergencyBtn: "Emergéncia",
-		sendPosition: "Enviar posición",
 		checkin: "Marcar Hito",
 		save: "Guardar",
 		remove: "Eliminar",
@@ -18,8 +17,10 @@ define({
 			welcomePage: "Bienvenida",
 			home: "Inicio",
 			personalData: "Datos Personales",
-			gpsConfig: "Configuración GPS",
-			positionTrack: "Envio de coordenadas",
+			sendPosition: "Enviar posición",
+			preferences: "Configuración",
+			contact: "Contacto",
+			about: "Sobre 112go",
 		},//}}}
 	},
 	pages: {
@@ -67,7 +68,15 @@ define({
 		activitys: {//{{{
 			title: "Actividades",
 			edit: "Editar",
+			start: "Iniciar",
 			checkin: "Estoy aquí",
+			end: "Finalizar",
+			statInfo: {
+				noDefinedActivitys: "No hay actividades definidas",
+				defineOne: "Defina una nueva actividad para empezar",
+				noSelectedActivity: "No hay ninguna actividad seleccionada",
+				selectOne: "Seleccione una",
+			},
 			list: "Lista",
 			notifications: "Notificaciones",
 			nextMilestone: "Siguiente hito",

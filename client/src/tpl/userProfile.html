@@ -33,35 +33,31 @@
 	{{{_header}}}
 	<div data-role="main" class="ui-content">
 		<div class="tab" data-title="{{pub.title}}" id="userPublicProfile"><!--{{{-->
-			<ul data-role="listview">
-				<li><select name="role">
-						<option value="" disabled selected>{{pub.role}}</option>
-						<option>{{pub.roles.pguide}}</option>
-						<option>{{pub.roles.aguide}}</option>
-						<option>{{pub.roles.master}}</option>
-						<option>{{pub.roles.average}}</option>
-						<option>{{pub.roles.novice}}</option>
-						<option>{{pub.roles.contact}}</option>
-				</select></li>
-				<li><input name="tel" placeholder="{{phone}}" type="tel"></input></li>
-				<li><input name="name" placeholder="{{name}}" type="text"></input></li>
-				<li><input name="surname" placeholder="{{surname}}" type="text"></input></li>
-				<li><input name="birthdate" placeholder="{{birthDate}}" type="date"></input></li>
-				<li><input name="comments" placeholder="{{comments}}" type="text"></input></li>
-			</ul>
+			<select name="role">
+					<option value="" disabled selected>{{pub.role}}</option>
+					<option>{{pub.roles.pguide}}</option>
+					<option>{{pub.roles.aguide}}</option>
+					<option>{{pub.roles.master}}</option>
+					<option>{{pub.roles.average}}</option>
+					<option>{{pub.roles.novice}}</option>
+					<option>{{pub.roles.contact}}</option>
+			</select>
+			<input name="tel" placeholder="{{phone}}" type="tel"></input>
+			<input name="name" placeholder="{{name}}" type="text"></input>
+			<input name="surname" placeholder="{{surname}}" type="text"></input>
+			<input name="birthdate" placeholder="{{birthDate}}" type="date"></input>
+			<input name="comments" placeholder="{{comments}}" type="text"></input>
 		</div><!--}}}-->
 		<div class="tab" data-title="{{priv.title}}" id="userPrivateProfile"><!--{{{-->
-			<ul data-role="listview">
-				<li><a href="#mppInfo"
-					data-rel="popup"
-					class="ui-btn ui-icon-info ui-btn-icon-left"
-				>{{priv.whatsThis}}</a></li>
-				<li><input name="tel" placeholder="{{phone}}" type="tel"></input></li>
-				<li><input name="name" placeholder="{{name}}" type="text"></input></li>
-				<li><input name="surname" placeholder="{{surname}}" type="text"></input></li>
-				<li><input name="birthdate" placeholder="{{birthDate}}" type="date"></input></li>
-				<li><input name="comments" placeholder="{{comments}}" type="text"></input></li>
-			</ul>
+			<a href="#mppInfo"
+				data-rel="popup"
+				class="ui-btn ui-icon-info ui-btn-icon-left"
+			>{{priv.whatsThis}}</a>
+			<input name="tel" placeholder="{{phone}}" type="tel"></input>
+			<input name="name" placeholder="{{name}}" type="text"></input>
+			<input name="surname" placeholder="{{surname}}" type="text"></input>
+			<input name="birthdate" placeholder="{{birthDate}}" type="date"></input>
+			<input name="comments" placeholder="{{comments}}" type="text"></input>
 		</div><!--}}}-->
 	</div>
 	{{{_footer}}}

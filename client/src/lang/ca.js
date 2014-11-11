@@ -6,7 +6,6 @@ define({
 		back: "Tornar",
 		close: "Tancar",
 		emergencyBtn: "Emergència",
-		sendPosition: "Enviar posició",
 		checkin: "Marcar Fita",
 		save: "Desar",
 		remove: "Eliminar",
@@ -15,11 +14,13 @@ define({
 	},
 	panels: {
 		menu: {//{{{
-			home: "Inici",
 			welcomePage: "Benvinguda",
+			home: "Inici",
 			personalData: "Dades Personals",
-			gpsConfig: "Configuració GPS",
-			positionTrack: "Enviament de coordenades",
+			sendPosition: "Enviar posició",
+			preferences: "Configuració",
+			contact: "Contacte",
+			about: "Sobre 112go",
 		},//}}}
 	},
 	pages: {
@@ -67,7 +68,15 @@ define({
 		activitys: {//{{{
 			title: "Activitats",
 			edit: "Editar",
+			start: "Iniciar",
 			checkin: "Som aquí",
+			end: "Finalitzar",
+			statInfo: {
+				noDefinedActivitys: "No hi ha activitats definides",
+				defineOne: "Crei una nova activitat per començar",
+				noSelectedActivity: "No hi ha cap activitat sel·leccionada",
+				selectOne: "Sel·leccioni'n una",
+			},
 			list: "Llista",
 			notifications: "Notificacions",
 			nextMilestone: "Propera fita",

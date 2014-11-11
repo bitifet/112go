@@ -9,9 +9,8 @@
 >
 <div data-role="page" id="actCheckpoint">
 	{{{_header}}}
-  <div data-role="main" class="ui-content">
-	<ul data-role="listview">
-		<li class="ui-grid-c">
+	<div data-role="main" class="ui-content">
+		<div class="ui-grid-c">
 			<span class="ui-btn ui-block-a">
 				<h3>{{dayNumber}}:</h3>
 			</span>
@@ -36,55 +35,50 @@
 					type="time"
 				></input>
 			</span>
-		</li>
-		<li>
+		</div>
+		<div>
 			<input name="description" type="text" placeholder="{{description}}"></input>
-		</li>
-		<li class="ui-grid-c">
+		</div>
+		<div class="ui-grid-b">
 			<span class="ui-block-a">
 				<input name="lat" placeholder="{{latitude}}" type="text"></input>
-			</span>
-			<span class="ui-block-b">
 				<input name="long" placeholder="{{longitude}}" type="text"></input>
 			</span>
-			<span class="ui-block-c">
+			<span class="ui-block-b">
 				<a href="#" data-action="map"
-					class="action wide-btn ui-btn ui-icon-navigation ui-btn-icon-left"
+					class="action wide-btn ui-btn ui-icon-navigation ui-btn-icon-top"
 				>{{map}}</a>
 			</span>
-			<span class="ui-block-d">
+			<span class="ui-block-c">
 				<a href="#" data-action="getCurrentPosition"
-					class="action wide-btn ui-btn ui-icon-location ui-btn-icon-left"
+					class="action wide-btn ui-btn ui-icon-location ui-btn-icon-top"
 				>{{here}}</a>
 			</span>
-		</li>
-	</ul>
+		</div>
 
 
-	<ul class="ui-grid-b">
-		<li class="ui-block-a">
-			<a class="ui-btn ui-icon-delete ui-btn-icon-top"
-				data-rel="back" href="#">
-			{{_global.cancel}}</a>
-		</li>
-		<li class="ui-block-b">
-		</li>
-		<li class="ui-block-c">
-			<a class="ui-btn ui-icon-check ui-btn-icon-top"
-				data-rel="back" href="#">
-			{{_global.ok}}</a>
-		</li>
-	</ul>
+		<ul class="ui-grid-b">
+			<li class="ui-block-a">
+				<a class="ui-btn ui-icon-delete ui-btn-icon-top"
+					data-rel="back" href="#">
+				{{_global.cancel}}</a>
+			</li>
+			<li class="ui-block-b">
+			</li>
+			<li class="ui-block-c">
+				<a class="ui-btn ui-icon-check ui-btn-icon-top"
+					data-rel="back" href="#">
+				{{_global.ok}}</a>
+			</li>
+		</ul>
 
 
-  </div>
+	</div>
 	<div data-role="footer" class="ui-footer" data-position="fixed">
-	<ul data-role="listview">
-		<li><select class="wide-btn">
+		<select class="select wide-btn">
 			<option value="" selected disabled>{{select}}</option>
 			<option>...</option>
-		</select></li>
-	</ul>
+		</select>
 	</div>
 </div> 
 </script><!--}}}-->
