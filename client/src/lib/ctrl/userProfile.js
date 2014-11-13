@@ -69,7 +69,7 @@ define([
 		enhace(inputs.private, $("div#userPrivateProfile :input", target));
 		// Implement easy pub->priv profile sync://{{{
 		for (var i in inputs.public) {
-			(function() {
+			if (i != "role") (function() {
 				var pub = inputs.public[i];
 				var priv = inputs.private[i];
 				pub.data("oldval", pub.val());

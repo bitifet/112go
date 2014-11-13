@@ -67,7 +67,7 @@ define([
 			langsel.trigger("reload");
 		});
 
-		target.one("pagecreate", function() {
+		$("div[data-role=page]", target).one("pagecreate", function() {
 			var container = $("span", langsel.closest("div")).first();
 			container.prepend($("<img></img>")
 				.attr("src", "img/flags/"+currLang+".png")
