@@ -112,6 +112,9 @@
 	<div class="ui-footer" data-role="footer" data-position="fixed">
 		<ul class="ui-grid-b">
 			<li class="ui-block-a">
+				<a data-action="delete" class="action ui-btn ui-icon-minus ui-btn-icon-top"
+					data-rel="back" href="#">
+				{{_global.remove}}</a>
 			</li>
 			<li class="ui-block-b">
 			</li>
@@ -131,7 +134,7 @@
 
 
 <script id="activity_page_tpl"<!--{{{-->
-	data-footer="saveRemove"
+	data-footer="okCancel"
 	data-leftPanel="menu"
 	type="text/x-handlebars-template"
 >
@@ -184,6 +187,17 @@
 				name="comments"
 				placeholder="{{gral.comments}}"
 			></textarea>
+			<ul class="ui-grid-b">
+				<li class="ui-block-a">
+				</li>
+				<li class="ui-block-b">
+				</li>
+				<li class="ui-block-c">
+					<a data-action="delete" class="action ui-btn ui-icon-minus ui-btn-icon-top"
+						data-rel="back" href="#">
+					{{_global.remove}}</a>
+				</li>
+			</ul>
 		</div><!--}}}-->
 		<div class="tab" id="actRoute"><!--{{{-->
 			<ul data-role="listview">
@@ -219,7 +233,7 @@
 							<h3>{{route.start}}:</h3>
 						</div>
 						<div class="ui-block-b">
-							<input type=time></input>
+							<input placeholder="{{route.hour}}" type=time></input>
 						</div>
 					</div>
 					<p>__Descripció__</p>
@@ -232,7 +246,7 @@
 							<h3>{{route.milestone}}:</h3>
 						</div>
 						<div class="ui-block-b">
-							<input type=time></input>
+							<input placeholder="{{route.hour}}" type=time></input>
 						</div>
 					</div>
 					<p>__Descripció__</p>
@@ -245,7 +259,7 @@
 							<h3>{{route.end}}:</h3>
 						</div>
 						<div class="ui-block-b">
-							<input type=time></input>
+							<input placeholder="{{route.hour}}" type=time></input>
 						</div>
 					</div>
 					<p>__Descripció__</p>
@@ -318,7 +332,9 @@
 			</div>
 		</div><!--}}}-->
 	</div>
-	{{{_footer}}}
+	<div class="ui-footer" data-role="footer" data-position="fixed">
+		{{{_footer}}}
+	</div>
 </div> 
 </script><!--}}}-->
 
