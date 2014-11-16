@@ -2,7 +2,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */ }
 
-.ui-focus {
+.ui-focus, a.ui-btn {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
@@ -63,3 +63,7 @@ div.actSummary {
 .wide-btn {
   width: 100%;
   display: block; }
+
+a.disabled {
+  color: #777777 !important;
+  background-color: #ffffff !important; }

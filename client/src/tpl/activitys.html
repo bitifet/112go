@@ -25,6 +25,9 @@
 					<p class="label" data-name="description">__descripció_</p>
 				</div>
 				<div class="ui-block-b">
+					<a data-action="newActivity" href="#activity"
+						class="action wide-btn ui-btn ui-icon-plus ui-btn-icon-top"
+					>{{newActivity}}</a>
 					<a href="#activity" data-action="edit"
 						class="action wide-btn ui-btn ui-icon-edit ui-btn-icon-top"
 					>{{edit}}</a>
@@ -119,9 +122,9 @@
 			<li class="ui-block-b">
 			</li>
 			<li class="ui-block-c">
-				<a class="ui-btn ui-icon-plus ui-btn-icon-top"
-					href="#activity">
-				{{newActivity}}</a>
+				<a data-action="newActivity" href="#activity"
+					class="action ui-btn ui-icon-plus ui-btn-icon-top"
+				>{{newActivity}}</a>
 			</li>
 		</ul>
 	</div>

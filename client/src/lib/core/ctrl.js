@@ -37,6 +37,7 @@
 define([
 	'ctrl/welcome',
 	'ctrl/userProfile',
+	'ctrl/activitys',
 	'ctrl/activity',
 	'ctrl/actCheckpoint',
 ], function (
@@ -99,6 +100,10 @@ define([
 					var pageId = $.mobile.activePage.attr("id");
 				} else {
 					var target = $(this);
+					if (target.hasClass("disabled")) { // Ignore disabled actions.
+						e.preventDefault();
+						return;
+					};
 					var actionId = target.data("action");
 					var pageId = pageContainer.pagecontainer("getActivePage").attr("id");
 				};
