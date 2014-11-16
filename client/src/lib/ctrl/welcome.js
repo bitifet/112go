@@ -67,15 +67,18 @@ define([
 			langsel.trigger("reload");
 		});
 
-		$("div[data-role=page]", target).one("pagecreate", function() {
+		$("div#welcome", target).one("pagecreate", function() {
 			var container = $("span", langsel.closest("div")).first();
-			container.prepend($("<img></img>")
-				.attr("src", "img/flags/"+currLang+".png")
-				.css({
-					"height": "25px",
-					"margin-right": "1em",
-				})
-			);
+			if (!container.data("flagged")) {
+				container.prepend($("<img></img>")
+					.attr("src", "img/flags/"+currLang+".png")
+					.css({
+						"height": "25px",
+						"margin-right": "1em",
+					})
+				);
+				container.data("flagged", true);
+			};
 		});
 	};
 
