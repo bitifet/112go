@@ -62,6 +62,9 @@ define({
 			surname: "Llinatges",
 			birthDate: "Data de naixement",
 			comments: "Comentaris",
+			contactHeading: "En cas d'accident contactar amb",
+			contactName: "Nom",
+			contactTel: "Telèfon",
 			save: "Actualitzar",
 			remove: "Eliminar",
 		},//}}}

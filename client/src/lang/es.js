@@ -62,6 +62,9 @@ define({
 			surname: "Apellidos",
 			birthDate: "Fecha de nacimiento",
 			comments: "Comentarios",
+			contactHeading: "En caso de accidente contactar con",
+			contactName: "Nombre",
+			contactTel: "Teléfono",
 			save: "Actualizar",
 			remove: "Borrar",
 		},//}}}
