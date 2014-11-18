@@ -36,98 +36,184 @@
 "use strict";
 define([
 	'core/lang',
+	'ctrl/activity',
 ], function (
-	lang
+	lang,
+	act
 ) {
 
-	var activitys = [];
-	var layout = {};
+	var actList;
+	var layout;
 	var model = lang.model.pages.activitys;
 
-	function enhaceTemplate(container) {//{{{
-		layout.actList=$("div#actList ul", container).first();
-		layout.actNotify=$("div#actNotify ul", container).first();
-		// Index labels://{{{
-		layout.labels = {};
+	function indexLayout(container) {//{{{
+		// Initialyze layout map:
+		layout = {
+			labels: {},
+			lists: {
+				activitys: $("div#actList ul", container).first(),
+				notifications: $("div#actNotify ul", container).first(),
+			},
+			buttons: {
+				altNew: $("div.ui-header .action[data-action=newActivity]", container),
+				edit: $("div.ui-header .action[data-action=edit]", container),
+				start: $(".action[data-action=start]", container).addClass("disabled"),
+				checkIn: $(".action[data-action=checkin]", container).hide(),
+				end: $(".action[data-action=end]", container).hide(),
+			},
+		};
+		// Index labels:
 		$(".label", container).each(function(){
 			var lbl =$(this);
 			layout.labels[lbl.data("name")] = lbl;
-		});//}}}
-		layout.altNewBtn = $("div.ui-header .action[data-action=newActivity]", container);
-		layout.editBtn = $("div.ui-header .action[data-action=edit]", container);
-		layout.startBtn = $(".action[data-action=start]", container).addClass("disabled");
-		layout.checkinBtn = $(".action[data-action=checkin]", container).hide();
-		layout.endBtn = $(".action[data-action=end]", container).hide();
+		});
 	};//}}}
 
 
-	function actDisplay(activity) {
-		if ( // No activitys defined.//{{{
-			! activitys.length
-		) {
-			// Show alternate "new" button instead of regular edit button.
-			layout.altNewBtn.show();
-			layout.editBtn.show();
+	function modActivitys(container) {
+		var activitys = [];
 
-			layout.startBtn.show().attr("disabled", "disabled");
-			layout.checkinBtn.hide();
-			layout.endBtn.hide();
-			layout.labels.type.text(model.statInfo["noDefinedActivitys"]);
-			layout.labels.description.text(model.statInfo["defineOne"]);
-			layout.labels.nextMilestone.text("");
-		}//}}}
-		else if ( // No activity selected.//{{{
-			activity === undefined
-		) {
-			layout.startBtn.show().attr("disabled", "disabled");
-			layout.checkinBtn.hide();
-			layout.endBtn.hide();
-			layout.labels.type.text(model.statInfo["noSelectedActivity"]);
-			layout.labels.description.text(model.statInfo["selectOne"]);
-			layout.labels.nextMilestone.text("");
-		}//}}}
-		else if ( // Activity not yet started.//{{{
-			activity.nextMilestone === activity.milestones[0].timestamp
-		) {
-			layout.startBtn.show().removeAttr("disabled");
-			layout.checkinBtn.hide();
-			layout.endBtn.hide();
-
-			layout.labels.type.text();
-			layout.labels.description.text();
-			layout.labels.nextMilestone.text();
-		}//}}}
-		else { // Activity started.//{{{
-			layout.startBtn.hide()
-			if ( 
-				activity.nextMilestone != activity.milestones[activity.milestones.length -1].timestamp
+		function actDisplay(activity) {//{{{
+			if ( // No activitys defined.//{{{
+				! activitys.length
 			) {
-				layout.checkinBtn.show();
-				layout.endBtn.hide();
-			} else {
-				layout.checkinBtn.hide();
-				layout.endBtn.show();
+				// Show alternate "new" button instead of regular edit button.
+				layout.buttons.altNew.show();
+				layout.buttons.edit.show();
+
+				layout.buttons.start.show().attr("disabled", "disabled");
+				layout.buttons.checkIn.hide();
+				layout.buttons.end.hide();
+				layout.labels.type.text(model.statInfo["noDefinedActivitys"]);
+				layout.labels.description.text(model.statInfo["defineOne"]);
+				layout.labels.nextMilestone.text("");
+			}//}}}
+			else if ( // No activity selected.//{{{
+				activity === undefined
+			) {
+				layout.buttons.start.show().attr("disabled", "disabled");
+				layout.buttons.checkIn.hide();
+				layout.buttons.end.hide();
+				layout.labels.type.text(model.statInfo["noSelectedActivity"]);
+				layout.labels.description.text(model.statInfo["selectOne"]);
+				layout.labels.nextMilestone.text("");
+			}//}}}
+			else if ( // Activity not yet started.//{{{
+				activity.nextMilestone === activity.milestones[0].timestamp
+			) {
+				layout.buttons.start.show().removeAttr("disabled");
+				layout.buttons.checkIn.hide();
+				layout.buttons.end.hide();
+
+				layout.labels.type.text();
+				layout.labels.description.text();
+				layout.labels.nextMilestone.text();
+			}//}}}
+			else { // Activity started.//{{{
+				layout.buttons.start.hide()
+				if ( 
+					activity.nextMilestone != activity.milestones[activity.milestones.length -1].timestamp
+				) {
+					layout.buttons.checkIn.show();
+					layout.buttons.end.hide();
+				} else {
+					layout.buttons.checkIn.hide();
+					layout.buttons.end.show();
+				};
+
+				layout.labels.type.text("FIXME (activity type)");
+				layout.labels.description.text("FIXME (activity description)");
+				layout.labels.nextMilestone.text("FIXME (next milestone info)");
+
+			};//}}}
+		};//}}}
+
+		var actList = (function(list){
+			var li = $("li", list).detach();
+
+			return {
+				add: function addItem(activity) {
+					var timestamp = activity.date; // FIXME.
+
+					var newItem = li.clone(true);
+					newItem
+						.data("timestamp", timestamp)
+					;
+					$("a",newItem).text(activity.description);
+
+					var listItems = $("li", list);
+					if (! listItems.length) {
+						list.append(newItem);
+					} else {
+						listItems.each(function(i){
+							var item = $(this);
+							if (
+								item.data("timestamp") > timestamp
+							) {
+								newItem.insertBefore(item);
+								return false;
+							} else if (
+								i >= listItems.length - 1
+							) {
+								newItem.insertAfter(item);
+								return false;
+							};
+						});
+					};
+					list.listview('refresh');
+				},
+
 			};
 
-			layout.labels.type.text("FIXME (activity type)");
-			layout.labels.description.text("FIXME (activity description)");
-			layout.labels.nextMilestone.text("FIXME (next milestone info)");
+		})(layout.lists.activitys);
 
-		};//}}}
+
+
+
+		$("div#activitys", container).on("pagecreate", function() {
+
+			actList.add({
+				description: "my",
+				date: 2,
+			});
+			actList.add({
+				description: "World",
+				date: 4,
+			});
+			actList.add({
+				description: "Hello",
+				date: 1,
+			});
+			actList.add({
+				description: "sorted",
+				date: 3,
+			});
+
+		});
+
+
+		actDisplay({});
+
+		return {
+
+		};
+
 	};
 
+	function runActivitys (container) {
+		var target = $("div#activitys", container);
+		indexLayout(container);
+
+		actList = modActivitys(container);
+
+
+	};
 
 
 
 	return {
 		id: "activitys",
-		run: function userProfileRun (container) {
-			var target = $("div#activitys", container);
-			enhaceTemplate(container);
-
-			actDisplay({});
-
-		},
+		run: runActivitys,
 		actions: {
 			edit: function editAction(){
 				console.log("Edit!!");
@@ -144,7 +230,6 @@ define([
 			end: function checkinAction(){
 				console.log("End!!");
 			},
-
 		},
 	};
 
